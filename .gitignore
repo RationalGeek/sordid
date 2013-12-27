@@ -1,0 +1,23 @@
+###############
+# Directories #
+###############
+bin/
+obj/
+TestResults/
+packages/
+
+!packages/repositories.config
+
+###################
+# VS User Files   #
+###################
+*.suo
+*.csproj.user
+
+###################
+# compiled source #
+###################
+*.dll
+*.exe
+*.pdb
+*.dll.config
