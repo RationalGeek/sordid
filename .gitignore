@@ -6,8 +6,6 @@ obj/
 TestResults/
 packages/
 
-!packages/repositories.config
-
 ###################
 # VS User Files   #
 ###################
