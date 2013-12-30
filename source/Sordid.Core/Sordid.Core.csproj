@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ApplicationUser.cs" />
+    <Compile Include="Model\ModelBuilders\AppUserTableNames.cs" />
+    <Compile Include="Model\ModelBuilders\IModelBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SordidDbContext.cs" />
   </ItemGroup>
