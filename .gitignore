@@ -5,6 +5,7 @@ bin/
 obj/
 TestResults/
 packages/
+App_Data/
 
 ###################
 # VS User Files   #

@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Sordid.Web.Models;
+using Sordid.Core.Model;
+using Sordid.Core;
 
 namespace Sordid.Web.Controllers
 {
@@ -16,7 +18,7 @@ namespace Sordid.Web.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new SordidDbContext())))
         {
         }
 
