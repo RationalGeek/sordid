@@ -2,12 +2,9 @@
 using Sordid.Core.Model;
 using Sordid.Core.Model.ModelBuilders;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sordid.Core
 {
@@ -30,7 +27,7 @@ namespace Sordid.Core
 
         static SordidDbContext()
         {
-            Database.SetInitializer<SordidDbContext>(new DropCreateDatabaseAlways<SordidDbContext>());
+            Database.SetInitializer<SordidDbContext>(new DropCreateDatabaseIfModelChanges<SordidDbContext>());
         }
     }
 }
