@@ -1,9 +1,12 @@
 ﻿using Ninject.Extensions.Logging;
 using Sordid.Core.Interfaces;
+using Sordid.Web.Models;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Sordid.Web.Controllers
 {
+    [Authorize]
     public class CharacterController : Controller
     {
         private ILogger _logger;
@@ -16,15 +19,24 @@ namespace Sordid.Web.Controllers
         }
 
         // GET: /Character/
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: /Character/New
-        public ActionResult New()
+        public async Task<ActionResult> New()
         {
-            return View();
+            var character = await _characterService.NewCharacter();
+            return RedirectToAction("Manage", new { id = character.Id });
+        }
+
+        // GET: /Character/Manage
+        public async Task<ActionResult> Manage(int id)
+        {
+            var character = await _characterService.LoadCharacter(id);
+            return View(new ManageCharacterViewModel { Character = character });
         }
     }
 }

@@ -5,6 +5,8 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Sordid.Core
 {
@@ -33,6 +35,37 @@ namespace Sordid.Core
             }
         }
 
+        public override int SaveChanges()
+        {
+            SetEntityDateFields();
+            return base.SaveChanges();
+        }
 
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            SetEntityDateFields();
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        private void SetEntityDateFields()
+        {
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                var baseEntity = entry.Entity as BaseEntity;
+                if (baseEntity == null)
+                    continue;
+
+                if (entry.State == EntityState.Added)
+                {
+                    baseEntity.DateCreated = DateTime.Now;
+                    baseEntity.DateUpdated = DateTime.Now;
+                }
+
+                if (entry.State == EntityState.Modified)
+                {
+                    baseEntity.DateUpdated = DateTime.Now;
+                }
+            }
+        }
     }
 }

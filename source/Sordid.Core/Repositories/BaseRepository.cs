@@ -26,17 +26,18 @@ namespace Sordid.Core.Repositories
         protected IList<Expression<Func<T, object>>> DefaultIncludes { get; private set; }
         protected DbSet<T> DbSet { get { return DbContext.Set<T>(); } }
 
-        protected BaseRepository(IUnitOfWork uow)
+        protected BaseRepository(IUnitOfWork uow, ILogger logger)
         {
             UnitOfWork = uow;
             DbContext = uow.Context;
             //_Log = new NullLogger();
+            _Log = logger;
             DefaultIncludes = new List<Expression<Func<T, object>>>();
         }
 
         public virtual async Task<T> Get(int id)
         {
-            return await GetQueryable().FirstOrDefaultAsync(t => t.ID == id);            
+            return await GetQueryable().FirstOrDefaultAsync(t => t.Id == id);            
         }
 
         public virtual async Task<IList<T>> GetAll()

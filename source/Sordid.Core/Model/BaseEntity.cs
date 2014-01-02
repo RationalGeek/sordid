@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sordid.Core.Entities
+namespace Sordid.Core.Model
 {
     public abstract class BaseEntity
     {
