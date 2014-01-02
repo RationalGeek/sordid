@@ -7,7 +7,7 @@ namespace Sordid.Core.Ninject
         public IKernel BuildKernel()
         {
             var kernel = new StandardKernel();
-
+            kernel.Load(new SordidCoreNinjectModule());
             return kernel;
         }
     }

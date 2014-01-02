@@ -47,6 +47,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.2-unstable-9051\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.0.11\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Extensions.Logging">
       <HintPath>..\packages\Ninject.Extensions.Logging.3.0.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
     </Reference>
@@ -72,6 +75,7 @@
     <Compile Include="Model\ModelBuilders\CharacterModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\IModelBuilder.cs" />
     <Compile Include="Ninject\KernelBuilder.cs" />
+    <Compile Include="Ninject\SordidCoreNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Services\CharacterService.cs" />

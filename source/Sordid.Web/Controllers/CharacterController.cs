@@ -1,4 +1,5 @@
 ﻿using Ninject.Extensions.Logging;
+using Sordid.Core.Interfaces;
 using System.Web.Mvc;
 
 namespace Sordid.Web.Controllers
@@ -6,9 +7,11 @@ namespace Sordid.Web.Controllers
     public class CharacterController : Controller
     {
         private ILogger _logger;
+        private ICharacterService _characterService;
 
-        public CharacterController(ILogger logger)
+        public CharacterController(ICharacterService characterService, ILogger logger)
         {
+            _characterService = characterService;
             _logger = logger;
         }
 

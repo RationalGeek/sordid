@@ -3,11 +3,15 @@
 
 namespace Sordid.Web.App_Start
 {
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using Ninject;
-    using Ninject.Web.Common;
-    using Sordid.Core.Ninject;
-    using System;
+    using Glimpse.Ninject;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Common;
+using Sordid.Core;
+using Sordid.Core.Interfaces;
+using Sordid.Core.Ninject;
+using System;
     using System.Web;
 
     public static class NinjectWebCommon 
@@ -52,7 +56,16 @@ namespace Sordid.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            // TODO: Set up Ninject conventions-based binding
+            kernel.Load(new GetNinjectInstanceForGlimpseModule());
+            kernel.Load(new SordidWebNinjectModule());
         }        
+    }
+
+    public class SordidWebNinjectModule : NinjectModule
+    {
+        public override void Load()
+        {
+            Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+        }
     }
 }
