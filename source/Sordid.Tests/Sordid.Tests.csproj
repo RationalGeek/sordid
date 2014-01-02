@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A8914988-4497-42C7-BE13-D90B8BA2E9FB}</ProjectGuid>
+    <ProjectGuid>{2C1ABB2E-B368-462B-908C-7D4F3EAB6848}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sordid.Core</RootNamespace>
-    <AssemblyName>Sordid.Core</AssemblyName>
+    <RootNamespace>Sordid.Tests</RootNamespace>
+    <AssemblyName>Sordid.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -47,8 +47,8 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.2-unstable-9051\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Logging">
-      <HintPath>..\packages\Ninject.Extensions.Logging.3.0.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -60,27 +60,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IBaseRepository.cs" />
-    <Compile Include="Interfaces\ICharacterService.cs" />
-    <Compile Include="Interfaces\IIdKeyedEntity.cs" />
-    <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Model\ApplicationUser.cs" />
-    <Compile Include="Model\BaseEntity.cs" />
-    <Compile Include="Model\Character.cs" />
-    <Compile Include="Model\ModelBuilders\ApplicationUserModelBuilder.cs" />
-    <Compile Include="Model\ModelBuilders\AppUserTableNames.cs" />
-    <Compile Include="Model\ModelBuilders\CharacterModelBuilder.cs" />
-    <Compile Include="Model\ModelBuilders\IModelBuilder.cs" />
-    <Compile Include="Ninject\KernelBuilder.cs" />
+    <Compile Include="Database\CharacterCrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Services\CharacterService.cs" />
-    <Compile Include="SordidDbContext.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sordid.Core\Sordid.Core.csproj">
+      <Project>{a8914988-4497-42c7-be13-d90b8ba2e9fb}</Project>
+      <Name>Sordid.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sordid.Web\Sordid.Web.csproj">
+      <Project>{ceff98ca-f0ef-43cc-a739-4297fee0a9e2}</Project>
+      <Name>Sordid.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

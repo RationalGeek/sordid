@@ -10,6 +10,14 @@ namespace Sordid.Core
 {
     public class SordidDbContext : IdentityDbContext<ApplicationUser>
     {
+        static SordidDbContext()
+        {
+            // TODO: Eventually have to convert to using migrations
+            Database.SetInitializer<SordidDbContext>(new DropCreateDatabaseIfModelChanges<SordidDbContext>());
+        }
+
+        public DbSet<Character> Characters { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -25,9 +33,6 @@ namespace Sordid.Core
             }
         }
 
-        static SordidDbContext()
-        {
-            Database.SetInitializer<SordidDbContext>(new DropCreateDatabaseIfModelChanges<SordidDbContext>());
-        }
+
     }
 }
