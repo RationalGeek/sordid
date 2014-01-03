@@ -12,12 +12,12 @@ namespace Sordid.Core
 {
     public class SordidDbContext : IdentityDbContext<ApplicationUser>
     {
-        static SordidDbContext()
-        {
-            // TODO: Eventually have to convert to using migrations
-        }
-
         public DbSet<Character> Characters { get; set; }
+
+        public SordidDbContext()
+        {
+            Configuration.LazyLoadingEnabled = false;
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -12,8 +12,8 @@ namespace Sordid.Core.Interfaces
         Task<T> Get(int id);
         Task<IList<T>> GetAll();
         Task<IList<T>> Find(Expression<Func<T, bool>> predicate);
-        IQueryable<T> GetQueryable();
-        Task<IList<U>> Query<U>(IQueryable<U> queryable);
+        //IQueryable<T> GetQueryable();
+        //Task<IList<U>> Query<U>(IQueryable<U> queryable);
         T Add(T entity);
         T Update(T entity);
         void Delete(T entity);

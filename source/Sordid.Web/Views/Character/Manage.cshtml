@@ -1,9 +1,9 @@
 ﻿@model Sordid.Web.Models.ManageCharacterViewModel
 @{
-    ViewBag.Title = "Manage Character: " + Model.Character.Name;
+    ViewBag.Title = Model.Character.Name;
 }
 
-<h2>Managing character <strong data-bind="text: Character.Name"></strong></h2>
+<h2 data-bind="text: Character.Name" />
 
 <p>Player Name: <input data-bind="value: Character.PlayerName" /></p>
 

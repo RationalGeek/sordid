@@ -3,11 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Sordid.Core.Exceptions;
 using Sordid.Core.Interfaces;
 using Sordid.Core.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,6 +26,11 @@ namespace Sordid.Core.Services
             if (user == null)
                 throw new SordidSecurityException("Could not load current user");
             return user;
+        }
+
+        public string GetCurrentUserId()
+        {
+            return User.Identity.GetUserId();
         }
     }
 }

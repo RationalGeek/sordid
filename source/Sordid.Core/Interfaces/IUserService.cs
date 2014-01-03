@@ -6,5 +6,6 @@ namespace Sordid.Core.Interfaces
     public interface IUserService
     {
         Task<ApplicationUser> GetCurrentUser();
+        string GetCurrentUserId();
     }
 }

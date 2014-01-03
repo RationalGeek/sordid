@@ -27,10 +27,8 @@ namespace Sordid.Core.Services
 
         public async Task<Character> LoadCharacter(int id)
         {
-            var userId = (await _userService.GetCurrentUser()).Id;
-            var queryable = _charRepo.GetQueryable()
-                .Where(c => c.Id == id && c.ApplicationUserId == userId);
-            var result = (await _charRepo.Query(queryable)).FirstOrDefault();
+            var userId = _userService.GetCurrentUserId();
+            var result = (await _charRepo.Find(c => c.Id == id && c.ApplicationUserId == userId)).FirstOrDefault();
             return result;
         }
     }
