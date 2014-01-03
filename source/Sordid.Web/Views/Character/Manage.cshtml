@@ -3,7 +3,15 @@
     ViewBag.Title = "Manage Character: " + Model.Character.Name;
 }
 
-<h2>Managing character @Model.Character.Name</h2>
+<h2>Managing character <strong data-bind="text: Character.Name"></strong></h2>
 
-Better implement this...
+<p>Player Name: <input data-bind="value: Character.PlayerName" /></p>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        viewModel = @Html.Raw(Json.Encode(Model) + ";")
+        ko.applyBindings(viewModel);
+    </script>
+}
 
