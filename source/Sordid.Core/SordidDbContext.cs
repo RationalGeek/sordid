@@ -15,7 +15,6 @@ namespace Sordid.Core
         static SordidDbContext()
         {
             // TODO: Eventually have to convert to using migrations
-            Database.SetInitializer<SordidDbContext>(new DropCreateDatabaseIfModelChanges<SordidDbContext>());
         }
 
         public DbSet<Character> Characters { get; set; }

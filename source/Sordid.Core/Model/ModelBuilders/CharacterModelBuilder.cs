@@ -10,6 +10,14 @@ namespace Sordid.Core.Model.ModelBuilders
                 .HasRequired<ApplicationUser>(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.ApplicationUserId);
+
+            modelBuilder.Entity<Character>()
+                .Property(c => c.Appearance)
+                .IsMaxLength();
+
+            modelBuilder.Entity<Character>()
+                .Property(c => c.Notes)
+                .IsMaxLength();
         }
     }
 }
