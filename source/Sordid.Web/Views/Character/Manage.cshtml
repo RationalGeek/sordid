@@ -3,15 +3,20 @@
     ViewBag.Title = Model.Character.Name;
 }
 
-<div class="row">
-    <h2 class="col-md-8 col-md-offset-2" data-bind="text: Character.Name" />
+<div class="row" style="padding-bottom: 2px;">
+    <div class="col-md-7 col-md-offset-2" data-bind="text: Character.Name" style="font-size: 20pt;">
+    </div>
+    @* TODO: Can't get this stupid button to align bottom *@
+    <div class="col-md-1" style="text-align: right; padding: 0;">
+        <a id="#saveButton" class="btn btn-success btn-sm" title="Save Character"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+    </div>
 </div>
 
 <div class="row">
     <div id="character-sections" class="col-md-2 col-md-offset-2 btn-group-vertical">
-        <a type="button" href="#section-basics" data-toggle="tab" class="btn btn-primary active">Basics</a>
-        <a type="button" href="#section-skills" data-toggle="tab" class="btn btn-primary">Skills</a>
-        <a type="button" href="#section-aspects" data-toggle="tab" class="btn btn-primary">Aspects</a>
+        <a type="button" href="#section-basics" class="btn btn-primary active">Basics</a>
+        <a type="button" href="#section-skills" class="btn btn-primary">Skills</a>
+        <a type="button" href="#section-aspects" class="btn btn-primary">Aspects</a>
     </div>
 
     <div id="section-basics" class="char-section col-md-6 panel panel-default">
