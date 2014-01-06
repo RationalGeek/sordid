@@ -3,15 +3,56 @@
     ViewBag.Title = Model.Character.Name;
 }
 
-<h2 data-bind="text: Character.Name" />
+<div class="row">
+    <h2 class="col-md-8 col-md-offset-2" data-bind="text: Character.Name" />
+</div>
 
-<p>Player Name: <input data-bind="value: Character.PlayerName" /></p>
+<div class="row">
+    <div id="character-sections" class="col-md-2 col-md-offset-2 btn-group-vertical">
+        <a type="button" href="#section-basics" data-toggle="tab" class="btn btn-primary active">Basics</a>
+        <a type="button" href="#section-skills" data-toggle="tab" class="btn btn-primary">Skills</a>
+        <a type="button" href="#section-aspects" data-toggle="tab" class="btn btn-primary">Aspects</a>
+    </div>
+
+    <div id="section-basics" class="char-section col-md-6 panel panel-default">
+        <div class="panel-body">
+            <p>Name: <input data-bind="value: Character.Name" /></p>
+            <p>Player Name: <input data-bind="value: Character.PlayerName" /></p>
+        </div>
+    </div>
+
+    <div id="section-skills" class="char-section col-md-6 panel panel-default hidden">
+        <div class="panel-body">
+            Skills
+        </div>
+    </div>
+
+    <div id="section-aspects" class="char-section col-md-6 panel panel-default hidden">
+        <div class="panel-body">
+            Aspects
+        </div>
+    </div>
+</div>
 
 @section Scripts
 {
     <script type="text/javascript">
-        viewModel = @Html.Raw(Json.Encode(Model) + ";")
+        // Initialize Knockout
+        viewModel = @Html.Raw(Json.Encode(Model) + ';')
         ko.applyBindings(viewModel);
+
+        // Set show/hide behavior for character sections
+        $('#character-sections .btn').click(function (e) {
+            // Toggle the button activeness
+            var allButtons = $('#character-sections .btn');
+            allButtons.removeClass('active');
+            $(e.target).addClass('active');
+
+            // Show the section
+            var sections = $('.char-section');
+            sections.addClass('hidden');
+            $(e.target.hash).removeClass('hidden');
+        });
     </script>
 }
 
