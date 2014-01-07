@@ -4,6 +4,7 @@
 }
 
 <div class="row" style="padding-bottom: 2px;">
+    @* TODO: Name not getting updated when they change in form - need to incorporate KO mapping *@
     <div class="col-md-7 col-md-offset-2" data-bind="text: Character.Name" style="font-size: 20pt;">
     </div>
     @* TODO: Can't get this stupid button to align bottom *@
@@ -43,8 +44,9 @@
 {
     <script type="text/javascript">
         // Initialize Knockout
-        viewModel = @Html.Raw(Json.Encode(Model) + ';')
-        ko.applyBindings(viewModel);
+        viewModelRaw = @Html.Raw(Json.Encode(Model) + ';')
+        viewModelMapped = ko.mapping.fromJS(viewModelRaw);
+        ko.applyBindings(viewModelMapped);
 
         // Set show/hide behavior for character sections
         $('#character-sections .btn').click(function (e) {
