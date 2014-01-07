@@ -8,7 +8,10 @@
     </div>
     @* TODO: Can't get this stupid button to align bottom *@
     <div class="col-md-1" style="text-align: right; padding: 0;">
-        <a id="saveButton" class="btn btn-success btn-sm" title="Save Character"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+        <a id="saveButton" class="btn btn-success btn-sm" title="Save Character">
+            <span id="saveIcon" class="glyphicon glyphicon-floppy-disk"></span>
+            <span id="pendingSaveIcon" class="glyphicon glyphicon-transfer hidden"></span>
+        </a>
     </div>
 </div>
 
@@ -83,6 +86,10 @@
 
         // Save behavior
         $('#saveButton').click(function () {
+            $('#saveButton').addClass('disabled');
+            $('#saveIcon').addClass('hidden');
+            $('#pendingSaveIcon').removeClass('hidden');
+
             var viewModelJSON = JSON.stringify(ko.mapping.toJS(viewModel));
             $.ajax({
                 url: '/Character/Save',
@@ -94,8 +101,12 @@
                     ko.mapping.fromJS(data, koMapping, viewModel);
 
                     // TODO: Pop a saved message
-                }
-            });
+                },
+                complete: function() {
+                    $('#saveButton').removeClass('disabled');
+                    $('#saveIcon').removeClass('hidden');
+                    $('#pendingSaveIcon').addClass('hidden');
+                }});
         });
     </script>
 }
