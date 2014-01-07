@@ -8,7 +8,7 @@
     </div>
     @* TODO: Can't get this stupid button to align bottom *@
     <div class="col-md-1" style="text-align: right; padding: 0;">
-        <a id="#saveButton" class="btn btn-success btn-sm" title="Save Character"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+        <a id="saveButton" class="btn btn-success btn-sm" title="Save Character"><span class="glyphicon glyphicon-floppy-disk"></span></a>
     </div>
 </div>
 
@@ -53,9 +53,11 @@
 {
     <script type="text/javascript">
         // Initialize Knockout
-        viewModelRaw = @Html.Raw(Json.Encode(Model) + ';')
-        viewModelMapped = ko.mapping.fromJS(viewModelRaw);
-        ko.applyBindings(viewModelMapped);
+        var viewModel = function() {
+            var viewModelRaw = @Html.Raw(Json.Encode(Model));
+            return ko.mapping.fromJS(viewModelRaw);
+        }();
+        ko.applyBindings(viewModel);
 
         // Set show/hide behavior for character sections
         $('#character-sections .btn').click(function (e) {
@@ -68,6 +70,29 @@
             var sections = $('.char-section');
             sections.addClass('hidden');
             $(e.target.hash).removeClass('hidden');
+        });
+
+        // AJAX Error temporary handler
+        // TODO: Globally handle AJAX errors in an intelligent way
+        $(document).ajaxError(function (event, request, settings) {
+            alert(alert('Ajax error :-('));
+        });
+
+        // Save behavior
+        $('#saveButton').click(function () {
+            var viewModelJSON = JSON.stringify(ko.mapping.toJS(viewModel));
+            $.ajax({
+                url: '/Character/Save',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: viewModelJSON,
+                success: function (data) {
+                    // Reapply viewModel bindings
+                    ko.mapping.fromJS(data, {}, viewModel);
+
+                    // TODO: Pop a saved message
+                }
+            });
         });
     </script>
 }

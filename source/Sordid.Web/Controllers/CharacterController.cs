@@ -38,5 +38,13 @@ namespace Sordid.Web.Controllers
             var character = await _characterService.LoadCharacter(id);
             return View(new ManageCharacterViewModel { Character = character });
         }
+
+        // POST: /Character/Save
+        [HttpPost]
+        public async Task<ActionResult> Save(ManageCharacterViewModel characterVM)
+        {
+            characterVM.Character.Name += " Saved";
+            return Json(characterVM);
+        }
     }
 }
