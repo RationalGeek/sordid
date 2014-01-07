@@ -4,7 +4,6 @@
 }
 
 <div class="row" style="padding-bottom: 2px;">
-    @* TODO: Name not getting updated when they change in form - need to incorporate KO mapping *@
     <div class="col-md-7 col-md-offset-2" data-bind="text: Character.Name" style="font-size: 20pt;">
     </div>
     @* TODO: Can't get this stupid button to align bottom *@
@@ -21,10 +20,20 @@
     </div>
 
     <div id="section-basics" class="char-section col-md-6 panel panel-default">
-        <div class="panel-body">
-            <p>Name: <input data-bind="value: Character.Name" /></p>
-            <p>Player Name: <input data-bind="value: Character.PlayerName" /></p>
-        </div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="characterName" class="col-md-3 control-label">Name</label>
+                <div class="col-md-9">
+                    <input id="characterName" class="form-control" data-bind="value: Character.Name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="playerName" class="col-md-3 control-label">Player Name</label>
+                <div class="col-md-9">
+                    <input id="playerName" class="form-control" data-bind="value: Character.PlayerName" />
+                </div>
+            </div>
+        </form>
     </div>
 
     <div id="section-skills" class="char-section col-md-6 panel panel-default hidden">
