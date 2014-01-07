@@ -43,7 +43,7 @@ namespace Sordid.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Save(ManageCharacterViewModel characterVM)
         {
-            characterVM.Character.Name += " Saved";
+            characterVM.Character = await _characterService.SaveCharacter(characterVM.Character);
             return Json(characterVM);
         }
     }

@@ -53,9 +53,12 @@
 {
     <script type="text/javascript">
         // Initialize Knockout
+        var koMapping = {
+            copy: ['Character.ConcurrencyVersion']
+        };
         var viewModel = function() {
-            var viewModelRaw = @Html.Raw(Json.Encode(Model));
-            return ko.mapping.fromJS(viewModelRaw);
+            var viewModelRaw = @Html.Raw( Json.Encode(Model) );
+            return ko.mapping.fromJS(viewModelRaw, koMapping);
         }();
         ko.applyBindings(viewModel);
 
@@ -88,7 +91,7 @@
                 data: viewModelJSON,
                 success: function (data) {
                     // Reapply viewModel bindings
-                    ko.mapping.fromJS(data, {}, viewModel);
+                    ko.mapping.fromJS(data, koMapping, viewModel);
 
                     // TODO: Pop a saved message
                 }

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Sordid.Core;
 using Sordid.Core.Model;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,7 @@ namespace Sordid.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Database.SetInitializer<SordidDbContext>(new SordidDatabaseInitializer<SordidDbContext>());
+            ModelBinders.Binders.Add(typeof(DateTime), new CustomDateTimeModelBinder());
         }
 
         // TODO: Below DB init crap seems a bit hacky. Fix it.

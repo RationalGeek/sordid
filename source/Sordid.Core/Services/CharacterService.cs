@@ -31,5 +31,12 @@ namespace Sordid.Core.Services
             var result = (await _charRepo.Find(c => c.Id == id && c.ApplicationUserId == userId)).FirstOrDefault();
             return result;
         }
+
+        public async Task<Character> SaveCharacter(Character character)
+        {
+            character = _charRepo.Update(character);
+            await _charRepo.UnitOfWork.Save();
+            return character;
+        }
     }
 }

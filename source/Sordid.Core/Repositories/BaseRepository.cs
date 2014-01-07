@@ -78,6 +78,7 @@ namespace Sordid.Core.Repositories
 
         public virtual T Update(T entity)
         {
+            DbSet.Attach(entity);
             QuickLog("Updating {0} id {1}", entity);
             var entry = DbContext.Entry<T>(entity);
             entry.State = EntityState.Modified;
