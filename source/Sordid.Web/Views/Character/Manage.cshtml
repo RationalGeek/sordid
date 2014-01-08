@@ -4,7 +4,7 @@
 }
 
 <div class="row" style="padding-bottom: 2px;">
-    <div class="col-md-7 col-md-offset-2" data-bind="text: Character.Name" style="font-size: 20pt;">
+    <div class="col-md-9 col-md-offset-1" data-bind="text: Character.Name" style="font-size: 20pt;">
     </div>
     @* TODO: Can't get this stupid button to align bottom *@
     <div class="col-md-1" style="text-align: right; padding: 0;">
@@ -16,13 +16,13 @@
 </div>
 
 <div class="row">
-    <div id="character-sections" class="col-md-2 col-md-offset-2 btn-group-vertical">
+    <div id="character-sections" class="col-md-2 col-md-offset-1 btn-group-vertical">
         <a type="button" href="#section-basics" class="btn btn-primary active">Basics</a>
         <a type="button" href="#section-skills" class="btn btn-primary">Skills</a>
         <a type="button" href="#section-aspects" class="btn btn-primary">Aspects</a>
     </div>
 
-    <div id="section-basics" class="char-section col-md-6 panel panel-default">
+    <div id="section-basics" class="char-section col-md-8 panel panel-default" style="padding-top: 15px;">
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label for="characterName" class="col-md-3 control-label">Name</label>
@@ -54,59 +54,12 @@
 
 @section Scripts
 {
-    <script type="text/javascript">
-        // Initialize Knockout
-        var koMapping = {
-            copy: ['Character.ConcurrencyVersion']
-        };
-        var viewModel = function() {
-            var viewModelRaw = @Html.Raw( Json.Encode(Model) );
-            return ko.mapping.fromJS(viewModelRaw, koMapping);
-        }();
-        ko.applyBindings(viewModel);
-
-        // Set show/hide behavior for character sections
-        $('#character-sections .btn').click(function (e) {
-            // Toggle the button activeness
-            var allButtons = $('#character-sections .btn');
-            allButtons.removeClass('active');
-            $(e.target).addClass('active');
-
-            // Show the section
-            var sections = $('.char-section');
-            sections.addClass('hidden');
-            $(e.target.hash).removeClass('hidden');
-        });
-
-        // AJAX Error temporary handler
-        // TODO: Globally handle AJAX errors in an intelligent way
-        $(document).ajaxError(function (event, request, settings) {
-            alert(alert('Ajax error :-('));
-        });
-
-        // Save behavior
-        $('#saveButton').click(function () {
-            $('#saveButton').addClass('disabled');
-            $('#saveIcon').addClass('hidden');
-            $('#pendingSaveIcon').removeClass('hidden');
-
-            var viewModelJSON = JSON.stringify(ko.mapping.toJS(viewModel));
-            $.ajax({
-                url: '/Character/Save',
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                data: viewModelJSON,
-                success: function (data) {
-                    // Reapply viewModel bindings
-                    ko.mapping.fromJS(data, koMapping, viewModel);
-
-                    // TODO: Pop a saved message
-                },
-                complete: function() {
-                    $('#saveButton').removeClass('disabled');
-                    $('#saveIcon').removeClass('hidden');
-                    $('#pendingSaveIcon').addClass('hidden');
-                }});
+    <script src="@Url.Content("~/Scripts/Site/characterManage.js")"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize Knockout
+            sordid.characterManage.viewModelRaw = @Html.Raw( Json.Encode(Model) );
+            sordid.characterManage.initKnockout();
         });
     </script>
 }

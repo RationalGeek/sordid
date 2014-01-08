@@ -29,8 +29,17 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
+    <div id="mainContentArea" class="container body-content">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="alertContainer"></div>
+            </div>
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Justin Kohlhepp</p>
@@ -40,6 +49,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
 </body>
 </html>
