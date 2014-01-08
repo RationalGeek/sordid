@@ -2,12 +2,9 @@
     my.characterManage = {};
 
     // KO ViewModel initialization
-    var koMapping = {
-        copy: ['Character.ConcurrencyVersion']
-    };
     var viewModel = '';
     my.characterManage.initKnockout = function(viewModelRaw) {
-        viewModel = ko.mapping.fromJS(viewModelRaw, koMapping);
+        viewModel = ko.mapping.fromJS(viewModelRaw);
         ko.applyBindings(viewModel);
     };
 
@@ -39,7 +36,7 @@
                 data: viewModelJSON,
                 success: function (data) {
                     // Reapply viewModel bindings
-                    ko.mapping.fromJS(data, koMapping, viewModel);
+                    ko.mapping.fromJS(data, {}, viewModel);
 
                     // Pop a saved message
                     sordid.alerts.success('<strong>Saved!</strong>', true);

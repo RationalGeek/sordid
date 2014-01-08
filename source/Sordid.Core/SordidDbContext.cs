@@ -3,6 +3,7 @@ using Sordid.Core.Model;
 using Sordid.Core.Model.ModelBuilders;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -36,17 +37,22 @@ namespace Sordid.Core
 
         public override int SaveChanges()
         {
-            SetEntityDateFields();
+            BeforeSaveChanges();
             return base.SaveChanges();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            SetEntityDateFields();
+            BeforeSaveChanges();
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        private void SetEntityDateFields()
+        private void BeforeSaveChanges()
+        {
+            ProcessBaseEntities();
+        }
+
+        private void ProcessBaseEntities()
         {
             foreach (var entry in ChangeTracker.Entries())
             {
@@ -54,17 +60,36 @@ namespace Sordid.Core
                 if (baseEntity == null)
                     continue;
 
-                if (entry.State == EntityState.Added)
-                {
-                    baseEntity.DateCreated = DateTime.Now;
-                    baseEntity.DateUpdated = DateTime.Now;
-                }
-
-                if (entry.State == EntityState.Modified)
-                {
-                    baseEntity.DateUpdated = DateTime.Now;
-                }
+                SetEntityDateFields(entry, baseEntity);
+                UnmangleTimestampColumn(entry, baseEntity);
             }
+        }
+
+        private void SetEntityDateFields(DbEntityEntry entry, BaseEntity baseEntity)
+        {
+            if (entry.State == EntityState.Added)
+            {
+                baseEntity.DateCreated = DateTime.Now;
+                baseEntity.DateUpdated = DateTime.Now;
+            }
+
+            if (entry.State == EntityState.Modified)
+            {
+                baseEntity.DateUpdated = DateTime.Now;
+            }
+        }
+
+        /// <summary>
+        /// When an EF timestamp column (used for optimistic concurrency)
+        /// goes over the wire in AJAX it gets mangled.  Therefore it is Base64 encoded
+        /// and when it comes back the Base64 version is preserved and we need
+        /// to put it back into the actual Timestamp column.
+        /// </summary>
+        private void UnmangleTimestampColumn(DbEntityEntry entry, BaseEntity baseEntity)
+        {
+            if (!String.IsNullOrWhiteSpace(baseEntity.ConcurrencyVersionBase64))
+                baseEntity.ConcurrencyVersion = Convert.FromBase64String(baseEntity.ConcurrencyVersionBase64);
+            entry.OriginalValues["ConcurrencyVersion"] = baseEntity.ConcurrencyVersion;
         }
     }
 }
