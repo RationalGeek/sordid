@@ -58,8 +58,8 @@
     <script>
         $(document).ready(function() {
             // Initialize Knockout
-            sordid.characterManage.viewModelRaw = @Html.Raw( Json.Encode(Model) );
-            sordid.characterManage.initKnockout();
+            var viewModelRaw = @Html.Raw( Json.Encode(Model) );
+            sordid.characterManage.initKnockout(viewModelRaw);
         });
     </script>
 }

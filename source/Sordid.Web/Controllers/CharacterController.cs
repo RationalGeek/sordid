@@ -41,6 +41,7 @@ namespace Sordid.Web.Controllers
 
         // POST: /Character/Save
         [HttpPost]
+        [JsonErrorHandling]
         public async Task<ActionResult> Save(ManageCharacterViewModel characterVM)
         {
             characterVM.Character = await _characterService.SaveCharacter(characterVM.Character);

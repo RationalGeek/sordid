@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Elmah;
+using System.Web.Mvc;
 
 namespace Sordid.Web
 {
@@ -6,7 +7,22 @@ namespace Sordid.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            // Without this, ELMAH does not intercept errors that are handled
+            // by the MVC custom error pages.
+            filters.Add(new ElmahInterceptingHandleErrorAttribute());
+        }
+    }
+
+    public class ElmahInterceptingHandleErrorAttribute : HandleErrorAttribute
+    {
+        public override void OnException(ExceptionContext context)
+        {
+            base.OnException(context);
+            if (!context.ExceptionHandled)
+                return;
+            var httpContext = context.HttpContext.ApplicationInstance.Context;
+            var signal = ErrorSignal.FromContext(httpContext);
+            signal.Raise(context.Exception, httpContext);
         }
     }
 }

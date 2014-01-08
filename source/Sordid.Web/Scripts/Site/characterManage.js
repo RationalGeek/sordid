@@ -6,10 +6,8 @@
         copy: ['Character.ConcurrencyVersion']
     };
     var viewModel = '';
-    my.characterManage.viewModelRaw = '';
-    my.characterManage.initKnockout = function() {
-
-        viewModel = ko.mapping.fromJS(my.characterManage.viewModelRaw, koMapping);
+    my.characterManage.initKnockout = function(viewModelRaw) {
+        viewModel = ko.mapping.fromJS(viewModelRaw, koMapping);
         ko.applyBindings(viewModel);
     };
 
@@ -25,12 +23,6 @@
             var sections = $('.char-section');
             sections.addClass('hidden');
             $(e.target.hash).removeClass('hidden');
-        });
-
-        // AJAX Error temporary handler
-        // TODO: Globally handle AJAX errors in an intelligent way
-        $(document).ajaxError(function (event, request, settings) {
-            alert(alert('Ajax error :-('));
         });
 
         // Save behavior
@@ -51,6 +43,9 @@
 
                     // Pop a saved message
                     sordid.alerts.success('<strong>Saved!</strong>', true);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    sordid.errorHandling.alertError(jqXHR, textStatus, errorThrown, 'Failed to save!');
                 },
                 complete: function () {
                     $('#saveButton').removeClass('disabled');

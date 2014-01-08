@@ -32,7 +32,8 @@ namespace Sordid.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                      "~/Scripts/Site/alerts.js"
+                      "~/Scripts/Site/alerts.js",
+                      "~/Scripts/Site/errorHandling.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
