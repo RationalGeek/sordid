@@ -2,9 +2,10 @@
 
 namespace Sordid.Core.Exceptions
 {
-    public class SordidSecurityException : Exception
+    public class SordidSecurityException : SordidException
     {
-        public SordidSecurityException(string message, Exception innerException = null) : base(message, innerException)
+        public SordidSecurityException(string message, Exception innerException = null) 
+            : base(message, innerException)
         {
         }
     }

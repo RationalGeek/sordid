@@ -1,4 +1,5 @@
 ﻿using Ninject.Extensions.Logging;
+using Sordid.Core.Exceptions;
 using Sordid.Core.Interfaces;
 using Sordid.Web.Models;
 using System.Threading.Tasks;
@@ -36,6 +37,8 @@ namespace Sordid.Web.Controllers
         public async Task<ActionResult> Manage(int id)
         {
             var character = await _characterService.LoadCharacter(id);
+            if (character == null)
+                throw new SordidException(string.Format("Character ID {0} does not exist.", id));
             return View(new ManageCharacterViewModel { Character = character });
         }
 
