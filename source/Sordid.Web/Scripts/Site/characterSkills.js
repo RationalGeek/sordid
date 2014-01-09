@@ -1,9 +1,16 @@
 ﻿var sordid = function (my) {
     my.characterSkills = {};
 
+    my.characterSkills.initDraggables = function () {
+        $('#section-skills .skill').draggable({
+            containment: '#section-skills',
+            stack: '#section-skills .skill',
+            revert: 'invalid'
+        });
+    };
+
     $(document).ready(function () {
-        var draggableOptions = { containment: '#section-skills', stack: '#section-skills .skill', revert: 'invalid' };
-        $('#section-skills .skill').draggable(draggableOptions);
+        my.characterSkills.initDraggables();
 
         $('#section-skills .skillDropArea').droppable({
             activeClass: 'dropActive',
@@ -29,7 +36,7 @@
                 dropTarget.append(sortedList);
 
                 // All this mucking about makes them no longer draggable, so redo it
-                sortedList.draggable(draggableOptions);
+                my.characterSkills.initDraggables();
 
                 // Update the KO viewModel with the right data
                 var viewModelItem = ko.dataFor(draggedElem.get(0));

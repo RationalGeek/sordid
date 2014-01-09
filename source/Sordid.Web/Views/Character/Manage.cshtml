@@ -76,32 +76,56 @@
         </form>
     </div>
 
+    @* TODO: Lots of repetition here.  Convert to KO template? *@
+    @* TODO: Can get dupes after save *@
     <div id="section-skills" class="char-section col-md-8 panel panel-default hidden">
         <div class="panel-body">
             <div class="row skillPanel" >
                 <div class="col-md-4 skillRankLabel">Superb (+5)</div>
-                <div class="col-md-8 skillDropArea" data-rank="5"></div>
+                <div class="col-md-8 skillDropArea" data-rank="5" data-bind="foreach: Character.Skills">
+                    <!-- ko if: Rank() == 5 -->
+                    <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                    <!-- /ko -->
+                </div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Great (+4)</div>
-                <div class="col-md-8 skillDropArea" data-rank="4"></div>
+                <div class="col-md-8 skillDropArea" data-rank="4" data-bind="foreach: Character.Skills">
+                    <!-- ko if: Rank() == 4 -->
+                    <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                    <!-- /ko -->
+                </div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Good (+3)</div>
-                <div class="col-md-8 skillDropArea" data-rank="3"></div>
+                <div class="col-md-8 skillDropArea" data-rank="3" data-bind="foreach: Character.Skills">
+                    <!-- ko if: Rank() == 3 -->
+                    <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                    <!-- /ko -->
+                </div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Fair (+2)</div>
-                <div class="col-md-8 skillDropArea" data-rank="2"></div>
+                <div class="col-md-8 skillDropArea" data-rank="2" data-bind="foreach: Character.Skills">
+                    <!-- ko if: Rank() == 2 -->
+                    <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                    <!-- /ko -->
+                </div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Average (+1)</div>
-                <div class="col-md-8 skillDropArea" data-rank="1"></div>
+                <div class="col-md-8 skillDropArea" data-rank="1" data-bind="foreach: Character.Skills">
+                    <!-- ko if: Rank() == 1 -->
+                    <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                    <!-- /ko -->
+                </div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Mediocre (+0)</div>
                 <div class="col-md-8 skillDropArea" data-rank="0" data-bind="foreach: Character.Skills">
+                    <!-- ko if: Rank() == 0 -->
                     <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                    <!-- /ko -->
                 </div>
             </div>
         </div>

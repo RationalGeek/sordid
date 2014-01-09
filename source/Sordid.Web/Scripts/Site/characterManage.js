@@ -6,6 +6,7 @@
     my.characterManage.initKnockout = function(viewModelRaw) {
         viewModel = ko.mapping.fromJS(viewModelRaw);
         ko.applyBindings(viewModel);
+        my.characterSkills.initDraggables();
     };
 
     $(document).ready(function () {
@@ -37,6 +38,7 @@
                 success: function (data) {
                     // Reapply viewModel bindings
                     ko.mapping.fromJS(data, {}, viewModel);
+                    my.characterSkills.initDraggables();
 
                     // Pop a saved message
                     sordid.alerts.success('<strong>Saved!</strong>', true);
