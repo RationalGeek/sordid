@@ -45,29 +45,28 @@ namespace Sordid.Core.Repositories
             return await DbSet.ToListAsync();
         }
 
-        public virtual async Task<IList<T>> Find(Expression<Func<T,bool>> predicate)
+        public virtual async Task<IList<T>> Find(Expression<Func<T, bool>> predicate)
         {
-            //IQueryable<T> query = AddDefaultIncludes(DbSet);
             return await DbSet.Where(predicate).ToListAsync();
         }
 
-        //public virtual IQueryable<T> GetQueryable()
-        //{
-        //    QuickLog("Returning queryable for {0}");
-        //    return AddDefaultIncludes(DbSet);
-        //}
+        public virtual IQueryable<T> GetQueryable()
+        {
+            QuickLog("Returning queryable for {0}");
+            return DbSet;
+        }
 
-        //public virtual async Task<IList<U>> Query<U>(IQueryable<U> queryable)
-        //{
-        //    QuickLog("Querying {0}.  Query is: \n" + queryable.ToString());
+        public virtual async Task<IList<U>> Query<U>(IQueryable<U> queryable)
+        {
+            QuickLog("Querying {0}.  Query is: \n" + queryable.ToString());
 
-        //    // Attempt to cast the queryable to a DbQuery so that we can execute it async
-        //    var dbquery = queryable as DbQuery<U>;
-        //    if (dbquery == null)
-        //        throw new NotSupportedException("Queryable must be DbQuery.  Did you pass an IQueryable that was returned from GetQueryable()?");
+            // Attempt to cast the queryable to a DbQuery so that we can execute it async
+            var dbquery = queryable as DbQuery<U>;
+            if (dbquery == null)
+                throw new NotSupportedException("Queryable must be DbQuery.  Did you pass an IQueryable that was returned from GetQueryable()?");
 
-        //    return await dbquery.ToListAsync<U>();
-        //}
+            return await dbquery.ToListAsync<U>();
+        }
 
         public virtual T Add(T entity)
         {
@@ -108,12 +107,5 @@ namespace Sordid.Core.Repositories
             var objectStateEntry = ((IObjectContextAdapter)DbContext).ObjectContext.ObjectStateManager.GetObjectStateEntry(entity);
             return objectStateEntry.EntityKey.EntityKeyValues[0].Value;
         }
-
-        //private IQueryable<T> AddDefaultIncludes(IQueryable<T> query)
-        //{
-        //    foreach (var include in DefaultIncludes)
-        //        query = query.Include(include);
-        //    return query;
-        //}
     }
 }

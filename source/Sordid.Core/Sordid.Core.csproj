@@ -78,6 +78,7 @@
     <Compile Include="Model\ModelBuilders\AppUserTableNames.cs" />
     <Compile Include="Model\ModelBuilders\CharacterModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\IModelBuilder.cs" />
+    <Compile Include="Model\Skill.cs" />
     <Compile Include="Ninject\KernelBuilder.cs" />
     <Compile Include="Ninject\SordidCoreNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

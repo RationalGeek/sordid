@@ -87,9 +87,11 @@ namespace Sordid.Core
         /// </summary>
         private void UnmangleTimestampColumn(DbEntityEntry entry, BaseEntity baseEntity)
         {
-            if (!String.IsNullOrWhiteSpace(baseEntity.ConcurrencyVersionBase64))
+            if (entry.State == EntityState.Modified && !String.IsNullOrWhiteSpace(baseEntity.ConcurrencyVersionBase64))
+            {
                 baseEntity.ConcurrencyVersion = Convert.FromBase64String(baseEntity.ConcurrencyVersionBase64);
-            entry.OriginalValues["ConcurrencyVersion"] = baseEntity.ConcurrencyVersion;
+                entry.OriginalValues["ConcurrencyVersion"] = baseEntity.ConcurrencyVersion;
+            }
         }
     }
 }

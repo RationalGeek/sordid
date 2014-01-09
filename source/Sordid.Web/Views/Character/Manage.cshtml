@@ -41,7 +41,9 @@
 
     <div id="section-skills" class="char-section col-md-6 panel panel-default hidden">
         <div class="panel-body">
-            Skills
+            <div data-bind="foreach: Character.Skills">
+                <div data-bind="text: Name, attr: { title: Trappings }"></div>
+            </div>
         </div>
     </div>
 
