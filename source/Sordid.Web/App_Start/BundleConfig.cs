@@ -7,8 +7,19 @@ namespace Sordid.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // TODO: Convert to using CDNs for jquery, etc.
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery.ui").Include(
+                        //"~/Scripts/jquery.ui/jquery.ui.*",
+                        "~/Scripts/jquery.ui/jquery.ui.core.js",
+                        "~/Scripts/jquery.ui/jquery.ui.widget.js",
+                        "~/Scripts/jquery.ui/jquery.ui.mouse.js",
+                        "~/Scripts/jquery.ui/jquery.ui.draggable.js",
+                        "~/Scripts/jquery.ui/jquery.ui.droppable.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

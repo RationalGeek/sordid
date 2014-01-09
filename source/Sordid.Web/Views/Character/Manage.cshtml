@@ -39,15 +39,15 @@
         </form>
     </div>
 
-    <div id="section-skills" class="char-section col-md-6 panel panel-default hidden">
+    <div id="section-skills" class="char-section col-md-8 panel panel-default hidden">
         <div class="panel-body">
-            <div data-bind="foreach: Character.Skills">
-                <div data-bind="text: Name, attr: { title: Trappings }"></div>
+            <div id="skillContainer" data-bind="foreach: Character.Skills">
+                <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
             </div>
         </div>
     </div>
 
-    <div id="section-aspects" class="char-section col-md-6 panel panel-default hidden">
+    <div id="section-aspects" class="char-section col-md-8 panel panel-default hidden">
         <div class="panel-body">
             Aspects
         </div>
@@ -56,6 +56,8 @@
 
 @section Scripts
 {
+    @Scripts.Render("~/bundles/jquery.ui")
+
     <script src="@Url.Content("~/Scripts/Site/characterManage.js")"></script>
     <script>
         $(document).ready(function() {
@@ -64,5 +66,8 @@
             sordid.characterManage.initKnockout(viewModelRaw);
         });
     </script>
+
+    @* Must go after KO is initialized! *@
+    <script src="@Url.Content("~/Scripts/Site/characterSkills.js")"></script>
 }
 

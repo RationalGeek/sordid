@@ -255,6 +255,16 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.core.min.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.draggable.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.draggable.min.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.droppable.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.droppable.min.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.mouse.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.mouse.min.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery.ui\jquery.ui.widget.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -270,6 +280,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Site\alerts.js" />
     <Content Include="Scripts\Site\characterManage.js" />
+    <Content Include="Scripts\Site\characterSkills.js" />
     <Content Include="Scripts\Site\errorHandling.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
