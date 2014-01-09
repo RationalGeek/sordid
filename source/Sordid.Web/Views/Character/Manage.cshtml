@@ -3,6 +3,43 @@
     ViewBag.Title = Model.Character.Name;
 }
 
+@section Styles
+{
+    <style type="text/css">
+        #section-skills .skill {
+            background-color: #ddd;
+            border: solid thin black;
+            padding: 2px;
+            margin: 2px;
+            display: inline-block;
+            box-shadow: 2px 2px 2px #888;
+            cursor: move;
+        }
+
+        .skillPanel {
+            margin-bottom: 20px;
+        }
+
+        .skillPanel .skillRankLabel {
+            font-weight: bold;
+            font-size: 110%;
+        }
+
+        .skillPanel .skillDropArea {
+            border: solid thin #999;
+            min-height: 50px;
+        }
+
+        .skillPanel .dropActive {
+            background-color: #ffe;
+        }
+
+        .skillPanel .dropHover {
+            background-color: #ff9;
+        }
+    </style>
+}
+
 <div class="row" style="padding-bottom: 2px;">
     <div class="col-md-9 col-md-offset-1" data-bind="text: Character.Name" style="font-size: 20pt;">
     </div>
@@ -41,8 +78,31 @@
 
     <div id="section-skills" class="char-section col-md-8 panel panel-default hidden">
         <div class="panel-body">
-            <div id="skillContainer" data-bind="foreach: Character.Skills">
-                <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+            <div class="row skillPanel" >
+                <div class="col-md-4 skillRankLabel">Superb (+5)</div>
+                <div class="col-md-8 skillDropArea"></div>
+            </div>
+            <div class="row skillPanel">
+                <div class="col-md-4 skillRankLabel">Great (+4)</div>
+                <div class="col-md-8 skillDropArea"></div>
+            </div>
+            <div class="row skillPanel">
+                <div class="col-md-4 skillRankLabel">Good (+3)</div>
+                <div class="col-md-8 skillDropArea"></div>
+            </div>
+            <div class="row skillPanel">
+                <div class="col-md-4 skillRankLabel">Fair (+2)</div>
+                <div class="col-md-8 skillDropArea"></div>
+            </div>
+            <div class="row skillPanel">
+                <div class="col-md-4 skillRankLabel">Average (+1)</div>
+                <div class="col-md-8 skillDropArea"></div>
+            </div>
+            <div class="row skillPanel">
+                <div class="col-md-4 skillRankLabel">Mediocre (+0)</div>
+                <div class="col-md-8 skillDropArea" data-bind="foreach: Character.Skills">
+                    <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
+                </div>
             </div>
         </div>
     </div>
