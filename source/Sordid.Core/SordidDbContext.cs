@@ -14,6 +14,7 @@ namespace Sordid.Core
     public class SordidDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Character> Characters { get; set; }
+        public DbSet<Skill> Skills { get; set; }
 
         public SordidDbContext()
         {

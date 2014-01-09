@@ -30,6 +30,11 @@
 
                 // All this mucking about makes them no longer draggable, so redo it
                 sortedList.draggable(draggableOptions);
+
+                // Update the KO viewModel with the right data
+                var viewModelItem = ko.dataFor(draggedElem.get(0));
+                var targetRank = dropTarget.data('rank');
+                viewModelItem.Rank = targetRank;
             }
         });
     });

@@ -80,27 +80,27 @@
         <div class="panel-body">
             <div class="row skillPanel" >
                 <div class="col-md-4 skillRankLabel">Superb (+5)</div>
-                <div class="col-md-8 skillDropArea"></div>
+                <div class="col-md-8 skillDropArea" data-rank="5"></div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Great (+4)</div>
-                <div class="col-md-8 skillDropArea"></div>
+                <div class="col-md-8 skillDropArea" data-rank="4"></div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Good (+3)</div>
-                <div class="col-md-8 skillDropArea"></div>
+                <div class="col-md-8 skillDropArea" data-rank="3"></div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Fair (+2)</div>
-                <div class="col-md-8 skillDropArea"></div>
+                <div class="col-md-8 skillDropArea" data-rank="2"></div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Average (+1)</div>
-                <div class="col-md-8 skillDropArea"></div>
+                <div class="col-md-8 skillDropArea" data-rank="1"></div>
             </div>
             <div class="row skillPanel">
                 <div class="col-md-4 skillRankLabel">Mediocre (+0)</div>
-                <div class="col-md-8 skillDropArea" data-bind="foreach: Character.Skills">
+                <div class="col-md-8 skillDropArea" data-rank="0" data-bind="foreach: Character.Skills">
                     <div class="skill" data-bind="text: Name, attr: { title: Trappings }"></div>
                 </div>
             </div>
