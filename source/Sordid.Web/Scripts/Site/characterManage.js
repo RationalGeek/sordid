@@ -1,9 +1,21 @@
 ﻿var sordid = function (my) {
     my.characterManage = {};
 
+    var buildRanks = function () {
+        return [
+            { name: 'Superb (+5)', value: 5 },
+            { name: 'Great (+4)', value: 4 },
+            { name: 'Good (+3)', value: 3 },
+            { name: 'Fair (+2)', value: 2 },
+            { name: 'Average (+1)', value: 1 },
+            { name: 'Mediocre (+0)', value: 0 }
+        ];
+    };
+
     // KO ViewModel initialization
     my.characterManage.initKnockout = function(viewModelRaw) {
         my.characterManage.viewModel = ko.mapping.fromJS(viewModelRaw);
+        my.characterManage.viewModel.ranks = buildRanks();
         ko.applyBindings(my.characterManage.viewModel);
         my.characterSkills.initDraggables();
     };
