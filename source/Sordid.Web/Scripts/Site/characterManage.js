@@ -2,10 +2,9 @@
     my.characterManage = {};
 
     // KO ViewModel initialization
-    var viewModel = '';
     my.characterManage.initKnockout = function(viewModelRaw) {
-        viewModel = ko.mapping.fromJS(viewModelRaw);
-        ko.applyBindings(viewModel);
+        my.characterManage.viewModel = ko.mapping.fromJS(viewModelRaw);
+        ko.applyBindings(my.characterManage.viewModel);
         my.characterSkills.initDraggables();
     };
 
@@ -29,7 +28,7 @@
             $('#saveIcon').addClass('hidden');
             $('#pendingSaveIcon').removeClass('hidden');
 
-            var viewModelJSON = JSON.stringify(ko.mapping.toJS(viewModel));
+            var viewModelJSON = JSON.stringify(ko.mapping.toJS(my.characterManage.viewModel));
             $.ajax({
                 url: '/Character/Save',
                 type: 'POST',
@@ -37,7 +36,7 @@
                 data: viewModelJSON,
                 success: function (data) {
                     // Reapply viewModel bindings
-                    ko.mapping.fromJS(data, {}, viewModel);
+                    ko.mapping.fromJS(data, {}, my.characterManage.viewModel);
                     my.characterSkills.initDraggables();
 
                     // Pop a saved message
