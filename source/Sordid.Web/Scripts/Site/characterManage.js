@@ -17,7 +17,6 @@
         my.characterManage.viewModel = ko.mapping.fromJS(viewModelRaw);
         my.characterManage.viewModel.ranks = buildRanks();
         ko.applyBindings(my.characterManage.viewModel);
-        my.characterSkills.initDraggables();
     };
 
     $(document).ready(function () {
@@ -49,7 +48,6 @@
                 success: function (data) {
                     // Reapply viewModel bindings
                     ko.mapping.fromJS(data, {}, my.characterManage.viewModel);
-                    my.characterSkills.initDraggables();
 
                     // Pop a saved message
                     sordid.alerts.success('<strong>Saved!</strong>', true);
