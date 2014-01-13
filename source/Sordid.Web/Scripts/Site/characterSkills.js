@@ -12,6 +12,8 @@
     $(document).ready(function () {
         my.characterSkills.initDraggables();
 
+        // TODO: Bug: dragging and dropping within same area should snap back with no result, but it doesn't
+
         $('#section-skills .skillDropArea').droppable({
             activeClass: 'dropActive',
             hoverClass: 'dropHover',
