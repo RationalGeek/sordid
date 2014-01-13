@@ -11,6 +11,22 @@
         }
     };
 
+    var validateSkills = function () {
+        // If the total count of skills at one rank
+        // are more than the count of the level below,
+        // that level should be highlighted
+
+        var viewModel = sordid.characterManage.viewModel;
+        var skills = viewModel.Character.Skills();
+        var rankCounts = [0,0,0,0,0,0]; // TODO: Doesn't support arbitrary amount of ranks
+        for (var i = 0; i < skills.length; i++) {
+            var rank = skills[i].Rank();
+            rankCounts[rank] += 1;
+        }
+
+        // TODO: Finish this dummy!
+    };
+
     $(document).ready(function () {
         $('#section-skills .skillDropArea').droppable({
             activeClass: 'dropActive',
@@ -27,9 +43,14 @@
                 else {
                     // Rank did change.  Update the viewModel and KO bindings takes care of the rest.
                     viewModelItem.Rank(targetRank);
+                    validateSkills();
                 }
             }
         });
+    });
+
+    $(document).ready(function () {
+        validateSkills();
     });
 
     return my;
