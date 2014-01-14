@@ -1,4 +1,6 @@
-﻿var sordid = function (my) {
+﻿// TODO: Bring in RequireJS to manage JS modules and dependencies
+
+var sordid = function (my) {
     my.characterSkills = {};
 
     ko.bindingHandlers.draggableSkill = {

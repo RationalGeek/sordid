@@ -42,6 +42,8 @@
 
         // Save behavior
         $('#saveButton').click(function () {
+            // TODO: Need dirty behavior to not save if not necessary, and prevent navigation if dirty
+
             $('#saveButton').addClass('disabled');
             $('#saveIcon').addClass('hidden');
             $('#pendingSaveIcon').removeClass('hidden');
