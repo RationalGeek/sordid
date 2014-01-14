@@ -26,7 +26,7 @@
         }
 
         // Highlight the offending sections
-        var sections = $('.skillDropArea');
+        var sections = $('.skillPanel');
         sections.removeClass('skillSectionWarning');
         for (var i = rankCounts.length - 1; i >= 2; i--) {
             var currCount = rankCounts[i];

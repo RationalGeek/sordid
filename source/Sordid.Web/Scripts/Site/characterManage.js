@@ -20,17 +20,24 @@
     };
 
     $(document).ready(function () {
-        // Set show/hide behavior for character sections
-        $('#character-sections .btn').click(function (e) {
-            // Toggle the button activeness
+        // Show / hide behavior for character sections
+        var toggleSection = function (secId) {
+            // Find the button with that section ID
             var allButtons = $('#character-sections .btn');
+            var targetButton = $.grep(allButtons, function (b) { return b.hash == secId })[0];
+
+            // Toggle the button activeness
             allButtons.removeClass('active');
-            $(e.target).addClass('active');
+            $(targetButton).addClass('active');
 
             // Show the section
             var sections = $('.char-section');
             sections.addClass('hidden');
-            $(e.target.hash).removeClass('hidden');
+            $(secId).removeClass('hidden');
+        }
+
+        $('#character-sections .btn').click(function (e) {
+            toggleSection(e.target.hash);
         });
 
         // Save behavior
@@ -61,6 +68,12 @@
                     $('#pendingSaveIcon').addClass('hidden');
                 }
             });
+        });
+
+        $(document).ready(function () {
+            if (location.hash.length > 0) {
+                toggleSection(location.hash);
+            }
         });
     });
 
