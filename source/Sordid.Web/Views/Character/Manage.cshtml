@@ -5,6 +5,7 @@
 
 @section Styles
 {
+    @* TODO: Move this css to external file *@
     <style type="text/css">
         #section-skills .skill {
             background-color: #ddd;
@@ -14,6 +15,8 @@
             display: inline-block;
             box-shadow: 2px 2px 2px #888;
             cursor: move;
+            min-width: 80px;
+            font-size: 80%;
         }
 
         .skillPanel {
@@ -27,7 +30,9 @@
 
         .skillPanel .skillDropArea {
             border: solid thin #999;
-            min-height: 50px;
+            min-height: 35px;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         .skillPanel .dropActive {
@@ -39,7 +44,7 @@
         }
 
         .skillSectionWarning .skill {
-            background-color: rgb(255, 94, 94) !important;
+            background-color: rgba(210, 50, 45, 0.5) !important;
         }
     </style>
 }

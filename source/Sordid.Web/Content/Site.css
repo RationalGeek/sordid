@@ -50,3 +50,7 @@ input[type="checkbox"].input-validation-error {
     padding-bottom: 4px;
     margin-bottom: 10px;
 }
+
+.char-section {
+    min-height: 500px;
+}
