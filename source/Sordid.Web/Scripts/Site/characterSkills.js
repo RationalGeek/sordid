@@ -16,15 +16,26 @@
         // are more than the count of the level below,
         // that level should be highlighted
 
+        // Count up the skills in each rank
         var viewModel = sordid.characterManage.viewModel;
         var skills = viewModel.Character.Skills();
-        var rankCounts = [0,0,0,0,0,0]; // TODO: Doesn't support arbitrary amount of ranks
+        var rankCounts = $.map(new Array(viewModel.ranks.length), function(n) { return 0; });
         for (var i = 0; i < skills.length; i++) {
             var rank = skills[i].Rank();
             rankCounts[rank] += 1;
         }
 
-        // TODO: Finish this dummy!
+        // Highlight the offending sections
+        var sections = $('.skillDropArea');
+        sections.removeClass('skillSectionWarning');
+        for (var i = rankCounts.length - 1; i >= 2; i--) {
+            var currCount = rankCounts[i];
+            var belowCount = rankCounts[i - 1];
+            if (currCount > belowCount) {
+                var section = $('#skillPanel-rank' + i);
+                $(section).addClass('skillSectionWarning');
+            }
+        }
     };
 
     $(document).ready(function () {

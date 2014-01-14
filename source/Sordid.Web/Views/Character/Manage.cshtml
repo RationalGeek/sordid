@@ -37,6 +37,10 @@
         .skillPanel .dropHover {
             background-color: #ff9;
         }
+
+        .skillSectionWarning .skill {
+            background-color: rgb(255, 131, 161) !important;
+        }
     </style>
 }
 
@@ -79,7 +83,7 @@
     <div id="section-skills" class="char-section col-md-8 panel panel-default hidden">
         <div class="panel-body">
             <!-- ko foreach: {data: ranks, as: 'currRank'} -->
-            <div class="row skillPanel">
+            <div class="row skillPanel" data-bind="attr: { id: 'skillPanel-rank' + currRank.value}">
                 <div class="col-md-4 skillRankLabel" data-bind="text: currRank.name"></div>
                 <div class="col-md-8 skillDropArea" data-bind="attr: { 'data-rank': currRank.value }, foreach: $root.Character.Skills">
                     <!-- ko if: Rank() == currRank.value -->
