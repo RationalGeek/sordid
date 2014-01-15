@@ -10,7 +10,8 @@ namespace Sordid.Core.Model
         public string Appearance { get; set; }
         public string Notes { get; set; }
 
-        public List<Skill> Skills { get; set; }
+        public List<CharacterSkill> Skills { get; set; }
+        //public List<Aspect> Aspects { get; set; }
 
         public ApplicationUser User { get; set; }
         public string ApplicationUserId { get; set; }

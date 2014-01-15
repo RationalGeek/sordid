@@ -44,7 +44,7 @@ namespace Sordid.Web
     }
 
     public class SordidDatabaseInitializer<T> : DropCreateDatabaseIfModelChanges<T>
-        where T : DbContext
+        where T : SordidDbContext
     {
         protected override void Seed(T context)
         {
@@ -65,6 +65,39 @@ namespace Sordid.Web
             var identity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
             authMgr.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
             System.Threading.Thread.CurrentPrincipal = authMgr.User;
+
+            SeedSkills(context);
+        }
+
+        private void SeedSkills(T context)
+        {
+            // TODO: This needs to be moved somewhere better, probably EF migrations script
+
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Alertness", Trappings = "Avoiding Surprise, Combat Initiative, Passive Awareness" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Athletics", Trappings = "Climbing, Dodging, Falling, Jumping, Sprinting, Other Physical Actions" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Burglary", Trappings = "Casing, Infiltration, Lockpicking" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Contacts", Trappings = "Gathering Information, Getting the Tip-Off, Knowing People, Rumors" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Conviction", Trappings = "Acts of Faith, Mental Fortitude" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Craftsmanship", Trappings = "Breaking, Building, Fixing" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Deceit", Trappings = "Cat and Mouse, Disguise, Distraction and Misdirection, False Face Forward, Falsehood and Deception" });
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Discipline", Trappings = "Concentration, Emotional Control, Mental Defense"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Driving", Trappings = "Chases, One Hand on the Wheel, Other Vehicles, Street Knowledge and Navigation"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Empathy", Trappings = "Reading People, A Shoulder to Cry On, Social Defense, Social Initiative"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Endurance", Trappings = "Long-Term Action, Physical Fortitude"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Fists", Trappings = "Brawling, Close-Combat Defense"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Guns", Trappings = "Aiming, Gun Knowledge, Gunplay, Other Projectile Weapons"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Intimidation", Trappings = "The Brush-Off, Interrogation, Provocation, Social Attacks, Threats"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Investigation", Trappings = "Eavesdropping, Examination, Surveillance"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Lore", Trappings = "Arcane Research, Common Ritual, Mystic Perception"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Might", Trappings = "Breaking Things, Exerting Force, Lifting Things, Wrestling"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Performance", Trappings = "Art Appreciation, Composition, Creative Communication, Playing to an Audience"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Presence", Trappings = "Charisma, Command, Reputation, Social Fortitude"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Rapport", Trappings = "Chit-Chat, Closing Down, First Impressions, Opening Up, Social Defense"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Resources", Trappings = "Buying Things, Equipment, Lifestyle, Money Talks, Workspaces"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Scholarship", Trappings = "Answers, Computer Use, Declaring Minor Details, Exposition and Knowledge Dumping, Languages, Medical Attention, Research and Lab Work"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Stealth", Trappings = "Ambush, Hiding, Shadowing, Skulking"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Survival", Trappings = "Animal Handling, Camouflage, Riding, Scavenging, Tracking"});
+            context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Weapons", Trappings = "Melee Combat, Melee Defense, Distance Weaponry, Weapon Knowledge"});
         }
     }
 }
