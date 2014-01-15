@@ -29,11 +29,16 @@ namespace Sordid.Core.Repositories
             });
 
             // Make sure the aspects are attached to the context so that they get updated
-            //entity.Aspects.ForEach(a =>
-            //{
-            //    var entry = DbContext.Entry(a);
-            //    entry.State = EntityState.Modified;
-            //});
+            entity.Aspects.ForEach(a =>
+            {
+                var entry = DbContext.Entry(a);
+                entry.State = EntityState.Modified;
+
+                // Make sure we don't inject new LOVs
+                // TODO: Test if this is necessary or not
+                var lovEntry = DbContext.Entry(a.Aspect);
+                lovEntry.State = EntityState.Unchanged;
+            });
 
             return entity;
         }

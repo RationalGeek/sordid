@@ -9,9 +9,11 @@ namespace Sordid.Core.Model
         public string PlayerName { get; set; }
         public string Appearance { get; set; }
         public string Notes { get; set; }
+        public string StoryTitle { get; set; }
+        public string Starring { get; set; }
 
         public List<CharacterSkill> Skills { get; set; }
-        //public List<Aspect> Aspects { get; set; }
+        public List<CharacterAspect> Aspects { get; set; }
 
         public ApplicationUser User { get; set; }
         public string ApplicationUserId { get; set; }

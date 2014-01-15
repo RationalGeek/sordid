@@ -67,6 +67,7 @@ namespace Sordid.Web
             System.Threading.Thread.CurrentPrincipal = authMgr.User;
 
             SeedSkills(context);
+            SeedAspects(context);
         }
 
         private void SeedSkills(T context)
@@ -98,6 +99,55 @@ namespace Sordid.Web
             context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Stealth", Trappings = "Ambush, Hiding, Shadowing, Skulking"});
             context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Survival", Trappings = "Animal Handling, Camouflage, Riding, Scavenging, Tracking"});
             context.Skills.Add(new Skill { Type = SkillType.Standard, Name = "Weapons", Trappings = "Melee Combat, Melee Defense, Distance Weaponry, Weapon Knowledge"});
+        }
+
+        private void SeedAspects(T context)
+        {
+            context.Aspects.Add(new Aspect { HeadingLabel = "High Concept Aspect", Order =  1 });
+            context.Aspects.Add(new Aspect { HeadingLabel = "Trouble Aspect", Order = 2 });
+            context.Aspects.Add(new Aspect
+            {
+                PhaseName = "Phase One",
+                HeadingLabel = "Background",
+                SubHeadingLabel = "Where did you come from?",
+                DescriptiveBlurb = "What nation, region, culture are you from? What were your family circumstances like? What's your relationship with your family? How were you educated? What were your friends like? Did you get into trouble much? If you're supernatural, how early did you learn this? Were there problems?",
+                Order = 3,
+            });
+            context.Aspects.Add(new Aspect
+            {
+                PhaseName = "Phase Two",
+                HeadingLabel = "Rising Conflict",
+                SubHeadingLabel = "What shaped you?",
+                DescriptiveBlurb = "What nation, region, culture are you from? What were your family circumstances like? What's your relationship with your family? How were you educated? What were your friends like? Did you get into trouble much? If you're supernatural, how early did you learn this? Were there problems?",
+                Order = 4,
+            });
+            context.Aspects.Add(new Aspect
+            {
+                PhaseName = "Phase Three",
+                HeadingLabel = "The Story",
+                SubHeadingLabel = "What was your first adventure?",
+                StoryTitleLabel = "Story Title",
+                StarringLabel = "Guest starring...",
+                Order = 5,
+            });
+            context.Aspects.Add(new Aspect
+            {
+                PhaseName = "Phase Four",
+                HeadingLabel = "Guest Star",
+                SubHeadingLabel = "Whose path have you crossed?",
+                StoryTitleLabel = "Story Title",
+                StarringLabel = "Whose story was this? Who else was in it?",
+                Order = 6,
+            });
+            context.Aspects.Add(new Aspect
+            {
+                PhaseName = "Phase Four",
+                HeadingLabel = "Guest Star",
+                SubHeadingLabel = "Whose else's path have you crossed?",
+                StoryTitleLabel = "Story Title",
+                StarringLabel = "Whose story was this? Who else was in it?",
+                Order = 7,
+            });
         }
     }
 }

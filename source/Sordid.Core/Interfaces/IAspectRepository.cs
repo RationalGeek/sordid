@@ -2,7 +2,7 @@
 
 namespace Sordid.Core.Interfaces
 {
-    public interface ISkillRepository : IBaseRepository<Skill>
+    public interface IAspectRepository : IBaseRepository<Aspect>
     {
     }
 }
