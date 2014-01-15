@@ -46,6 +46,23 @@
         .skillSectionWarning .skill {
             background-color: rgba(210, 50, 45, 0.5) !important;
         }
+
+        .aspect .header {
+            text-align: center;
+            font-size: 110%;
+        }
+
+        .aspect .headingLabel {
+            font-weight: bold;
+        }
+        
+        .aspect:last-child .divider {
+            display: none;
+        }
+
+        .aspect .descriptiveBlurb {
+            font-size: 75%;
+        }
     </style>
 }
 
@@ -105,7 +122,22 @@
 
     <div id="section-aspects" class="char-section col-md-8 panel panel-default hidden">
         <div class="panel-body">
-            Aspects
+            <!-- ko foreach: Character.Aspects -->
+            <div class="aspect row">
+                <div class="header col-md-12">
+                    <span class="headingLabel" data-bind="text: Aspect.HeadingLabel"></span>
+                    <span class="subHeadingLabel" data-bind="text: Aspect.SubHeadingLabel"></span>
+                </div>
+                <div class="row">
+                    <div class="events col-md-6" data-bind="visible: Aspect.EventsLabel">
+                        <span class="eventsLabel" data-bind="text: Aspect.EventsLabel"></span>
+                        <input class="eventsInput form-control" data-bind="value: Events" />
+                    </div>
+                    <div class="descriptiveBlurb col-md-6" data-bind="text: Aspect.DescriptiveBlurb, visible: Aspect.DescriptiveBlurb"></div>
+                </div>
+                <div class="divider row"><hr /></div>
+            </div>
+            <!-- /ko -->
         </div>
     </div>
 </div>
