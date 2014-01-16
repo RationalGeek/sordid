@@ -63,6 +63,14 @@
         .aspect .descriptiveBlurb {
             font-size: 75%;
         }
+
+        .aspect .aspectBlock {
+            text-align: center;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
     </style>
 }
 
@@ -79,10 +87,12 @@
 </div>
 
 <div class="row">
+    @* TODO: Split each section into partial view, with separate CSS, JavaScript *@
+
     <div id="character-sections" class="col-md-2 col-md-offset-1 btn-group-vertical">
         <a type="button" href="#section-basics" class="btn btn-primary active">Basics</a>
-        <a type="button" href="#section-skills" class="btn btn-primary">Skills</a>
         <a type="button" href="#section-aspects" class="btn btn-primary">Aspects</a>
+        <a type="button" href="#section-skills" class="btn btn-primary">Skills</a>
         <a type="button" href="#section-powers" class="btn btn-primary">Powers / Stunts</a>
     </div>
 
@@ -100,6 +110,7 @@
                     <input id="playerName" class="form-control" data-bind="value: Character.PlayerName" />
                 </div>
             </div>
+            @* TODO: Add drop down for power level, which drives max sill rank and refresh *@
         </form>
     </div>
 
@@ -130,14 +141,33 @@
                 </div>
                 <div class="row">
                     <div class="events col-md-6" data-bind="visible: Aspect.EventsLabel">
-                        <span class="eventsLabel" data-bind="text: Aspect.EventsLabel"></span>
+                        <label class="control-label eventsLabel" data-bind="text: Aspect.EventsLabel"></label>
                         <input class="eventsInput form-control" data-bind="value: Events" />
                     </div>
-                    <div class="descriptiveBlurb col-md-6" data-bind="text: Aspect.DescriptiveBlurb, visible: Aspect.DescriptiveBlurb"></div>
+                    <div class="col-md-6">
+                        <div class="descriptiveBlurb" data-bind="text: Aspect.DescriptiveBlurb, visible: Aspect.DescriptiveBlurb"></div>
+                        <div class="form-group" data-bind="visible: Aspect.StoryTitleLabel">
+                            <label class="control-label" data-bind="text: Aspect.StoryTitleLabel"></label>
+                            <input class="form-control" data-bind="value: StoryTitle" />
+                        </div>
+                        <div class="form-group" data-bind="visible: Aspect.StarringLabel">
+                            <label class="control-label" data-bind="text: Aspect.StarringLabel"></label>
+                            <input class="form-control" data-bind="value: Starring" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-12 aspectBlock">
+                    <input class="form-control" style="display: inline-block;" placeholder="Aspect Name" data-bind="value: Name" />
                 </div>
                 <div class="divider row"><hr /></div>
             </div>
             <!-- /ko -->
+        </div>
+    </div>
+
+    <div id="section-powers" class="char-section col-md-8 panel panel-default hidden">
+        <div class="panel-body">
+            Powers
         </div>
     </div>
 </div>

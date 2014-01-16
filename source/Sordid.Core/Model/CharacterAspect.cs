@@ -7,9 +7,10 @@ namespace Sordid.Core.Model
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
-        public string Notes { get; set; }
+        public string Name { get; set; }
         public string Events { get; set; }
+        public string Starring { get; set; }
+        public string StoryTitle { get; set; }
 
         public int CharacterId { get; set; }
         [ScriptIgnore] // TODO: Ew, fix this JSON ignore attribute somehow to avoid circular references...
