@@ -1,0 +1,14 @@
+﻿<div class="panel-body">
+    <!-- ko foreach: {data: ranks, as: 'currRank'} -->
+    <div class="row skillPanel" data-bind="attr: { id: 'skillPanel-rank' + currRank.value}">
+        <div class="col-md-4 skillRankLabel" data-bind="text: currRank.name"></div>
+        <div class="col-md-8 skillDropArea" data-bind="attr: { 'data-rank': currRank.value }, foreach: $root.Character.Skills">
+            <!-- ko if: Rank() == currRank.value -->
+            <div class="skill" data-bind="text: Skill.Name, attr: { title: Skill.Trappings }, draggableSkill: true"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+@* TODO: Add total skill ranks at bottom *@
+@* TODO: Add badges next to each section that gives count *@

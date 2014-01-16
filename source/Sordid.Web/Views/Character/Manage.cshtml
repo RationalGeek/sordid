@@ -5,77 +5,11 @@
 
 @section Styles
 {
-    @* TODO: Move this css to external file *@
-    <style type="text/css">
-        #section-skills .skill {
-            background-color: #ddd;
-            border: solid thin black;
-            padding: 2px;
-            margin: 2px;
-            display: inline-block;
-            box-shadow: 2px 2px 2px #888;
-            cursor: move;
-            min-width: 80px;
-            font-size: 80%;
-        }
-
-        .skillPanel {
-            margin-bottom: 20px;
-        }
-
-        .skillPanel .skillRankLabel {
-            font-weight: bold;
-            font-size: 110%;
-        }
-
-        .skillPanel .skillDropArea {
-            border: solid thin #999;
-            min-height: 35px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        .skillPanel .dropActive {
-            background-color: #ffe;
-        }
-
-        .skillPanel .dropHover {
-            background-color: #ff9;
-        }
-
-        .skillSectionWarning .skill {
-            background-color: rgba(210, 50, 45, 0.5) !important;
-        }
-
-        .aspect .header {
-            text-align: center;
-            font-size: 110%;
-        }
-
-        .aspect .headingLabel {
-            font-weight: bold;
-        }
-        
-        .aspect:last-child .divider {
-            display: none;
-        }
-
-        .aspect .descriptiveBlurb {
-            font-size: 75%;
-        }
-
-        .aspect .aspectBlock {
-            text-align: center;
-            margin-left: 0;
-            margin-right: 0;
-            padding-left: 0;
-            padding-right: 0;
-        }
-    </style>
+    @Styles.Render("~/Content/css/CharacterManage")
 }
 
 <div class="row" style="padding-bottom: 2px;">
-    <div class="col-md-9 col-md-offset-1" data-bind="text: Character.Name" style="font-size: 20pt;">
+    <div class="col-md-9 col-md-offset-1 characterName" data-bind="text: Character.Name">
     </div>
     @* TODO: Can't get this stupid button to align bottom *@
     <div class="col-md-1" style="text-align: right; padding: 0;">
@@ -87,8 +21,6 @@
 </div>
 
 <div class="row">
-    @* TODO: Split each section into partial view, with separate CSS, JavaScript *@
-
     <div id="character-sections" class="col-md-2 col-md-offset-1 btn-group-vertical">
         <a type="button" href="#section-basics" class="btn btn-primary active">Basics</a>
         <a type="button" href="#section-aspects" class="btn btn-primary">Aspects</a>
@@ -96,79 +28,20 @@
         <a type="button" href="#section-powers" class="btn btn-primary">Powers / Stunts</a>
     </div>
 
-    <div id="section-basics" class="char-section col-md-8 panel panel-default" style="padding-top: 15px;">
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label for="characterName" class="col-md-3 control-label">Name</label>
-                <div class="col-md-9">
-                    <input id="characterName" class="form-control" data-bind="value: Character.Name" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="playerName" class="col-md-3 control-label">Player Name</label>
-                <div class="col-md-9">
-                    <input id="playerName" class="form-control" data-bind="value: Character.PlayerName" />
-                </div>
-            </div>
-            @* TODO: Add drop down for power level, which drives max sill rank and refresh *@
-        </form>
+    <div id="section-basics" class="char-section col-md-8 panel panel-default">
+        @Html.Partial("_ManageBasics")
     </div>
 
     <div id="section-skills" class="char-section col-md-8 panel panel-default hidden">
-        <div class="panel-body">
-            <!-- ko foreach: {data: ranks, as: 'currRank'} -->
-            <div class="row skillPanel" data-bind="attr: { id: 'skillPanel-rank' + currRank.value}">
-                <div class="col-md-4 skillRankLabel" data-bind="text: currRank.name"></div>
-                <div class="col-md-8 skillDropArea" data-bind="attr: { 'data-rank': currRank.value }, foreach: $root.Character.Skills">
-                    <!-- ko if: Rank() == currRank.value -->
-                    <div class="skill" data-bind="text: Skill.Name, attr: { title: Skill.Trappings }, draggableSkill: true"></div>
-                    <!-- /ko -->
-                </div>
-            </div>
-            <!-- /ko -->
-        </div>
-        @* TODO: Add total skill ranks at bottom *@
-        @* TODO: Add badges next to each section that gives count *@
+        @Html.Partial("_ManageSkills")
     </div>
 
     <div id="section-aspects" class="char-section col-md-8 panel panel-default hidden">
-        <div class="panel-body">
-            <!-- ko foreach: Character.Aspects -->
-            <div class="aspect row">
-                <div class="header col-md-12">
-                    <span class="headingLabel" data-bind="text: Aspect.HeadingLabel"></span>
-                    <span class="subHeadingLabel" data-bind="text: Aspect.SubHeadingLabel"></span>
-                </div>
-                <div class="row">
-                    <div class="events col-md-6" data-bind="visible: Aspect.EventsLabel">
-                        <label class="control-label eventsLabel" data-bind="text: Aspect.EventsLabel"></label>
-                        <input class="eventsInput form-control" data-bind="value: Events" />
-                    </div>
-                    <div class="col-md-6">
-                        <div class="descriptiveBlurb" data-bind="text: Aspect.DescriptiveBlurb, visible: Aspect.DescriptiveBlurb"></div>
-                        <div class="form-group" data-bind="visible: Aspect.StoryTitleLabel">
-                            <label class="control-label" data-bind="text: Aspect.StoryTitleLabel"></label>
-                            <input class="form-control" data-bind="value: StoryTitle" />
-                        </div>
-                        <div class="form-group" data-bind="visible: Aspect.StarringLabel">
-                            <label class="control-label" data-bind="text: Aspect.StarringLabel"></label>
-                            <input class="form-control" data-bind="value: Starring" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row col-md-12 aspectBlock">
-                    <input class="form-control" style="display: inline-block;" placeholder="Aspect Name" data-bind="value: Name" />
-                </div>
-                <div class="divider row"><hr /></div>
-            </div>
-            <!-- /ko -->
-        </div>
+        @Html.Partial("_ManageAspects")
     </div>
 
     <div id="section-powers" class="char-section col-md-8 panel panel-default hidden">
-        <div class="panel-body">
-            Powers
-        </div>
+        @Html.Partial("_ManagePowers")
     </div>
 </div>
 

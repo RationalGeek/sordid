@@ -1,0 +1,24 @@
+﻿.aspect .header {
+    text-align: center;
+    font-size: 110%;
+}
+
+.aspect .headingLabel {
+    font-weight: bold;
+}
+        
+.aspect:last-child .divider {
+    display: none;
+}
+
+.aspect .descriptiveBlurb {
+    font-size: 75%;
+}
+
+.aspect .aspectBlock {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}

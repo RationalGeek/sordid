@@ -1,0 +1,31 @@
+﻿<div class="panel-body">
+    <!-- ko foreach: Character.Aspects -->
+    <div class="aspect row">
+        <div class="header col-md-12">
+            <span class="headingLabel" data-bind="text: Aspect.HeadingLabel"></span>
+            <span class="subHeadingLabel" data-bind="text: Aspect.SubHeadingLabel"></span>
+        </div>
+        <div class="row">
+            <div class="events col-md-6" data-bind="visible: Aspect.EventsLabel">
+                <label class="control-label eventsLabel" data-bind="text: Aspect.EventsLabel"></label>
+                <input class="eventsInput form-control" data-bind="value: Events" />
+            </div>
+            <div class="col-md-6">
+                <div class="descriptiveBlurb" data-bind="text: Aspect.DescriptiveBlurb, visible: Aspect.DescriptiveBlurb"></div>
+                <div class="form-group" data-bind="visible: Aspect.StoryTitleLabel">
+                    <label class="control-label" data-bind="text: Aspect.StoryTitleLabel"></label>
+                    <input class="form-control" data-bind="value: StoryTitle" />
+                </div>
+                <div class="form-group" data-bind="visible: Aspect.StarringLabel">
+                    <label class="control-label" data-bind="text: Aspect.StarringLabel"></label>
+                    <input class="form-control" data-bind="value: Starring" />
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-12 aspectBlock">
+            <input class="form-control" style="display: inline-block;" placeholder="Aspect Name" data-bind="value: Name" />
+        </div>
+        <div class="divider row"><hr /></div>
+    </div>
+    <!-- /ko -->
+</div>

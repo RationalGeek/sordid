@@ -50,6 +50,13 @@ namespace Sordid.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/CharacterManage").Include(
+                      "~/Content/CharacterManage/CharacterManage.css",
+                      "~/Content/CharacterManage/CharacterManageBasics.css",
+                      "~/Content/CharacterManage/CharacterManageAspects.css",
+                      "~/Content/CharacterManage/CharacterManageSkills.css",
+                      "~/Content/CharacterManage/CharacterManagePowers.css"));
         }
     }
 }

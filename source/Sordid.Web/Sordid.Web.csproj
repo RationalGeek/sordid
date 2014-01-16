@@ -242,6 +242,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CharacterManage\CharacterManage.css" />
+    <Content Include="Content\CharacterManage\CharacterManageAspects.css" />
+    <Content Include="Content\CharacterManage\CharacterManageBasics.css" />
+    <Content Include="Content\CharacterManage\CharacterManagePowers.css" />
+    <Content Include="Content\CharacterManage\CharacterManageSkills.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -309,6 +314,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Character\Manage.cshtml" />
     <Content Include="Views\Character\Index.cshtml" />
+    <Content Include="Views\Character\_ManageBasics.cshtml" />
+    <Content Include="Views\Character\_ManageSkills.cshtml" />
+    <Content Include="Views\Character\_ManageAspects.cshtml" />
+    <Content Include="Views\Character\_ManagePowers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

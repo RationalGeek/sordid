@@ -1,0 +1,39 @@
+﻿#section-skills .skill {
+    background-color: #ddd;
+    border: solid thin black;
+    padding: 2px;
+    margin: 2px;
+    display: inline-block;
+    box-shadow: 2px 2px 2px #888;
+    cursor: move;
+    min-width: 80px;
+    font-size: 80%;
+}
+
+.skillPanel {
+    margin-bottom: 20px;
+}
+
+.skillPanel .skillRankLabel {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.skillPanel .skillDropArea {
+    border: solid thin #999;
+    min-height: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.skillPanel .dropActive {
+    background-color: #ffe;
+}
+
+.skillPanel .dropHover {
+    background-color: #ff9;
+}
+
+.skillSectionWarning .skill {
+    background-color: rgba(210, 50, 45, 0.5) !important;
+}
