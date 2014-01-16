@@ -1,5 +1,5 @@
 ﻿<div class="panel-body">
-    <!-- ko foreach: Character.Aspects -->
+    @*<!-- ko foreach: Character.Aspects -->
     <div class="aspect row">
         <div class="header col-md-12">
             <span class="headingLabel" data-bind="text: Aspect.HeadingLabel"></span>
@@ -27,5 +27,47 @@
         </div>
         <div class="divider row"><hr /></div>
     </div>
-    <!-- /ko -->
+    <!-- /ko -->*@
+
+    <div class="panel-group" id="aspectAccordion">
+        <!-- ko foreach: Character.Aspects -->
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-bind="attr: {'data-target': '#collapse' + Id()}">
+                <div class="row">
+                    <div class="col-md-8"><h4 class="panel-title" data-bind="text: Name"></h4></div>
+                    <div class="col-md-4 headingLabel" data-bind="text: Aspect.HeadingLabel"></div>
+                </div>
+            </div>
+            <div class="panel-collapse collapse" data-bind="attr: {id: 'collapse' + Id()}, collapseAspect: true">
+                <div class="panel-body">
+                    <div class="header col-md-12" data-bind="">
+                        <span class="headingLabel" data-bind="text: Aspect.HeadingLabel"></span><span data-bind="visible: Aspect.SubHeadingLabel">: </span>
+                        <span class="subHeadingLabel" data-bind="text: Aspect.SubHeadingLabel"></span>
+                    </div>
+                    <div class="row col-md-12 descriptiveBlurb" data-bind="text: Aspect.DescriptiveBlurb, visible: Aspect.DescriptiveBlurb"></div>
+                    <hr />
+                    <div class="row">
+                        <div class="events col-md-6" data-bind="visible: Aspect.EventsLabel">
+                            <label class="control-label eventsLabel" data-bind="text: Aspect.EventsLabel"></label>
+                            <textarea class="eventsInput form-control" data-bind="value: Events"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" data-bind="visible: Aspect.StoryTitleLabel">
+                                <label class="control-label" data-bind="text: Aspect.StoryTitleLabel"></label>
+                                <input class="form-control" data-bind="value: StoryTitle" />
+                            </div>
+                            <div class="form-group" data-bind="visible: Aspect.StarringLabel">
+                                <label class="control-label" data-bind="text: Aspect.StarringLabel"></label>
+                                <input class="form-control" data-bind="value: Starring" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-12 aspectBlock">
+                        Aspect Name: <input class="form-control" style="display: inline-block;" data-bind="value: Name" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
 </div>

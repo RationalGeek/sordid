@@ -44,10 +44,12 @@ namespace Sordid.Core.Services
 
         private async Task InitAspects(Character character)
         {
+            var i = 0;
             character.Aspects = (await _aspectService.GetStandardAspects()).Select(a => new CharacterAspect
             {
                 AspectId = a.Id,
                 Aspect = a,
+                Name = "Aspect #" + ++i,
             }).ToList();
         }
 

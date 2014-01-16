@@ -1,4 +1,4 @@
-﻿.aspect .header {
+﻿/*.aspect .header {
     text-align: center;
     font-size: 110%;
 }
@@ -21,4 +21,30 @@
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+}*/
+
+#aspectAccordion .panel-heading {
+    cursor: pointer;
+}
+
+#aspectAccordion .panel-heading .headingLabel {
+    color: #D0D0D0;
+    text-align: right;
+    font-size: 80%;
+    top: 10px;
+}
+
+#aspectAccordion .panel-body .header {
+    text-align: center;
+    font-size: 110%;
+}
+
+#aspectAccordion .panel-body .headingLabel {
+    font-weight: bold;
+}
+
+#aspectAccordion .panel-body .descriptiveBlurb {
+    margin-top: 10px;
+    font-size: 75%;
+    font-style: italic;
 }
