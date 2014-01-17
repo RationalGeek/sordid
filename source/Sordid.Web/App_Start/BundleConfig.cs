@@ -10,53 +10,53 @@ namespace Sordid.Web
             // TODO: Convert to using CDNs for jquery, etc.
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/lib/jquery/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery.ui").Include(
                         //"~/Scripts/jquery.ui/jquery.ui.*",
-                        "~/Scripts/jquery.ui/jquery.ui.core.js",
-                        "~/Scripts/jquery.ui/jquery.ui.widget.js",
-                        "~/Scripts/jquery.ui/jquery.ui.mouse.js",
-                        "~/Scripts/jquery.ui/jquery.ui.draggable.js",
-                        "~/Scripts/jquery.ui/jquery.ui.droppable.js"
+                        "~/Scripts/lib/jquery.ui/jquery.ui.core.js",
+                        "~/Scripts/lib/jquery.ui/jquery.ui.widget.js",
+                        "~/Scripts/lib/jquery.ui/jquery.ui.mouse.js",
+                        "~/Scripts/lib/jquery.ui/jquery.ui.draggable.js",
+                        "~/Scripts/lib/jquery.ui/jquery.ui.droppable.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/lib/jquery/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
-                        "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/knockout.mapping-latest.js"
+                        "~/Scripts/lib/knockout/knockout-{version}.js",
+                        "~/Scripts/lib/knockout/knockout.mapping-latest.js"
                         ));
 
-            bundles.Add(new ScriptBundle("~/bundles/json").Include(
-                        "~/Scripts/json2.js"
+            bundles.Add(new ScriptBundle("~/bundles/json2").Include(
+                        "~/Scripts/lib/json2/json2.js"
                         ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/lib/modernizr/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/lib/bootstrap/bootstrap.js",
+                      "~/Scripts/lib/bootstrap/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                      "~/Scripts/Site/alerts.js",
-                      "~/Scripts/Site/errorHandling.js"
+                      "~/Scripts/site/alerts.js",
+                      "~/Scripts/site/errorHandling.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/lib/bootstrap/bootstrap.css",
+                      "~/Content/site/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css/CharacterManage").Include(
-                      "~/Content/CharacterManage/CharacterManage.css",
-                      "~/Content/CharacterManage/CharacterManageBasics.css",
-                      "~/Content/CharacterManage/CharacterManageAspects.css",
-                      "~/Content/CharacterManage/CharacterManageSkills.css",
-                      "~/Content/CharacterManage/CharacterManagePowers.css"));
+            bundles.Add(new StyleBundle("~/Content/css/character").Include(
+                      "~/Content/site/character/characterManage.css",
+                      "~/Content/site/character/characterManageBasics.css",
+                      "~/Content/site/character/characterManageAspects.css",
+                      "~/Content/site/character/characterManageSkills.css",
+                      "~/Content/site/character/characterManagePowers.css"));
         }
     }
 }

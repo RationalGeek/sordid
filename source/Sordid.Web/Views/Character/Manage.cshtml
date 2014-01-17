@@ -5,7 +5,7 @@
 
 @section Styles
 {
-    @Styles.Render("~/Content/css/CharacterManage")
+    @Styles.Render("~/Content/css/character")
 }
 
 <div class="row" style="padding-bottom: 2px;">
@@ -58,8 +58,9 @@
         });
     </script>
 
+    @* TODO: Switch to bundle *@
     @* Must go after KO is initialized! *@
-    <script src="@Url.Content("~/Scripts/Site/characterSkills.js")"></script>
-    <script src="@Url.Content("~/Scripts/Site/characterAspects.js")"></script>
+    <script src="@Url.Content("~/Scripts/site/characterSkills.js")"></script>
+    <script src="@Url.Content("~/Scripts/site/characterAspects.js")"></script>
 }
 
