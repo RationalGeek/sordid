@@ -1,5 +1,6 @@
 ﻿using Sordid.Core.Interfaces;
 using Sordid.Core.Model;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +28,12 @@ namespace Sordid.Core.Services
             var character = new Character { Name = "New Character", ApplicationUserId = userId };
             await InitSkills(character);
             await InitAspects(character);
+            character.Powers = new List<Power>();
+
+            // TODO: Don't check this in
+            character.Powers.Add(new Power { Cost = 1, Name = "Some fake power" });
+            character.Powers.Add(new Power { Cost = 1, Name = "Some other fake power" });
+
             character = _charRepo.Add(character);
             await _charRepo.UnitOfWork.Save();
             return character;
@@ -62,7 +69,8 @@ namespace Sordid.Core.Services
                             .Include(c => c.Aspects)
                             .Include(c => c.Aspects.Select(a => a.Aspect))
                             .Include(c => c.Skills)
-                            .Include(c => c.Skills.Select(s => s.Skill));
+                            .Include(c => c.Skills.Select(s => s.Skill))
+                            .Include(c => c.Powers);
             var result = (await _charRepo.Query(query)).SingleOrDefault();
             return result;
         }

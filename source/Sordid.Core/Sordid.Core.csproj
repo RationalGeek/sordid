@@ -87,7 +87,9 @@
     <Compile Include="Model\ModelBuilders\AspectModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\CharacterModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\IModelBuilder.cs" />
+    <Compile Include="Model\ModelBuilders\PowerModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\SkillModelBuilder.cs" />
+    <Compile Include="Model\Power.cs" />
     <Compile Include="Model\Skill.cs" />
     <Compile Include="Ninject\KernelBuilder.cs" />
     <Compile Include="Ninject\SordidCoreNinjectModule.cs" />

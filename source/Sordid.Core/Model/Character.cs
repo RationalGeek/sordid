@@ -14,6 +14,7 @@ namespace Sordid.Core.Model
 
         public List<CharacterSkill> Skills { get; set; }
         public List<CharacterAspect> Aspects { get; set; }
+        public List<Power> Powers { get; set; }
 
         public ApplicationUser User { get; set; }
         public string ApplicationUserId { get; set; }

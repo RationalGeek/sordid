@@ -1,3 +1,7 @@
 ﻿<div class="panel-body">
-    Powers
+    <!-- ko foreach: Character.Powers -->
+    <div>
+        <span data-bind="text: Name"></span> (<span data-bind="text: Cost"></span>)
+    </div>
+    <!-- /ko -->
 </div>
