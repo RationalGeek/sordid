@@ -41,6 +41,7 @@
     </div>
 
     <div id="section-powers" class="char-section col-md-8 panel panel-default hidden">
+        @* TODO: You were about to start working on powers UI and got distracted implementing require.js *@
         @Html.Partial("_ManagePowers")
     </div>
 </div>
@@ -49,18 +50,19 @@
 {
     @Scripts.Render("~/bundles/jquery.ui")
 
-    <script src="@Url.Content("~/Scripts/Site/characterManage.js")"></script>
-    <script>
-        $(document).ready(function() {
-            // Initialize Knockout
-            var viewModelRaw = @Html.Raw( Json.Encode(Model) );
-            sordid.characterManage.initKnockout(viewModelRaw);
-        });
-    </script>
-
     @* TODO: Switch to bundle *@
-    @* Must go after KO is initialized! *@
+    <script src="@Url.Content("~/Scripts/Site/characterManage.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterSkills.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterAspects.js")"></script>
+    <script>
+        require(['jquery','sordid-characterManage','sordid-characterSkills','sordid-characterAspects'], function($,charMan,charSkills,charAspects) {
+            $(document).ready(function() {
+                // Initialize Knockout
+                var viewModelRaw = @Html.Raw( Json.Encode(Model) );
+                charMan.initKnockout(viewModelRaw);
+                charSkills.init();
+            });
+        });
+    </script>
 }
 

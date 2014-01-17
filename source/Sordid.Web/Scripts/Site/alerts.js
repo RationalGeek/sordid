@@ -1,6 +1,4 @@
-﻿// http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html
-
-var sordid = function (my) {
+﻿define('sordid-alerts', ['jquery'], function ($) {
     var fadeTimeout = 5000;
     var container = $('#alertContainer');
 
@@ -18,23 +16,26 @@ var sordid = function (my) {
         };
     };
 
-    my.alerts = {};
-
-    my.alerts.success = function (message, fade) {
+    var success = function (message, fade) {
         appendAlert(message, 'success', fade);
     };
 
-    my.alerts.error = function (message, fade) {
+    var error = function (message, fade) {
         appendAlert(message, 'danger', fade);
     };
 
-    my.alerts.warning = function (message, fade) {
+    var warning = function (message, fade) {
         appendAlert(message, 'warning', fade);
     };
 
-    my.alerts.info = function (message, fade) {
+    var info = function (message, fade) {
         appendAlert(message, 'info', fade);
     };
 
-    return my;
-}(sordid || {});
+    return {
+        success: success,
+        error: error,
+        warning: warning,
+        info: info
+    };
+});

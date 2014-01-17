@@ -1,6 +1,4 @@
-﻿var sordid = function (my) {
-    my.characterManage = {};
-
+﻿define('sordid-characterManage', ['jquery', 'knockout', 'sordid-alerts', 'sordid-errors'], function ($, ko, alerts, errors) {
     var buildRanks = function () {
         return [
             { name: 'Superb (+5)', value: 5 },
@@ -12,11 +10,13 @@
         ];
     };
 
+    var viewModel = {};
+
     // KO ViewModel initialization
-    my.characterManage.initKnockout = function(viewModelRaw) {
-        my.characterManage.viewModel = ko.mapping.fromJS(viewModelRaw);
-        my.characterManage.viewModel.ranks = buildRanks();
-        ko.applyBindings(my.characterManage.viewModel);
+    var initKnockout = function (viewModelRaw) {
+        viewModel = ko.mapping.fromJS(viewModelRaw);
+        viewModel.ranks = buildRanks();
+        ko.applyBindings(viewModel);
     };
 
     $(document).ready(function () {
@@ -48,7 +48,7 @@
             $('#saveIcon').addClass('hidden');
             $('#pendingSaveIcon').removeClass('hidden');
 
-            var viewModelJSON = JSON.stringify(ko.mapping.toJS(my.characterManage.viewModel));
+            var viewModelJSON = JSON.stringify(ko.mapping.toJS(viewModel));
             $.ajax({
                 url: '/Character/Save',
                 type: 'POST',
@@ -56,13 +56,13 @@
                 data: viewModelJSON,
                 success: function (data) {
                     // Reapply viewModel bindings
-                    ko.mapping.fromJS(data, {}, my.characterManage.viewModel);
+                    ko.mapping.fromJS(data, {}, viewModel);
 
                     // Pop a saved message
-                    sordid.alerts.success('<strong>Saved!</strong>', true);
+                    alerts.success('<strong>Saved!</strong>', true);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    sordid.errorHandling.alertError(jqXHR, textStatus, errorThrown, 'Failed to save!');
+                    errors.alertError(jqXHR, textStatus, errorThrown, 'Failed to save!');
                 },
                 complete: function () {
                     $('#saveButton').removeClass('disabled');
@@ -79,9 +79,9 @@
         });
     });
 
-    return my;
-}(sordid || {});
-
-
-
+    return {
+        initKnockout: initKnockout,
+        viewModel: function () { return viewModel; }
+    };
+});
 

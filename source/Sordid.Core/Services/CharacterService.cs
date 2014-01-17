@@ -30,7 +30,7 @@ namespace Sordid.Core.Services
             await InitAspects(character);
             character.Powers = new List<Power>();
 
-            // TODO: Don't check this in
+            // TODO: Delete this fake power init crap
             character.Powers.Add(new Power { Cost = 1, Name = "Some fake power" });
             character.Powers.Add(new Power { Cost = 1, Name = "Some other fake power" });
 

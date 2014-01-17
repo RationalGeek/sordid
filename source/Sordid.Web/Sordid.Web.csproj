@@ -283,11 +283,13 @@
     <Content Include="Scripts\lib\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\lib\bootstrap\respond.js" />
     <Content Include="Scripts\lib\bootstrap\respond.min.js" />
+    <Content Include="Scripts\lib\require\require.js" />
     <Content Include="Scripts\site\alerts.js" />
     <Content Include="Scripts\site\characterAspects.js" />
     <Content Include="Scripts\site\characterManage.js" />
     <Content Include="Scripts\site\characterSkills.js" />
     <Content Include="Scripts\site\errorHandling.js" />
+    <Content Include="Scripts\site\requireStart.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

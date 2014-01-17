@@ -42,7 +42,11 @@ namespace Sordid.Web
                       "~/Scripts/lib/bootstrap/bootstrap.js",
                       "~/Scripts/lib/bootstrap/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/require").Include(
+                      "~/Scripts/lib/require/require.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
+                      "~/Scripts/site/requireStart.js",
                       "~/Scripts/site/alerts.js",
                       "~/Scripts/site/errorHandling.js"
                       ));
