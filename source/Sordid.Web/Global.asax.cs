@@ -107,7 +107,6 @@ namespace Sordid.Web
             context.Aspects.Add(new Aspect { HeadingLabel = "Trouble", Order = 2 });
             context.Aspects.Add(new Aspect
             {
-                PhaseName = "Phase One",
                 HeadingLabel = "Background",
                 SubHeadingLabel = "Where did you come from?",
                 DescriptiveBlurb = "What nation, region, culture are you from? What were your family circumstances like? What's your relationship with your family? How were you educated? What were your friends like? Did you get into trouble much? If you're supernatural, how early did you learn this? Were there problems?",
@@ -116,7 +115,6 @@ namespace Sordid.Web
             });
             context.Aspects.Add(new Aspect
             {
-                PhaseName = "Phase Two",
                 HeadingLabel = "Rising Conflict",
                 SubHeadingLabel = "What shaped you?",
                 DescriptiveBlurb = "Who were the prominent people in your life at this point? Do you have enemies? Close and fast friends? How did your high concept and trouble aspects shape you and events around you? What were the most significant choices you made? What lessons did you learn in this time?",
@@ -125,7 +123,6 @@ namespace Sordid.Web
             });
             context.Aspects.Add(new Aspect
             {
-                PhaseName = "Phase Three",
                 HeadingLabel = "The Story",
                 SubHeadingLabel = "What was your first adventure?",
                 StoryTitleLabel = "Story Title",
@@ -135,7 +132,6 @@ namespace Sordid.Web
             });
             context.Aspects.Add(new Aspect
             {
-                PhaseName = "Phase Four",
                 HeadingLabel = "Guest Star",
                 SubHeadingLabel = "Whose path have you crossed?",
                 StoryTitleLabel = "Story Title",
@@ -145,7 +141,6 @@ namespace Sordid.Web
             });
             context.Aspects.Add(new Aspect
             {
-                PhaseName = "Phase Four",
                 HeadingLabel = "Guest Star",
                 SubHeadingLabel = "Whose else's path have you crossed?",
                 StoryTitleLabel = "Story Title",

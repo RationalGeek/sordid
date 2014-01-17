@@ -7,7 +7,6 @@ namespace Sordid.Core.Model
         public int Id { get; set; }
         public int Order { get; set; }
 
-        public string PhaseName { get; set; }
         public string HeadingLabel { get; set; }     // Rising Conflict
         public string SubHeadingLabel { get; set; }  // What Shaped You?
         public string DescriptiveBlurb { get; set; } // Who were the prominnent people in your life at this point?  Etc...

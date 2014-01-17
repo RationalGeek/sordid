@@ -1,3 +1,7 @@
 ﻿.characterName {
     font-size: 20pt;
 }
+
+.char-section {
+    border-color: black;
+}
