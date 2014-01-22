@@ -4,10 +4,27 @@
     </div>
 
     <!-- ko foreach: Character.Powers -->
-    <div class="powerContainer">
-        <a class="btn btn-primary btn-sm powerEditButton" title="Edit Power" data-bind="powerEdit: true"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-primary btn-sm powerDeleteButton" title="Delete Power" data-bind="powerDelete: true"><span class="glyphicon glyphicon-remove"></span></a>
-        <span data-bind="text: Name"></span> (<span data-bind="text: Cost"></span> Refresh)
+    <div class="powerContainer" data-bind="powerInit: true">
+        <div class="powerEdit row" data-bind="visible: editMode()">
+            @* TODO: Implement cancel - need to store original values somewhere? *@
+            @*<a class="btn btn-primary btn-sm powerCancelButton" title="Cancel Edits"><span class="glyphicon glyphicon-ban-circle"></span></a>*@
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-sm powerCompleteEditButton" title="Complete Edits" data-bind="powerCompleteEdit: true"><span class="glyphicon glyphicon-ok"></span></a>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" data-bind="value: Name" />
+                <input class="form-control" data-bind="value: Cost" />
+            </div>
+        </div>
+        <div class="powerView row" data-bind="visible: !editMode()">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-sm powerEditButton" title="Edit Power" data-bind="powerEdit: true"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="btn btn-primary btn-sm powerDeleteButton" title="Delete Power" data-bind="powerDelete: true"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <div class="col-md-9">
+                <span data-bind="text: Name"></span> (<span data-bind="text: Cost"></span> Refresh)
+            </div>
+        </div>
     </div>
     <!-- /ko -->
 </div>

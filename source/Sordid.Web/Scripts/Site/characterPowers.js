@@ -5,10 +5,24 @@
         });
     });
 
+    ko.bindingHandlers.powerInit = {
+        init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            viewModel.editMode = ko.observable(false);
+        }
+    };
+
     ko.bindingHandlers.powerEdit = {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             $(element).click(function () {
-                alert('Edit button clicked!');
+                viewModel.editMode(true);
+            });
+        }
+    };
+
+    ko.bindingHandlers.powerCompleteEdit = {
+        init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            $(element).click(function () {
+                viewModel.editMode(false);
             });
         }
     };
