@@ -5,6 +5,8 @@ namespace Sordid.Core.Model
 {
     public class Power : BaseEntity, IIdKeyedEntity
     {
+        // TODO: Add notes for powers
+
         public int Id { get; set; }
         public int Cost { get; set; }
         public string Name { get; set; }

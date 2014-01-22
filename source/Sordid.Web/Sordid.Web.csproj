@@ -287,6 +287,7 @@
     <Content Include="Scripts\site\alerts.js" />
     <Content Include="Scripts\site\characterAspects.js" />
     <Content Include="Scripts\site\characterManage.js" />
+    <Content Include="Scripts\site\characterPowers.js" />
     <Content Include="Scripts\site\characterSkills.js" />
     <Content Include="Scripts\site\errorHandling.js" />
     <Content Include="Scripts\site\requireStart.js" />

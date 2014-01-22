@@ -54,13 +54,21 @@
     <script src="@Url.Content("~/Scripts/Site/characterManage.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterSkills.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterAspects.js")"></script>
+    <script src="@Url.Content("~/Scripts/site/characterPowers.js")"></script>
+
     <script>
-        require(['jquery','sordid-characterManage','sordid-characterSkills','sordid-characterAspects'], function($,charMan,charSkills,charAspects) {
-            $(document).ready(function() {
-                // Initialize Knockout
-                var viewModelRaw = @Html.Raw( Json.Encode(Model) );
-                charMan.initKnockout(viewModelRaw);
-                charSkills.init();
+        require(
+            ['jquery',
+             'sordid-characterManage',
+             'sordid-characterSkills',
+             'sordid-characterAspects',
+             'sordid-characterPowers'],
+            function($,charMan,charSkills,charAspects) {
+                $(document).ready(function() {
+                    // Initialize Knockout
+                    var viewModelRaw = @Html.Raw( Json.Encode(Model) );
+                    charMan.initKnockout(viewModelRaw);
+                    charSkills.init();
             });
         });
     </script>

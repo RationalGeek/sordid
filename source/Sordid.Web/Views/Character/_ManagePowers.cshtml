@@ -1,7 +1,13 @@
 ﻿<div class="panel-body">
+    <div id="powersAddContainer">
+        <a id="powersAddButton" class="btn btn-primary btn-sm" title="Add Power"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+
     <!-- ko foreach: Character.Powers -->
-    <div>
-        <span data-bind="text: Name"></span> (<span data-bind="text: Cost"></span>)
+    <div class="powerContainer">
+        <a class="btn btn-primary btn-sm powerEditButton" title="Edit Power" data-bind="powerEdit: true"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-primary btn-sm powerDeleteButton" title="Delete Power" data-bind="powerDelete: true"><span class="glyphicon glyphicon-remove"></span></a>
+        <span data-bind="text: Name"></span> (<span data-bind="text: Cost"></span> Refresh)
     </div>
     <!-- /ko -->
 </div>
