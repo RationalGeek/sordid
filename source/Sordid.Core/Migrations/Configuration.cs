@@ -90,6 +90,14 @@ namespace Sordid.Core.Migrations
                         Order = 7,
                     }
                 );
+
+            context.Powers.AddOrUpdate(p => new { p.Type, p.Name },
+                new Power { Type = PowerType.Stock, Name = "Evocation", Cost = -3 },
+                new Power { Type = PowerType.Stock, Name = "Thaumaturgy", Cost = -3 },
+                new Power { Type = PowerType.Stock, Name = "The Sight", Cost = -1 },
+                new Power { Type = PowerType.Stock, Name = "Soulgaze", Cost = -1 },
+                new Power { Type = PowerType.Stock, Name = "Wizard's Constitution", Cost = 0 }
+                );
         }
     }
 }

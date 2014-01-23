@@ -6,11 +6,6 @@ namespace Sordid.Core.Model.ModelBuilders
     {
         public void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Power>()
-                .HasRequired(p => p.Character)
-                .WithMany()
-                .HasForeignKey(p => p.CharacterId);
         }
     }
 }

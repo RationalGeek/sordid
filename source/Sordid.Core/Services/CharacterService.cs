@@ -30,10 +30,6 @@ namespace Sordid.Core.Services
             await InitAspects(character);
             character.Powers = new List<Power>();
 
-            // TODO: Delete this fake power init crap
-            character.Powers.Add(new Power { Cost = 1, Name = "Some fake power" });
-            character.Powers.Add(new Power { Cost = 1, Name = "Some other fake power" });
-
             character = _charRepo.Add(character);
             await _charRepo.UnitOfWork.Save();
             return character;

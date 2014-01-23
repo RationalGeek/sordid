@@ -16,6 +16,7 @@ namespace Sordid.Core
         public DbSet<Character> Characters { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Aspect> Aspects { get; set; }
+        public DbSet<Power> Powers { get; set; }
 
         public SordidDbContext()
         {
