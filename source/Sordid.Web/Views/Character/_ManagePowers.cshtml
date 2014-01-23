@@ -1,24 +1,12 @@
 ﻿<div class="panel-body">
     <div id="powersAddContainer">
-        <a id="powersAddButton" class="btn btn-primary btn-sm" title="Add Power"><span class="glyphicon glyphicon-plus"></span></a>
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPowerModal"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
 
     <!-- ko foreach: Character.Powers -->
     <div class="powerContainer" data-bind="powerInit: true">
-        <div class="powerEdit row" data-bind="visible: editMode()">
-            @* TODO: Implement cancel - need to store original values somewhere? *@
-            @*<a class="btn btn-primary btn-sm powerCancelButton" title="Cancel Edits"><span class="glyphicon glyphicon-ban-circle"></span></a>*@
+        <div class="powerView row">
             <div class="col-md-3">
-                <a class="btn btn-primary btn-sm powerCompleteEditButton" title="Complete Edits" data-bind="powerCompleteEdit: true"><span class="glyphicon glyphicon-ok"></span></a>
-            </div>
-            <div class="col-md-9">
-                <input class="form-control" data-bind="value: Name" />
-                <input class="form-control" data-bind="value: Cost" />
-            </div>
-        </div>
-        <div class="powerView row" data-bind="visible: !editMode()">
-            <div class="col-md-3">
-                <a class="btn btn-primary btn-sm powerEditButton" title="Edit Power" data-bind="powerEdit: true"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a class="btn btn-primary btn-sm powerDeleteButton" title="Delete Power" data-bind="powerDelete: true"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
             <div class="col-md-9">
@@ -27,4 +15,30 @@
         </div>
     </div>
     <!-- /ko -->
+
+    <div class="modal fade" id="addPowerModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Power</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="loadingContainer">
+                        <img class="ajaxLoader" src="@Url.Content("~/content/site/ajax-loader.gif")" />
+                    </div>
+                    <div class="modalContentsContainer" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="addPowerModalAddButton">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    // TODO: This is hacky!
+    var addPowerDialogUrl = '@Url.Action("AddPowerDialog")';
+</script>

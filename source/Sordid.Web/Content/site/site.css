@@ -9,6 +9,15 @@
     padding-right: 15px;
 }
 
+/* Fixes weird behavior where popping a modal adds scrollbar to body
+   http://stackoverflow.com/questions/17726641/bootstrap-how-to-disable-vertical-scrollbar */
+.modal {
+    overflow-y: auto;
+}
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+    margin-right: 0;
+}
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;

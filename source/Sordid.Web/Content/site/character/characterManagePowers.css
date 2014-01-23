@@ -5,3 +5,7 @@
 .powerContainer {
     margin-bottom: 7px;
 }
+
+#addPowerModal .loadingContainer {
+    text-align: center;
+}

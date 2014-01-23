@@ -50,5 +50,11 @@ namespace Sordid.Web.Controllers
             characterVM.Character = await _characterService.SaveCharacter(characterVM.Character);
             return Json(characterVM);
         }
+
+        // GET: /Character/AddPowerDialog
+        public ActionResult AddPowerDialog()
+        {
+            return PartialView("_AddPowerDialog", new AddPowerDialogViewModel());
+        }
     }
 }
