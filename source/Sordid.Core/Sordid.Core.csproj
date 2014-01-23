@@ -76,6 +76,11 @@
     <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Migrations\201401171852041_InitialCreate.cs" />
+    <Compile Include="Migrations\201401171852041_InitialCreate.Designer.cs">
+      <DependentUpon>201401171852041_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Aspect.cs" />
     <Compile Include="Model\BaseEntity.cs" />
@@ -105,9 +110,13 @@
     <Compile Include="SordidDbContext.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201401171852041_InitialCreate.resx">
+      <DependentUpon>201401171852041_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

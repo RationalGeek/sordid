@@ -69,14 +69,10 @@ namespace Sordid.Core
 
         private void SetEntityDateFields(DbEntityEntry entry, BaseEntity baseEntity)
         {
-            if (entry.State == EntityState.Added)
+            if (entry.State == EntityState.Added || entry.State == EntityState.Modified)
             {
-                baseEntity.DateCreated = DateTime.Now;
-                baseEntity.DateUpdated = DateTime.Now;
-            }
-
-            if (entry.State == EntityState.Modified)
-            {
+                if (baseEntity.DateCreated == default(DateTime))
+                    baseEntity.DateCreated = DateTime.Now;
                 baseEntity.DateUpdated = DateTime.Now;
             }
         }
