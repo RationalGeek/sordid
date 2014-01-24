@@ -72,6 +72,8 @@
     <Compile Include="Interfaces\ICharacterRepository.cs" />
     <Compile Include="Interfaces\ICharacterService.cs" />
     <Compile Include="Interfaces\IIdKeyedEntity.cs" />
+    <Compile Include="Interfaces\IPowerRepository.cs" />
+    <Compile Include="Interfaces\IPowerService.cs" />
     <Compile Include="Interfaces\ISkillRepository.cs" />
     <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
@@ -102,9 +104,11 @@
     <Compile Include="Repositories\AspectRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CharacterRepository.cs" />
+    <Compile Include="Repositories\PowerRepository.cs" />
     <Compile Include="Repositories\SkillRepository.cs" />
     <Compile Include="Services\AspectService.cs" />
     <Compile Include="Services\CharacterService.cs" />
+    <Compile Include="Services\PowerService.cs" />
     <Compile Include="Services\SkillService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="SordidDbContext.cs" />

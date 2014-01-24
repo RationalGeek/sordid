@@ -12,10 +12,12 @@ namespace Sordid.Web.Controllers
     {
         private ILogger _logger;
         private ICharacterService _characterService;
+        private IPowerService _powerService;
 
-        public CharacterController(ICharacterService characterService, ILogger logger)
+        public CharacterController(ICharacterService characterService, ILogger logger, IPowerService powerService)
         {
             _characterService = characterService;
+            _powerService = powerService;
             _logger = logger;
         }
 
@@ -52,9 +54,11 @@ namespace Sordid.Web.Controllers
         }
 
         // GET: /Character/AddPowerDialog
-        public ActionResult AddPowerDialog()
+        public async Task<ActionResult> AddPowerDialog()
         {
-            return PartialView("_AddPowerDialog", new AddPowerDialogViewModel());
+            var powers = await _powerService.GetStockPowers();
+
+            return PartialView("_AddPowerDialog", new AddPowerDialogViewModel { StockPowers = powers });
         }
     }
 }

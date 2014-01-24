@@ -1,3 +1,5 @@
 ﻿@model Sordid.Web.Models.AddPowerDialogViewModel
 
-<strong>I am the add power dialog <em>partial view</em>!</strong>
+@foreach (var power in Model.StockPowers) {
+    <div><span>@power.Name</span> <span>(@power.Cost)</span></div>
+}
