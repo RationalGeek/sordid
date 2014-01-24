@@ -9,3 +9,20 @@
 #addPowerModal .loadingContainer {
     text-align: center;
 }
+
+#addPowerModal .list-item-power {
+    cursor: pointer;
+}
+
+#addPowerModal .selected-indicator {
+    display: none;
+}
+
+#addPowerModal .list-item-power.active .selected-indicator {
+    display: inherit;
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    font-size: 200%;
+    color: #0C0;
+}

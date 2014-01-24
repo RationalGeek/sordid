@@ -31,6 +31,11 @@
                         // Insert resulting HTML into the DOM, and show it
                         modalContentsContainer.html(data);
                         modalContentsContainer.show();
+
+                        // Link up selection behavior on list items
+                        modalContentsContainer.find('.list-item-power').click(function (item) {
+                            $(item.target).toggleClass('active');
+                        });
                     },
                 });
 
