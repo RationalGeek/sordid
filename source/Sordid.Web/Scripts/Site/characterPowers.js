@@ -1,4 +1,4 @@
-﻿define('sordid-characterPowers', ['jquery', 'knockout'], function ($, ko) {
+﻿define('sordid-characterPowers', ['jquery', 'knockout', 'sordid-characterManage'], function ($, ko, charMan) {
     var alreadyLoadedPowers = false;
 
     ko.bindingHandlers.powerDelete = {
@@ -14,9 +14,9 @@
         var loadingContainer = addPowerModal.find('.loadingContainer');
         var modalContentsContainer = addPowerModal.find('.modalContentsContainer');
 
-        //addPowerModal.on('hidden.bs.modal', function (e) {
-        //    alert('modal has hidden!');
-        //});
+        var clearSelection = function () {
+            $('#addPowerModal .list-item-power').removeClass('active');
+        };
 
         addPowerModal.on('show.bs.modal', function (e) {
             if (!alreadyLoadedPowers) {
@@ -33,6 +33,7 @@
                         modalContentsContainer.show();
 
                         // Link up selection behavior on list items
+                        // TODO: Clicking directly on Name text does not fire click event
                         modalContentsContainer.find('.list-item-power').click(function (item) {
                             $(item.target).toggleClass('active');
                         });
@@ -41,10 +42,21 @@
 
                 alreadyLoadedPowers = true;
             }
+            clearSelection();
         });
 
         $('#addPowerModalAddButton').click(function () {
-            // TODO: Respond to add being clicked
+            // Get everything that is selected
+            var selectedItems = $('#addPowerModal .list-item-power.active');
+            selectedItems.each(function () {
+                var item = $(this);
+                var itemToAdd = {};
+                itemToAdd.Id = parseInt(item.find('input[name=id]').val());
+                itemToAdd.Cost = parseInt(item.find('.cost').text());
+                itemToAdd.Name = item.find('.name').text();
+                charMan.viewModel().Character.Powers.push(itemToAdd);
+                clearSelection();
+            });
 
             addPowerModal.modal('hide');
         });
