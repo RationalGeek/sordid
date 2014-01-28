@@ -74,9 +74,9 @@ namespace Sordid.Core.Services
 
         public async Task<Character> SaveCharacter(Character character)
         {
-            character = _charRepo.Update(character);
+            _charRepo.Update(character);
             await _charRepo.UnitOfWork.Save();
-            return character;
+            return await LoadCharacter(character.Id);
         }
     }
 }

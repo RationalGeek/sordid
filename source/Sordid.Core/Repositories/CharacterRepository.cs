@@ -15,46 +15,46 @@ namespace Sordid.Core.Repositories
         public override Character Update(Character entity)
         {
             // Also, powers can be added dynamically which means their IDs won't line up correctly
-            // Must be done before base.Update
             entity.Powers.ForEach(p =>
             {
                 p.CharacterId = entity.Id;
                 p.PowerId = p.Power.Id;
+
+                // Fixes a bug where UI can add same stock power twice
+                // which causes EF to think there are dupe IDs
+                if (p.Power.Type == PowerType.Stock)
+                    p.Power = null;
             });
 
-            entity = base.Update(entity);
-
-            // TODO: Make some reusable code for updating child entities
-
-            // Make sure the skills are attached to the context so that they get updated
-            entity.Skills.ForEach(s => {
-                var entry = DbContext.Entry(s);
-                entry.State = EntityState.Modified;
-            });
-
-            // Make sure the aspects are attached to the context so that they get updated
-            entity.Aspects.ForEach(a =>
-            {
-                var entry = DbContext.Entry(a);
-                entry.State = EntityState.Modified;
-            });
-
-            // Make sure the powers are attached to the context so that they get updated
-            entity.Powers.ForEach(p =>
-            {
-                // Powers can be added dynamically by the UI, so we need to account for that
-                var entry = DbContext.Entry(p);
-                if (p.Id == 0)
-                    entry.State = EntityState.Added;
-                else
-                    entry.State = EntityState.Modified;
-            });
-
+            FixUpLinkingEntities(entity);
             FixUpLovEntities(entity);
 
-            return entity;
+            return base.Update(entity);
         }
 
+        /// <summary>
+        /// Ensure that child entities are included in the update
+        /// </summary>
+        public void FixUpLinkingEntities(Character entity)
+        {
+            entity.Skills.Cast<IIdKeyedEntity>()
+                .Concat(entity.Aspects.Cast<IIdKeyedEntity>())
+                .Concat(entity.Powers.Cast<IIdKeyedEntity>())
+                .Where(e => e != null)
+                .ToList().ForEach(e =>
+                {
+                    var entry = DbContext.Entry(e);
+                    if (e.Id == 0)
+                        entry.State = EntityState.Added;
+                    else
+                        entry.State = EntityState.Modified;
+                });
+        }
+
+        /// <summary>
+        /// Ensure that reference entities, which should not be updated,
+        /// are not included
+        /// </summary>
         public void FixUpLovEntities(Character entity)
         {
             // TODO: Test if this is necessary or not
@@ -62,6 +62,7 @@ namespace Sordid.Core.Repositories
             entity.Powers.Select(p => (BaseEntity)p.Power)
                 .Concat(entity.Skills.Select(s => (BaseEntity)s.Skill))
                 .Concat(entity.Aspects.Select(a => (BaseEntity)a.Aspect))
+                .Where(e => e != null)
                 .ToList().ForEach(e =>
                 {
                     var entry = DbContext.Entry(e);
