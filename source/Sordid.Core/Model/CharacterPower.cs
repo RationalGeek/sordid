@@ -1,0 +1,17 @@
+﻿using Sordid.Core.Interfaces;
+using System.Web.Script.Serialization;
+
+namespace Sordid.Core.Model
+{
+    public class CharacterPower : BaseEntity, IIdKeyedEntity
+    {
+        public int Id { get; set; }
+
+        public int PowerId { get; set; }
+        public Power Power { get; set; }
+
+        public int CharacterId { get; set; }
+        [ScriptIgnore] // TODO: Ew, fix this JSON ignore attribute somehow to avoid circular references...
+        public Character Character { get; set; }
+    }
+}

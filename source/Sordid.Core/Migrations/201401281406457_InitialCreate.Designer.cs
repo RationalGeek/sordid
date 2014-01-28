@@ -13,7 +13,7 @@ namespace Sordid.Core.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201401171852041_InitialCreate"; }
+            get { return "201401281406457_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

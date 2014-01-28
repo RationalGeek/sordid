@@ -28,7 +28,7 @@ namespace Sordid.Core.Services
             var character = new Character { Name = "New Character", ApplicationUserId = userId };
             await InitSkills(character);
             await InitAspects(character);
-            character.Powers = new List<Power>();
+            character.Powers = new List<CharacterPower>();
 
             character = _charRepo.Add(character);
             await _charRepo.UnitOfWork.Save();

@@ -50,10 +50,10 @@
             var selectedItems = $('#addPowerModal .list-item-power.active');
             selectedItems.each(function () {
                 var item = $(this);
-                var itemToAdd = {};
-                itemToAdd.Id = parseInt(item.find('input[name=id]').val());
-                itemToAdd.Cost = parseInt(item.find('.cost').text());
-                itemToAdd.Name = item.find('.name').text();
+                var itemToAdd = { Power: {} };
+                itemToAdd.Power.Id = parseInt(item.find('input[name=id]').val());
+                itemToAdd.Power.Cost = parseInt(item.find('.cost').text());
+                itemToAdd.Power.Name = item.find('.name').text();
                 charMan.viewModel().Character.Powers.push(itemToAdd);
                 clearSelection();
             });

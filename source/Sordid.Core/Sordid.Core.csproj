@@ -78,9 +78,9 @@
     <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
-    <Compile Include="Migrations\201401171852041_InitialCreate.cs" />
-    <Compile Include="Migrations\201401171852041_InitialCreate.Designer.cs">
-      <DependentUpon>201401171852041_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201401281406457_InitialCreate.cs" />
+    <Compile Include="Migrations\201401281406457_InitialCreate.Designer.cs">
+      <DependentUpon>201401281406457_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Model\Character.cs" />
     <Compile Include="Model\CharacterAspect.cs" />
+    <Compile Include="Model\CharacterPower.cs" />
     <Compile Include="Model\CharaterSkill.cs" />
     <Compile Include="Model\ModelBuilders\ApplicationUserModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\AppUserTableNames.cs" />
@@ -118,8 +119,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401171852041_InitialCreate.resx">
-      <DependentUpon>201401171852041_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401281406457_InitialCreate.resx">
+      <DependentUpon>201401281406457_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

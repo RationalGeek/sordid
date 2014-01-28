@@ -70,12 +70,11 @@ namespace Sordid.Core.Migrations
                 .Index(t => t.Character_Id);
             
             CreateTable(
-                "dbo.Powers",
+                "dbo.CharacterPowers",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Cost = c.Int(nullable: false),
-                        Name = c.String(),
+                        PowerId = c.Int(nullable: false),
                         CharacterId = c.Int(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
@@ -84,9 +83,26 @@ namespace Sordid.Core.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Characters", t => t.CharacterId, cascadeDelete: true)
+                .ForeignKey("dbo.Powers", t => t.PowerId, cascadeDelete: true)
                 .ForeignKey("dbo.Characters", t => t.Character_Id)
                 .Index(t => t.CharacterId)
+                .Index(t => t.PowerId)
                 .Index(t => t.Character_Id);
+            
+            CreateTable(
+                "dbo.Powers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Type = c.Int(nullable: false),
+                        Cost = c.Int(nullable: false),
+                        Name = c.String(),
+                        Notes = c.String(),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateUpdated = c.DateTime(nullable: false),
+                        ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.CharacterSkills",
@@ -194,8 +210,9 @@ namespace Sordid.Core.Migrations
             DropForeignKey("dbo.CharacterSkills", "Character_Id", "dbo.Characters");
             DropForeignKey("dbo.CharacterSkills", "SkillId", "dbo.Skills");
             DropForeignKey("dbo.CharacterSkills", "CharacterId", "dbo.Characters");
-            DropForeignKey("dbo.Powers", "Character_Id", "dbo.Characters");
-            DropForeignKey("dbo.Powers", "CharacterId", "dbo.Characters");
+            DropForeignKey("dbo.CharacterPowers", "Character_Id", "dbo.Characters");
+            DropForeignKey("dbo.CharacterPowers", "PowerId", "dbo.Powers");
+            DropForeignKey("dbo.CharacterPowers", "CharacterId", "dbo.Characters");
             DropForeignKey("dbo.CharacterAspects", "Character_Id", "dbo.Characters");
             DropForeignKey("dbo.CharacterAspects", "CharacterId", "dbo.Characters");
             DropForeignKey("dbo.CharacterAspects", "AspectId", "dbo.Aspects");
@@ -207,8 +224,9 @@ namespace Sordid.Core.Migrations
             DropIndex("dbo.CharacterSkills", new[] { "Character_Id" });
             DropIndex("dbo.CharacterSkills", new[] { "SkillId" });
             DropIndex("dbo.CharacterSkills", new[] { "CharacterId" });
-            DropIndex("dbo.Powers", new[] { "Character_Id" });
-            DropIndex("dbo.Powers", new[] { "CharacterId" });
+            DropIndex("dbo.CharacterPowers", new[] { "Character_Id" });
+            DropIndex("dbo.CharacterPowers", new[] { "PowerId" });
+            DropIndex("dbo.CharacterPowers", new[] { "CharacterId" });
             DropIndex("dbo.CharacterAspects", new[] { "Character_Id" });
             DropIndex("dbo.CharacterAspects", new[] { "CharacterId" });
             DropIndex("dbo.CharacterAspects", new[] { "AspectId" });
@@ -220,6 +238,7 @@ namespace Sordid.Core.Migrations
             DropTable("dbo.Skills");
             DropTable("dbo.CharacterSkills");
             DropTable("dbo.Powers");
+            DropTable("dbo.CharacterPowers");
             DropTable("dbo.CharacterAspects");
             DropTable("dbo.Characters");
             DropTable("dbo.Aspects");
