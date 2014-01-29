@@ -4,7 +4,8 @@
     ko.bindingHandlers.powerDelete = {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             $(element).click(function () {
-                alert('Delete button clicked!');
+                var itemToDelete = ko.dataFor(element);
+                charMan.viewModel().Character.Powers.remove(itemToDelete);
             });
         }
     };
@@ -55,6 +56,7 @@
                 itemToAdd.Power.Cost = parseInt(item.find('.cost').text());
                 itemToAdd.Power.Name = item.find('.name').text();
                 charMan.viewModel().Character.Powers.push(itemToAdd);
+                // TODO: List of powers should be sorted by name
                 clearSelection();
             });
 
