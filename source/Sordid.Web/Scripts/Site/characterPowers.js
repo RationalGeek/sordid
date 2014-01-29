@@ -52,15 +52,30 @@
             selectedItems.each(function () {
                 var item = $(this);
                 var itemToAdd = { Power: {} };
-                itemToAdd.Power.Id = parseInt(item.find('input[name=id]').val());
-                itemToAdd.Power.Cost = parseInt(item.find('.cost').text());
-                itemToAdd.Power.Name = item.find('.name').text();
+                itemToAdd.Power.Id = ko.observable(parseInt(item.find('input[name=id]').val()));
+                itemToAdd.Power.Cost = ko.observable(parseInt(item.find('.cost').text()));
+                itemToAdd.Power.Name = ko.observable(item.find('.name').text());
                 charMan.viewModel().Character.Powers.push(itemToAdd);
-                // TODO: List of powers should be sorted by name
                 clearSelection();
             });
 
             addPowerModal.modal('hide');
+        });
+    });
+
+    $(document).on('sordid.ko.viewModelInit', function (event, viewModel) {
+        // Adds a sorted computed to the viewModel so that the UI
+        // can be bound to that instead, which ensures the list remains
+        // sorted when displayed to user
+
+        viewModel.Character.PowersSorted = ko.computed(function () {
+            return viewModel.Character.Powers().sort(function (a, b) {
+                var aName = a.Power.Name();
+                var bName = b.Power.Name();
+
+                return aName === bName ? 0 :
+                    aName > bName ? 1 : -1;
+            });
         });
     });
 });

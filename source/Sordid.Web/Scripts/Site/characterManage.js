@@ -16,6 +16,8 @@
     var initKnockout = function (viewModelRaw) {
         viewModel = ko.mapping.fromJS(viewModelRaw);
         viewModel.ranks = buildRanks();
+        $(document).trigger('sordid.ko.viewModelInit', viewModel);
+        $(document).trigger('sordid.ko.viewModelChanged', viewModel);
         ko.applyBindings(viewModel);
     };
 
@@ -57,6 +59,7 @@
                 success: function (data) {
                     // Reapply viewModel bindings
                     ko.mapping.fromJS(data, {}, viewModel);
+                    $(document).trigger('sordid.ko.viewModelChanged', viewModel);
 
                     // Pop a saved message
                     alerts.success('<strong>Saved!</strong>', true);
