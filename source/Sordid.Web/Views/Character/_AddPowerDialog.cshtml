@@ -4,8 +4,8 @@
     @foreach (var power in Model.StockPowers)
     {
         <li class="list-group-item list-item-power" data-powerID="@power.Id">
-            <input type="hidden" name="id" value="@power.Id"/>
             <span class="selected-indicator"><span class="glyphicon glyphicon-ok"></span></span>
+            <input type="hidden" name="id" value="@power.Id"/>
             <span class="badge cost">@power.Cost</span>
             <span class="name">@power.Name</span>
         </li>

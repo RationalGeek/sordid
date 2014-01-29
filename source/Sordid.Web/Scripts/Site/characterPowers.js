@@ -34,9 +34,8 @@
                         modalContentsContainer.show();
 
                         // Link up selection behavior on list items
-                        // TODO: Clicking directly on Name text does not fire click event
-                        modalContentsContainer.find('.list-item-power').click(function (item) {
-                            $(item.target).toggleClass('active');
+                        modalContentsContainer.find('li.list-item-power').click(function (item) {
+                            $(this).toggleClass('active');
                         });
                     },
                 });
