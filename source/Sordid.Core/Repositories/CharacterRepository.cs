@@ -27,7 +27,6 @@ namespace Sordid.Core.Repositories
             });
 
             FixUpLinkingEntities(entity);
-            FixUpLovEntities(entity);
 
             return base.Update(entity);
         }
@@ -48,25 +47,6 @@ namespace Sordid.Core.Repositories
                         entry.State = EntityState.Added;
                     else
                         entry.State = EntityState.Modified;
-                });
-        }
-
-        /// <summary>
-        /// Ensure that reference entities, which should not be updated,
-        /// are not included
-        /// </summary>
-        public void FixUpLovEntities(Character entity)
-        {
-            // TODO: Test if this is necessary or not
-
-            entity.Powers.Select(p => (BaseEntity)p.Power)
-                .Concat(entity.Skills.Select(s => (BaseEntity)s.Skill))
-                .Concat(entity.Aspects.Select(a => (BaseEntity)a.Aspect))
-                .Where(e => e != null)
-                .ToList().ForEach(e =>
-                {
-                    var entry = DbContext.Entry(e);
-                    entry.State = EntityState.Unchanged;
                 });
         }
     }
