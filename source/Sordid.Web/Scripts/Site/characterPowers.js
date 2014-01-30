@@ -11,15 +11,16 @@
     };
 
     $(document).ready(function () {
-        var addPowerModal = $('#addPowerModal');
-        var loadingContainer = addPowerModal.find('.loadingContainer');
-        var modalContentsContainer = addPowerModal.find('.modalContentsContainer');
+        var addStockPowerModal = $('#addStockPowerModal');
+        var addCustomPowerModal = $('#addCustomPowerModal');
+        var loadingContainer = addStockPowerModal.find('.loadingContainer');
+        var modalContentsContainer = addStockPowerModal.find('.modalContentsContainer');
 
         var clearSelection = function () {
-            $('#addPowerModal .list-item-power').removeClass('active');
+            addStockPowerModal.find('.list-item-power').removeClass('active');
         };
 
-        addPowerModal.on('show.bs.modal', function (e) {
+        addStockPowerModal.on('show.bs.modal', function (e) {
             if (!alreadyLoadedPowers) {
                 // Begin ajax request for dialog content
                 $.ajax({
@@ -45,9 +46,9 @@
             clearSelection();
         });
 
-        $('#addPowerModalAddButton').click(function () {
+        $('#addStockPowerModalAddButton').click(function () {
             // Get everything that is selected
-            var selectedItems = $('#addPowerModal .list-item-power.active');
+            var selectedItems = addStockPowerModal.find('.list-item-power.active');
             selectedItems.each(function () {
                 var item = $(this);
                 var itemToAdd = { Power: {} };
@@ -58,7 +59,12 @@
                 clearSelection();
             });
 
-            addPowerModal.modal('hide');
+            addStockPowerModal.modal('hide');
+        });
+
+        $('#addCustomPowerModalAddButton').click(function () {
+            alert('Add button clicked!');
+            addCustomPowerModal.modal('hide');
         });
     });
 
