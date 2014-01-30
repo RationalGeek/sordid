@@ -66,7 +66,6 @@
         // Adds a sorted computed to the viewModel so that the UI
         // can be bound to that instead, which ensures the list remains
         // sorted when displayed to user
-
         viewModel.Character.PowersSorted = ko.computed(function () {
             return viewModel.Character.Powers().sort(function (a, b) {
                 var aName = a.Power.Name();
@@ -75,6 +74,14 @@
                 return aName === bName ? 0 :
                     aName > bName ? 1 : -1;
             });
+        });
+
+        viewModel.Character.TotalPowerCost = ko.computed(function () {
+            var sum = 0;
+            for (var i = 0; i < viewModel.Character.Powers().length; i++) {
+                sum += viewModel.Character.Powers()[i].Power.Cost();
+            }
+            return sum;
         });
     });
 });

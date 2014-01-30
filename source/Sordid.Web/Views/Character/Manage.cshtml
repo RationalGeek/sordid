@@ -28,21 +28,22 @@
         <a type="button" href="#section-powers" class="btn btn-primary">Powers / Stunts</a>
     </div>
 
-    <div id="section-basics" class="char-section col-md-8 panel panel-default">
-        @Html.Partial("_ManageBasics")
-    </div>
+    <div class="col-md-8">
+        <div id="section-basics" class="char-section panel panel-default">
+            @Html.Partial("_ManageBasics")
+        </div>
 
-    <div id="section-skills" class="char-section col-md-8 panel panel-default hidden">
-        @Html.Partial("_ManageSkills")
-    </div>
+        <div id="section-skills" class="char-section panel panel-default hidden">
+            @Html.Partial("_ManageSkills")
+        </div>
 
-    <div id="section-aspects" class="char-section col-md-8 panel panel-default hidden">
-        @Html.Partial("_ManageAspects")
-    </div>
+        <div id="section-aspects" class="char-section panel panel-default hidden">
+            @Html.Partial("_ManageAspects")
+        </div>
 
-    <div id="section-powers" class="char-section col-md-8 panel panel-default hidden">
-        @* TODO: You were about to start working on powers UI and got distracted implementing require.js *@
-        @Html.Partial("_ManagePowers")
+        <div id="section-powers" class="char-section panel panel-default hidden">
+            @Html.Partial("_ManagePowers")
+        </div>
     </div>
 </div>
 

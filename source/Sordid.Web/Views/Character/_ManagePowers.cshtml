@@ -1,38 +1,58 @@
 ﻿<div class="panel-body">
     <div id="powersAddContainer">
-        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPowerModal"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#addPowerModal">
+            <span class="glyphicon glyphicon-book"></span> Add Stock
+        </button>
+        <button class="btn btn-info btn-sm" data-toggle="modal">
+            <span class="glyphicon glyphicon-cog"></span> Add Custom
+        </button>
     </div>
+</div>
 
-    <!-- ko foreach: Character.PowersSorted -->
-    <div class="powerContainer" data-bind="powerInit: true">
-        <div class="powerView row">
-            <div class="col-md-3">
-                <a class="btn btn-primary btn-sm powerDeleteButton" title="Delete Power" data-bind="powerDelete: true"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <div class="col-md-9">
-                <span data-bind="text: Power.Name"></span> (<span data-bind="text: Power.Cost"></span> Refresh)
-            </div>
-        </div>
-    </div>
-    <!-- /ko -->
+<table class="table powerContainer">
+    <thead>
+        <tr>
+            <td>Power</td>
+            <td class="cost">Cost</td>
+            <td class="remove">Remove</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- ko foreach: Character.PowersSorted -->
+        <tr data-bind="powerInit: true">
+            <td data-bind="text: Power.Name"></td>
+            <td class="cost"><span class="badge" data-bind="text: Power.Cost"></span></td>
+            <td class="remove"><a class="btn btn-danger btn-sm powerDeleteButton" title="Delete Power" data-bind="powerDelete: true"><span class="glyphicon glyphicon-remove"></span></a></td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td class="cost">
+                <span class="badge" data-bind="text: Character.TotalPowerCost"></span>
+            </td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>
 
-    <div class="modal fade" id="addPowerModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Add Power</h4>
+<div class="modal fade" id="addPowerModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add Power</h4>
+            </div>
+            <div class="modal-body">
+                <div class="loadingContainer">
+                    <img class="ajaxLoader" src="@Url.Content("~/content/site/ajax-loader.gif")" />
                 </div>
-                <div class="modal-body">
-                    <div class="loadingContainer">
-                        <img class="ajaxLoader" src="@Url.Content("~/content/site/ajax-loader.gif")" />
-                    </div>
-                    <div class="modalContentsContainer" style="display: none;"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="addPowerModalAddButton">Add</button>
-                </div>
+                <div class="modalContentsContainer" style="display: none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="addPowerModalAddButton">Add</button>
             </div>
         </div>
     </div>

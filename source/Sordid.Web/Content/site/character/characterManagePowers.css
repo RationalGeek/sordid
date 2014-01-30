@@ -1,8 +1,4 @@
-﻿#powersAddContainer {
-    margin-bottom: 20px;
-}
-
-.powerContainer {
+﻿.powerContainer {
     margin-bottom: 7px;
 }
 
@@ -25,4 +21,30 @@
     top: 2px;
     font-size: 200%;
     color: #0C0;
+}
+
+.powerContainer thead {
+    font-weight: bold;
+}
+
+.powerContainer td.cost, .powerContainer td.remove {
+    text-align: center;
+}
+
+/* Circular delete button */
+.powerContainer .powerDeleteButton {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0.5;
+}
+.powerContainer .powerDeleteButton .glyphicon {
+    vertical-align: baseline;
+    font-size: 85%;
+}
+.powerContainer .powerDeleteButton:hover {
+    opacity: 1;
 }

@@ -3,5 +3,6 @@
 }
 
 .char-section {
+    min-height: 500px;
     border-color: black;
 }
