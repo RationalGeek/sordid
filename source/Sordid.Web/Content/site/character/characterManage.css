@@ -6,3 +6,19 @@
     min-height: 500px;
     border-color: black;
 }
+
+#sections-container > .panel {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Fixes weird layout issue with rows inside panels
+   http://stackoverflow.com/questions/15728336/the-row-is-larger-than-the-container-in-bootstrap */
+#sections-container > .panel .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#saveButton {
+    margin-right: 15px;
+}
