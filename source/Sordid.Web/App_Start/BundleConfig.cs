@@ -49,7 +49,8 @@ namespace Sordid.Web
                       "~/Scripts/site/requireStart.js",
                       "~/Scripts/site/util.js",
                       "~/Scripts/site/alerts.js",
-                      "~/Scripts/site/errorHandling.js"
+                      "~/Scripts/site/errorHandling.js",
+                      "~/Scripts/site/koDirty.js"
                       ));
 
             // TODO: Tried to upgrade to Bootstrap 3.1 but it caused style issues with active list group items in powers stock add

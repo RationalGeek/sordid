@@ -1,4 +1,4 @@
-﻿define('sordid-characterManage', ['jquery', 'knockout', 'sordid-alerts', 'sordid-errors'], function ($, ko, alerts, errors) {
+﻿define('sordid-characterManage', ['jquery', 'knockout', 'sordid-alerts', 'sordid-errors', 'sordid-koDirty'], function ($, ko, alerts, errors) {
     var buildRanks = function () {
         return [
             { name: 'Superb (+5)', value: 5 },
@@ -16,6 +16,7 @@
     var initKnockout = function (viewModelRaw) {
         viewModel = ko.mapping.fromJS(viewModelRaw);
         viewModel.ranks = buildRanks();
+        viewModel.dirty = ko.dirtyFlag(viewModel);
         $(document).trigger('sordid.ko.viewModelInit', viewModel);
         $(document).trigger('sordid.ko.viewModelChanged', viewModel);
         ko.applyBindings(viewModel);
@@ -44,8 +45,6 @@
 
         // Save behavior
         $('#saveButton').click(function () {
-            // TODO: Need dirty behavior to not save if not necessary, and prevent navigation if dirty
-
             $('#saveButton').addClass('disabled');
             $('#saveIcon').addClass('hidden');
             $('#pendingSaveIcon').removeClass('hidden');
@@ -63,6 +62,9 @@
 
                     // Pop a saved message
                     alerts.success('<strong>Saved!</strong>', true);
+
+                    // Reset dirty flag
+                    viewModel.dirty.reset();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     errors.alertError(jqXHR, textStatus, errorThrown, 'Failed to save!');
@@ -78,6 +80,12 @@
         $(document).ready(function () {
             if (location.hash.length > 0) {
                 toggleSection(location.hash);
+            }
+        });
+
+        $(window).bind('beforeunload', function () {
+            if (viewModel.dirty.isDirty()) {
+                return 'You have unsaved changed. Are you sure you want to leave?';
             }
         });
     });
