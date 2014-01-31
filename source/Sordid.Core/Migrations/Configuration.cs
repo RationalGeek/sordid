@@ -15,6 +15,8 @@ namespace Sordid.Core.Migrations
 
         protected override void Seed(Sordid.Core.SordidDbContext context)
         {
+            // TODO: All of this AddOrUpdate is causing DateAdded tracking column to be reset on every run
+
             context.Skills.AddOrUpdate(s => s.Name,
                 new Skill { Type = SkillType.Standard, Name = "Alertness", Trappings = "Avoiding Surprise, Combat Initiative, Passive Awareness" },
                 new Skill { Type = SkillType.Standard, Name = "Athletics", Trappings = "Climbing, Dodging, Falling, Jumping, Sprinting, Other Physical Actions" },
