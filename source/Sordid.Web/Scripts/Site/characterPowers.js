@@ -1,4 +1,4 @@
-﻿define('sordid-characterPowers', ['jquery', 'knockout', 'sordid-characterManage'], function ($, ko, charMan) {
+﻿define('sordid-characterPowers', ['jquery', 'knockout', 'sordid-characterManage', 'sordid-util'], function ($, ko, charMan, util) {
     var alreadyLoadedPowers = false;
 
     ko.bindingHandlers.powerDelete = {
@@ -10,9 +10,27 @@
         }
     };
 
+    ko.bindingHandlers.powerGlyph = {
+        init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            var typeName = valueAccessor().TypeName();
+            var glyphName = '';
+            if (typeName == 'Stock') {
+                glyphName = 'glyphicon-book';
+            }
+            if (typeName == 'Custom') {
+                glyphName = 'glyphicon-cog';
+            }
+            if (glyphName != '') {
+                $(element).addClass(glyphName);
+            }
+        }
+    };
+
     $(document).ready(function () {
         var addStockPowerModal = $('#addStockPowerModal');
         var addCustomPowerModal = $('#addCustomPowerModal');
+        var customPowerNameInput = addCustomPowerModal.find('#powerName');
+        var customPowerCostInput = addCustomPowerModal.find('#powerCost');
         var loadingContainer = addStockPowerModal.find('.loadingContainer');
         var modalContentsContainer = addStockPowerModal.find('.modalContentsContainer');
 
@@ -46,15 +64,31 @@
             clearSelection();
         });
 
+        addCustomPowerModal.on('show.bs.modal', function (e) {
+            customPowerNameInput.val('');
+            customPowerCostInput.val(0);
+        });
+
+        var createPowerViewModel = function (id, name, cost, typeName) {
+            var power = { Power: {} };
+            power.Power.Id = ko.observable(id);
+            power.Power.Name = ko.observable(name);
+            power.Power.Cost = ko.observable(cost);
+            power.Power.TypeName = ko.observable(typeName);
+            return power;
+        };
+
         $('#addStockPowerModalAddButton').click(function () {
             // Get everything that is selected
             var selectedItems = addStockPowerModal.find('.list-item-power.active');
             selectedItems.each(function () {
                 var item = $(this);
-                var itemToAdd = { Power: {} };
-                itemToAdd.Power.Id = ko.observable(parseInt(item.find('input[name=id]').val()));
-                itemToAdd.Power.Cost = ko.observable(parseInt(item.find('.cost').text()));
-                itemToAdd.Power.Name = ko.observable(item.find('.name').text());
+                var itemToAdd = createPowerViewModel(
+                    parseInt(item.find('input[name=id]').val()),
+                    item.find('.name').text(),
+                    parseInt(item.find('.cost').text()),
+                    'Stock'
+                    );
                 charMan.viewModel().Character.Powers.push(itemToAdd);
                 clearSelection();
             });
@@ -63,7 +97,13 @@
         });
 
         $('#addCustomPowerModalAddButton').click(function () {
-            alert('Add button clicked!');
+            var itemToAdd = createPowerViewModel(
+                0,
+                customPowerNameInput.val(),
+                util.tryParseInt(customPowerCostInput.val(), 0),
+                'Custom'
+                );
+            charMan.viewModel().Character.Powers.push(itemToAdd);
             addCustomPowerModal.modal('hide');
         });
     });

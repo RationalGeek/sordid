@@ -7,7 +7,7 @@ namespace Sordid.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            // TODO: Convert to using CDNs for jquery, etc.
+            // TODO: Convert to using CDNs for jquery, etc.  Theoretically this happens automagically?
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/lib/jquery/jquery-{version}.js"));
@@ -47,10 +47,12 @@ namespace Sordid.Web
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                       "~/Scripts/site/requireStart.js",
+                      "~/Scripts/site/util.js",
                       "~/Scripts/site/alerts.js",
                       "~/Scripts/site/errorHandling.js"
                       ));
 
+            // TODO: Tried to upgrade to Bootstrap 3.1 but it caused style issues with active list group items in powers stock add
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/lib/bootstrap/bootstrap.css",
                       "~/Content/site/site.css"));

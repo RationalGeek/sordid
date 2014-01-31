@@ -1,6 +1,7 @@
 ﻿using Ninject.Extensions.Logging;
 using Sordid.Core.Interfaces;
 using Sordid.Core.Model;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -14,22 +15,44 @@ namespace Sordid.Core.Repositories
 
         public override Character Update(Character entity)
         {
-            // Also, powers can be added dynamically which means their IDs won't line up correctly
-            entity.Powers.ForEach(p =>
-            {
-                p.CharacterId = entity.Id;
-                p.PowerId = p.Power.Id;
+            // If there are no powers, the UI will return null,
+            // when a lot of this fix up code assumes an empty collection
+            if (entity.Powers == null)
+                entity.Powers = new List<CharacterPower>();
 
-                // Fixes a bug where UI can add same stock power twice
-                // which causes EF to think there are dupe IDs
-                if (p.Power.Type == PowerType.Stock)
-                    p.Power = null;
-            });
-
+            FixUpPowers(entity);
             FixUpLinkingEntities(entity);
             DeletePowers(entity);
 
             return base.Update(entity);
+        }
+
+        /// <summary>
+        /// Powers are weird because some of them are Stock which can't be added by
+        /// the UI, and some of them are Custom which are only added by the UI.  This
+        /// requires some mucking about with Ids and references.
+        /// </summary>
+        private void FixUpPowers(Character entity)
+        {
+            entity.Powers.ForEach(p =>
+            {
+                p.CharacterId = entity.Id;
+
+                if (p.Power != null)
+                {
+                    // Powers can be added dynamically which means their IDs won't line up correctly
+                    p.PowerId = p.Power.Id;
+
+                    // Any powers being added are custom
+                    if (p.Power.Id == 0)
+                        p.Power.Type = PowerType.Custom;
+
+                    // Fixes a bug where UI can add same stock power twice
+                    // which causes EF to think there are dupe IDs
+                    if (p.Power.Type == PowerType.Stock)
+                        p.Power = null;
+                }
+            });
         }
 
         /// <summary>
@@ -77,6 +100,9 @@ namespace Sordid.Core.Repositories
             entity.Skills.Cast<IIdKeyedEntity>()
                 .Concat(entity.Aspects.Cast<IIdKeyedEntity>())
                 .Concat(entity.Powers.Cast<IIdKeyedEntity>())
+                .Concat(entity.Powers.Select(p => p.Power)
+                    .Where(p => p != null && p.Type == PowerType.Custom)
+                    .Cast<IIdKeyedEntity>())
                 .Where(e => e != null)
                 .ToList().ForEach(e =>
                 {

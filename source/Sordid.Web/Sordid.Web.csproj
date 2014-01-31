@@ -293,6 +293,7 @@
     <Content Include="Scripts\site\characterSkills.js" />
     <Content Include="Scripts\site\errorHandling.js" />
     <Content Include="Scripts\site\requireStart.js" />
+    <Content Include="Scripts\site\util.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
