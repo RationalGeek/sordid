@@ -40,7 +40,7 @@ namespace Sordid.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/lib/bootstrap/bootstrap.js",
-                      "~/Scripts/lib/bootstrap/respond.js")); // Keep this?  Required for IE 8
+                      "~/Scripts/lib/bootstrap/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/require").Include(
                       "~/Scripts/lib/require/require.js"));
