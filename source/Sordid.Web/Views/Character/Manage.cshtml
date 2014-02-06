@@ -5,6 +5,7 @@
 
 @section Styles
 {
+    @Styles.Render("~/Content/css/bootstrap3-wysihtml5")
     @Styles.Render("~/Content/css/character")
 }
 
@@ -55,12 +56,14 @@
 @section Scripts
 {
     @Scripts.Render("~/bundles/jquery.ui")
+    @Scripts.Render("~/bundles/bootstrap3-wysihtml5")
 
     @* TODO: Switch to bundle *@
     <script src="@Url.Content("~/Scripts/site/characterManage.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterSkills.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterAspects.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterPowers.js")"></script>
+    <script src="@Url.Content("~/Scripts/site/characterNotes.js")"></script>
 
     <script>
         require(
@@ -68,7 +71,8 @@
              'sordid-characterManage',
              'sordid-characterSkills',
              'sordid-characterAspects',
-             'sordid-characterPowers'],
+             'sordid-characterPowers',
+             'sordid-characterNotes'],
             function($,charMan,charSkills,charAspects) {
                 $(document).ready(function() {
                     // Initialize Knockout

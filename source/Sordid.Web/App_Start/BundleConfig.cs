@@ -21,6 +21,11 @@ namespace Sordid.Web
                         "~/Scripts/lib/jquery.ui/jquery.ui.droppable.js"
                         ));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap3-wysihtml5").Include(
+                        "~/Scripts/lib/wysihtml5/wysihtml5-0.3.0.js",
+                        "~/Scripts/lib/bootstrap3-wysihtml5/bootstrap3-wysihtml5.js"
+                        ));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/lib/jquery/jquery.validate*"));
 
@@ -58,12 +63,16 @@ namespace Sordid.Web
                       "~/Content/lib/bootstrap/bootstrap.css",
                       "~/Content/site/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css/bootstrap3-wysihtml5").Include(
+                      "~/Content/lib/bootstrap3-wysihtml5/bootstrap-wysihtml5.css"));
+
             bundles.Add(new StyleBundle("~/Content/css/character").Include(
                       "~/Content/site/character/characterManage.css",
                       "~/Content/site/character/characterManageBasics.css",
                       "~/Content/site/character/characterManageAspects.css",
                       "~/Content/site/character/characterManageSkills.css",
-                      "~/Content/site/character/characterManagePowers.css"));
+                      "~/Content/site/character/characterManagePowers.css",
+                      "~/Content/site/character/characterManageNotes.css"));
         }
     }
 }

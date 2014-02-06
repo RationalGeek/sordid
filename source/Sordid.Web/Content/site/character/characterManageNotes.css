@@ -1,0 +1,11 @@
+﻿#notesEditor {
+    border-color: #999;
+    width: 100%;
+    min-height: 400px;
+}
+
+/* TODO: Can't get this thing to size to 100% of the panel?!?
+    
+#notesContainer, #notesPanel, #notesContainer iframe {
+    height: 100%;
+}*/
