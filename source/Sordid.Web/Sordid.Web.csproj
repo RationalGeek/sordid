@@ -327,6 +327,7 @@
     <Content Include="Views\Character\_ManageAspects.cshtml" />
     <Content Include="Views\Character\_ManagePowers.cshtml" />
     <Content Include="Views\Character\_AddPowerDialog.cshtml" />
+    <Content Include="Views\Character\_ManageNotes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
