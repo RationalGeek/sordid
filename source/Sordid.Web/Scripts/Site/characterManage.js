@@ -12,11 +12,23 @@
 
     var viewModel = {};
 
+    function computeHighConcept() {
+        var aspects = viewModel.Character.Aspects();
+        for (var index in aspects) {
+            var aspect = aspects[index];
+            var label = aspect.Aspect.HeadingLabel();
+            if (label == 'High Concept')
+                return aspect.Name();
+        }
+        return '';
+    }
+
     // KO ViewModel initialization
     var initKnockout = function (viewModelRaw) {
         viewModel = ko.mapping.fromJS(viewModelRaw);
         viewModel.ranks = buildRanks();
         viewModel.dirty = ko.dirtyFlag(viewModel);
+        viewModel.Character.HighConcept = ko.computed(computeHighConcept);
         $(document).trigger('sordid.ko.viewModelInit', viewModel);
         $(document).trigger('sordid.ko.viewModelChanged', viewModel);
         ko.applyBindings(viewModel);

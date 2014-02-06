@@ -9,11 +9,12 @@
     @Styles.Render("~/Content/css/character")
 }
 
-<div class="row" style="padding-bottom: 2px;">
-    <div class="col-md-9 col-md-offset-1 characterName" data-bind="text: Character.Name">
+<div class="row characterManageHeader">
+    <div class="col-md-9 col-md-offset-1">
+        <div class="characterName" data-bind="text: Character.Name">...</div>
+        <div class="characterHighConcept" data-bind="text: Character.HighConcept">...</div>
     </div>
-    @* TODO: Can't get this stupid button to align bottom *@
-    <div class="col-md-1" style="text-align: right; padding: 0;">
+    <div class="col-md-1 saveButtonContainer">
         <a id="saveButton" class="btn btn-success btn-sm" title="Save Character">
             <span id="saveIcon" class="glyphicon glyphicon-floppy-disk"></span>
             <span id="pendingSaveIcon" class="glyphicon glyphicon-transfer hidden"></span>

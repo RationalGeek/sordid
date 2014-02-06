@@ -1,6 +1,28 @@
-﻿.characterName {
-    font-size: 20pt;
+﻿.characterManageHeader {
+    padding-bottom: 15px;
 }
+
+.characterName {
+    font-size: 200%;
+}
+
+.characterHighConcept {
+    font-size: 120%;
+    color: #888;
+}
+
+/* TODO: Still can't the save button to align bottom... */
+
+.saveButtonContainer {
+    text-align: right;
+    padding: 0;
+    height: 100%;
+}
+
+#saveButton {
+    margin-right: 15px;
+}
+
 
 .char-section {
     min-height: 500px;
@@ -19,6 +41,5 @@
     margin-right: 0;
 }
 
-#saveButton {
-    margin-right: 15px;
-}
+
+
