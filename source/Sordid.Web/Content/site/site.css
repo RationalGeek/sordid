@@ -10,10 +10,19 @@
 }
 
 #logoLink {
-    font-family: 'Frijole', cursive;
-    font-size: 225%;
     margin-left: -15px;
+    padding-bottom: 8px;
     padding-left: 0;
+}
+
+#logoLink .mainLogoText {
+    font-family: 'Frijole', cursive;
+    font-size: 150%;
+}
+
+#logoLink .subLogoText {
+    font-size: 60%;
+    line-height: 14px;
 }
 
 #mainNav {
