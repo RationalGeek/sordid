@@ -1,32 +1,31 @@
-﻿.characterManageHeader {
-    padding-bottom: 15px;
+﻿#characterManageHeader {
+    padding-bottom: 10px;
 }
 
-.characterName {
+#characterLabelName {
     font-size: 200%;
 }
 
-.characterHighConcept {
+#characterLabelHighConcept {
     font-size: 120%;
     color: #888;
 }
 
-/* TODO: Still can't the save button to align bottom... */
+#characterLabelContainer {
+    padding-left: 0;
+    margin-left: 0;
+}
 
-.saveButtonContainer {
+#saveButtonContainer {
     text-align: right;
     padding: 0;
-    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 #saveButton {
     margin-right: 15px;
-}
-
-
-.char-section {
-    min-height: 500px;
-    border-color: black;
 }
 
 #sections-container > .panel {
@@ -36,10 +35,15 @@
 
 /* Fixes weird layout issue with rows inside panels
    http://stackoverflow.com/questions/15728336/the-row-is-larger-than-the-container-in-bootstrap */
-#sections-container > .panel .row {
+/*#sections-container > .panel*/ 
+#sections-container > .panel .row, #characterManageHeader .row {
     margin-left: 0;
     margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-
-
+.char-section {
+    min-height: 500px;
+    border-color: black;
+}

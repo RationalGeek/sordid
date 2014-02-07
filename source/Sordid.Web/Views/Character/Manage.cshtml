@@ -9,16 +9,20 @@
     @Styles.Render("~/Content/css/character")
 }
 
-<div class="row characterManageHeader">
-    <div class="col-md-9 col-md-offset-1">
-        <div class="characterName" data-bind="text: Character.Name">...</div>
-        <div class="characterHighConcept" data-bind="text: Character.HighConcept">...</div>
-    </div>
-    <div class="col-md-1 saveButtonContainer">
-        <a id="saveButton" class="btn btn-success btn-sm" title="Save Character">
-            <span id="saveIcon" class="glyphicon glyphicon-floppy-disk"></span>
-            <span id="pendingSaveIcon" class="glyphicon glyphicon-transfer hidden"></span>
-        </a>
+<div id="characterManageHeader" class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div id="characterLabelContainer" class="col-md-11">
+                <div id="characterLabelName" data-bind="text: Character.Name">...</div>
+                <div id="characterLabelHighConcept" data-bind="text: Character.HighConcept">...</div>
+            </div>
+            <div id="saveButtonContainer" class="col-md-1">
+                <a id="saveButton" class="btn btn-success btn-sm" title="Save Character">
+                    <span id="saveIcon" class="glyphicon glyphicon-floppy-disk"></span>
+                    <span id="pendingSaveIcon" class="glyphicon glyphicon-transfer hidden"></span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -80,8 +84,8 @@
                     var viewModelRaw = @Html.Raw( Json.Encode(Model) );
                     charMan.initKnockout(viewModelRaw);
                     charSkills.init();
+                });
             });
-        });
     </script>
 }
 
