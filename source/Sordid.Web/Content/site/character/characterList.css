@@ -1,0 +1,31 @@
+﻿.charGlyph {
+    font-size: 400%;
+    text-align: center;
+    padding: 2px;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.characterThumbnail .panel {
+    text-align: center;
+    padding: 10px;
+    border-color: #666;
+}
+
+.characterThumbnail .panel:hover {
+    background-color: #ddd;
+}
+
+.characterThumbnail .characterName {
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+#createCharacterContainer {
+    margin-top: 20px;
+}

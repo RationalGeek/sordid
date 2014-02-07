@@ -1,15 +1,31 @@
-﻿@model System.Collections.Generic.List<Sordid.Core.Model.Character>
+﻿@model System.Collections.Generic.List<Sordid.Web.Models.CharacterListViewModel>
 @{
     ViewBag.Title = "My Characters";
 }
-<h2>My Characters</h2>
-
-@foreach (var character in Model)
+@section Styles
 {
-    <div class="characterThumbnail">
-        @character.Name;
-    </div>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/site/character/characterList.css")"/>
 }
 
-But for now you can @Html.ActionLink("Create a New Character", "New")
+<h2>My Characters</h2>
+
+<div class="row">
+    @foreach (var charVM in Model)
+    {
+        <div class="col-xs-2 characterThumbnail">
+            <a href="@Url.Action("Manage", "Character", new { id = charVM.Character.Id })">
+                <div class="panel panel-default">
+                    <div class="charGlyph" style="color: @charVM.ForegroundColor; background-color: @charVM.BackgroundColor;">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <span class="characterName">@charVM.Character.Name</span>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<div id="createCharacterContainer">
+    @Html.ActionLink("Create a New Character", "New", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+</div>
 

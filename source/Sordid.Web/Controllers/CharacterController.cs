@@ -4,6 +4,7 @@ using Sordid.Core.Interfaces;
 using Sordid.Web.Models;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace Sordid.Web.Controllers
 {
@@ -24,7 +25,8 @@ namespace Sordid.Web.Controllers
         // GET: /Character/
         public async Task<ActionResult> Index()
         {
-            var characters = await _characterService.LoadCharactersForCurrentUser();
+            var characters = (await _characterService.LoadCharactersForCurrentUser())
+                .Select(c => new CharacterListViewModel(c)).ToList();
             return View(characters);
         }
 
