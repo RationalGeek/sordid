@@ -2,8 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - Sordid - Fate Character Builder</title>
+    <link href='http://fonts.googleapis.com/css?family=Frijole' rel='stylesheet' type='text/css' />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
@@ -17,13 +18,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index", "Home")" id="logoLink" class="navbar-brand" title="Sordid - Fate Character Builder">Sordid</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Characters", "Index", "Character")</li>
+                <ul id="mainNav" class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("My Characters", "Index", "Character")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -40,13 +40,14 @@
                 <div id="alertContainer"></div>
             </div>
         </div>
-        <hr />
+
         @* TODO: Do something with this footer
            http://stackoverflow.com/questions/10099422/flushing-footer-to-bottom-of-the-page-twitter-bootstrap
-           http://ryanfait.com/html5-sticky-footer/ *@
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Justin Kohlhepp</p>
-        </footer>
+           http://ryanfait.com/html5-sticky-footer/
+         <hr />
+         <footer>
+             <p>&copy; @DateTime.Now.Year - Justin Kohlhepp</p>
+         </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")

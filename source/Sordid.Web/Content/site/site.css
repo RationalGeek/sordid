@@ -9,6 +9,17 @@
     padding-right: 15px;
 }
 
+#logoLink {
+    font-family: 'Frijole', cursive;
+    font-size: 225%;
+    margin-left: -15px;
+    padding-left: 0;
+}
+
+#mainNav {
+    margin-left: 75px;
+}
+
 /* Fixes weird behavior where popping a modal adds scrollbar to body
    http://stackoverflow.com/questions/17726641/bootstrap-how-to-disable-vertical-scrollbar */
 .modal {
