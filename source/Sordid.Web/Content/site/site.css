@@ -27,6 +27,13 @@
 
 #mainNav {
     margin-left: 75px;
+    font-size: 130%;
+}
+
+/* Centers nav items vertically in the top bar */
+#mainNav, #accountNav {
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 /* Fixes weird behavior where popping a modal adds scrollbar to body
