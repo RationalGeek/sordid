@@ -1,4 +1,5 @@
 ﻿using Sordid.Core.Model;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Sordid.Core.Interfaces
@@ -8,5 +9,6 @@ namespace Sordid.Core.Interfaces
         Task<Character> NewCharacter();
         Task<Character> LoadCharacter(int id);
         Task<Character> SaveCharacter(Character character);
+        Task<List<Character>> LoadCharactersForCurrentUser();
     }
 }

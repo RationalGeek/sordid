@@ -22,10 +22,10 @@ namespace Sordid.Web.Controllers
         }
 
         // GET: /Character/
-        [AllowAnonymous]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var characters = await _characterService.LoadCharactersForCurrentUser();
+            return View(characters);
         }
 
         // GET: /Character/New

@@ -56,6 +56,16 @@ namespace Sordid.Core.Services
             }).ToList();
         }
 
+        public async Task<List<Character>> LoadCharactersForCurrentUser()
+        {
+            var userId = _userService.GetCurrentUserId();
+            var query = _charRepo
+                            .GetQueryable()
+                            .Where(c => c.ApplicationUserId == userId);
+            var result = (await _charRepo.Query(query)).ToList();
+            return result;
+        }
+
         public async Task<Character> LoadCharacter(int id)
         {
             var userId = _userService.GetCurrentUserId();

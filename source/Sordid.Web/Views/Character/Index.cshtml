@@ -1,11 +1,15 @@
-﻿
+﻿@model System.Collections.Generic.List<Sordid.Core.Model.Character>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My Characters";
 }
+<h2>My Characters</h2>
 
-<h2>Characters</h2>
-
-This is where the list of characters will be
+@foreach (var character in Model)
+{
+    <div class="characterThumbnail">
+        @character.Name;
+    </div>
+}
 
 But for now you can @Html.ActionLink("Create a New Character", "New")
 
