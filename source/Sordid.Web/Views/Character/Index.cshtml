@@ -13,6 +13,7 @@
     @Html.ActionLink("Create a New Character", "New", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
 </div>
 
+@* TODO: Totally doesn't behave correctly when browser window shrunk *@
 <div class="row">
     @foreach (var charVM in Model)
     {
