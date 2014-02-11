@@ -11,6 +11,7 @@ namespace Sordid.Core.Model
         public string Notes { get; set; }
         public string StoryTitle { get; set; }
         public string Starring { get; set; }
+        public string ImageUrl { get; set; }
 
         public List<CharacterSkill> Skills { get; set; }
         public List<CharacterAspect> Aspects { get; set; }

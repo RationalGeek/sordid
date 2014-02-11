@@ -61,7 +61,8 @@ namespace Sordid.Core.Services
             var userId = _userService.GetCurrentUserId();
             var query = _charRepo
                             .GetQueryable()
-                            .Where(c => c.ApplicationUserId == userId);
+                            .Where(c => c.ApplicationUserId == userId)
+                            .OrderByDescending(c => c.DateUpdated);
             var result = (await _charRepo.Query(query)).ToList();
             return result;
         }

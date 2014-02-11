@@ -1,24 +1,34 @@
 ﻿.charGlyph {
     font-size: 400%;
     text-align: center;
-    padding: 2px;
     width: 75px;
     height: 75px;
     margin: 0 auto;
-    margin-bottom: 5px;
 }
 
-.characterThumbnail .panel {
+.characterThumbnail {
+    padding: 2px;
+    margin-bottom: 5px;
+    height: 80px;
+}
+
+.characterThumbnail img {
+    max-height: 75px;
+    margin: 0 auto;
+}
+
+.characterPanel .panel {
     text-align: center;
     padding: 10px;
     border-color: #666;
+    min-height: 125px;
 }
 
-.characterThumbnail .panel:hover {
-    background-color: #ddd;
+.characterPanel .panel:hover {
+    border: solid thin red;
 }
 
-.characterThumbnail .characterName {
+.characterPanel .characterName {
     overflow: hidden;
     display: block;
     white-space: nowrap;
@@ -28,4 +38,5 @@
 
 #createCharacterContainer {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
