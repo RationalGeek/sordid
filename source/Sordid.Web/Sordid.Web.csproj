@@ -254,6 +254,7 @@
     <Content Include="Content\site\character\characterManageNotes.css" />
     <Content Include="Content\site\character\characterManagePowers.css" />
     <Content Include="Content\site\character\characterManageSkills.css" />
+    <Content Include="Content\site\character\characterPrint.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\lib\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
