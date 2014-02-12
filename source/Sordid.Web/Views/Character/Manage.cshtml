@@ -10,13 +10,13 @@
 }
 
 <div id="characterManageHeader" class="row">
-    <div class="col-md-10">
+    <div class="col-sm-10">
         <div class="row">
-            <div id="characterLabelContainer" class="col-md-6">
+            <div id="characterLabelContainer" class="col-sm-6">
                 <div id="characterLabelName" class="headerLabel" data-bind="text: Character.Name">...</div>
                 <div id="characterLabelHighConcept" data-bind="text: Character.HighConcept">...</div>
             </div>
-            <div id="characterManageButtonContainer" class="col-md-6">
+            <div id="characterManageButtonContainer" class="col-sm-6">
                 <a id="deleteButton" class="btn btn-danger btn-sm" title="Delete Character" data-toggle="modal" data-target="#deleteModal">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="row">
-    <div id="character-sections" class="col-md-2 btn-group-vertical">
+    <div id="character-sections" class="col-sm-2 btn-group-vertical">
         <a type="button" href="#section-basics" class="btn btn-primary active">Basics</a>
         <a type="button" href="#section-aspects" class="btn btn-primary">Aspects</a>
         <a type="button" href="#section-skills" class="btn btn-primary">Skills</a>
@@ -41,7 +41,7 @@
         <a type="button" href="#section-notes" class="btn btn-primary">Notes</a>
     </div>
 
-    <div id="sections-container" class="col-md-8">
+    <div id="sections-container" class="col-sm-8">
         <div id="section-basics" class="char-section panel panel-default">
             @Html.Partial("_ManageBasics")
         </div>

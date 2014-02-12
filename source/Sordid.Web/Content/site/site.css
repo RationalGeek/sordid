@@ -37,6 +37,17 @@
     }
 }
 
+/* In mobile, looks weird to have content flush against left side */
+@media (max-width: 767px) {
+    .navbar-fixed-top  {
+        padding-left: 5px;
+    }
+
+    #mainContentArea {
+        padding-left: 20px; /* Offsets the -15 margin */
+    }
+}
+
 /* Centers the navbar toggle button a little better vertically within the bar */
 .navbar-fixed-top .navbar-toggle {
     margin-top: 15px;
