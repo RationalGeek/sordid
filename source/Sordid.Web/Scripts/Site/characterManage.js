@@ -89,6 +89,11 @@
             });
         });
 
+        // Delete behavior
+        $('#confirmDeleteButton').click(function() {
+            $('#deleteForm').submit();
+        });
+
         $(document).ready(function () {
             if (location.hash.length > 0) {
                 toggleSection(location.hash);

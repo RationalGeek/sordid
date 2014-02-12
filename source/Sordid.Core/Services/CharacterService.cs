@@ -89,5 +89,19 @@ namespace Sordid.Core.Services
             await _charRepo.UnitOfWork.Save();
             return await LoadCharacter(character.Id);
         }
+
+        public async Task DeleteCharacter(int id)
+        {
+            var userId = _userService.GetCurrentUserId();
+            var query = _charRepo
+                            .GetQueryable()
+                            .Where(c => c.Id == id && c.ApplicationUserId == userId);
+            var characterToDelete = (await _charRepo.Query(query)).SingleOrDefault();
+            if (characterToDelete != null)
+            {
+                _charRepo.Delete(characterToDelete);
+                await _charRepo.UnitOfWork.Save();
+            }
+        }
     }
 }

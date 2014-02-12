@@ -9,6 +9,7 @@ namespace Sordid.Core.Interfaces
         Task<Character> NewCharacter();
         Task<Character> LoadCharacter(int id);
         Task<Character> SaveCharacter(Character character);
+        Task DeleteCharacter(int id);
         Task<List<Character>> LoadCharactersForCurrentUser();
     }
 }

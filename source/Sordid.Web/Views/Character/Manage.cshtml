@@ -12,11 +12,17 @@
 <div id="characterManageHeader" class="row">
     <div class="col-md-10">
         <div class="row">
-            <div id="characterLabelContainer" class="col-md-11">
+            <div id="characterLabelContainer" class="col-md-6">
                 <div id="characterLabelName" class="headerLabel" data-bind="text: Character.Name">...</div>
                 <div id="characterLabelHighConcept" data-bind="text: Character.HighConcept">...</div>
             </div>
-            <div id="saveButtonContainer" class="col-md-1">
+            <div id="characterManageButtonContainer" class="col-md-6">
+                <a id="deleteButton" class="btn btn-danger btn-sm" title="Delete Character" data-toggle="modal" data-target="#deleteModal">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+                <a id="printButton" class="btn btn-success btn-sm" title="Print Character">
+                    <span class="glyphicon glyphicon-print"></span>
+                </a>
                 <a id="saveButton" class="btn btn-success btn-sm" title="Save Character">
                     <span id="saveIcon" class="glyphicon glyphicon-floppy-disk"></span>
                     <span id="pendingSaveIcon" class="glyphicon glyphicon-transfer hidden"></span>
@@ -54,6 +60,28 @@
 
         <div id="section-notes" class="char-section panel panel-default hidden">
             @Html.Partial("_ManageNotes")
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <form method="post" id="deleteForm" action="@Url.Action("Delete","Character",new {id = Model.Character.Id})"></form>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Are you sure you want to delete?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger"><strong>This is a permanent unrecoverable action!</strong></div>
+                If you click Delete below, this character will be permanently deleted.  We will not be able
+                to recover it for you no matter how much you whine and cry.  If this warning has scared you,
+                you should click Cancel and run away.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+            </div>
         </div>
     </div>
 </div>

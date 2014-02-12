@@ -2,9 +2,9 @@
 using Sordid.Core.Exceptions;
 using Sordid.Core.Interfaces;
 using Sordid.Web.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Linq;
 
 namespace Sordid.Web.Controllers
 {
@@ -53,6 +53,14 @@ namespace Sordid.Web.Controllers
         {
             characterVM.Character = await _characterService.SaveCharacter(characterVM.Character);
             return Json(characterVM);
+        }
+
+        // POST: /Character/Delete
+        [HttpPost]
+        public async Task<ActionResult> Delete(int id)
+        {
+            await _characterService.DeleteCharacter(id);
+            return RedirectToAction("Index");
         }
 
         // GET: /Character/AddPowerDialog
