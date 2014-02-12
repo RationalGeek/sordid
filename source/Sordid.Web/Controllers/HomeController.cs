@@ -9,7 +9,7 @@ namespace Sordid.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult EmptyTest()
         {
             return View();
         }
