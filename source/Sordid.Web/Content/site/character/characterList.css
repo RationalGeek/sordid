@@ -17,6 +17,12 @@
     margin: 0 auto;
 }
 
+.characterPanel {
+    display: inline-block;
+    margin-right: 10px;
+    min-width: 130px;
+}
+
 .characterPanel .panel {
     text-align: center;
     padding: 10px;
@@ -37,6 +43,6 @@
 }
 
 #createCharacterContainer {
-    margin-top: 20px;
+    margin-top: 12px;
     margin-bottom: 20px;
 }

@@ -7,37 +7,37 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/site/character/characterList.css")"/>
 }
 
-<h2>My Characters</h2>
-
-<div id="createCharacterContainer">
-    @Html.ActionLink("Create a New Character", "New", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
-</div>
-
-@* TODO: Totally doesn't behave correctly when browser window shrunk *@
 <div class="row">
-    @foreach (var charVM in Model)
-    {
-        <div class="col-xs-2 characterPanel">
-            <a href="@Url.Action("Manage", "Character", new { id = charVM.Character.Id })">
-                <div class="panel panel-default">
-                    <div class="characterThumbnail container">
-                        @if (!string.IsNullOrWhiteSpace(charVM.Character.ImageUrl))
-                        {
-                            <img class="img-responsive img-rounded" alt="Character Portrait" src="@charVM.Character.ImageUrl" />
-                        }
-                        else
-                        {
-                            <div class="charGlyph" style="color: @charVM.ForegroundColor; background-color: @charVM.BackgroundColor;">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </div>
-                        }
+    <div class="col-md-12 headerLabel">
+        My Characters
+    </div>
+
+    <div class="col-md-12" id="createCharacterContainer">
+        @Html.ActionLink("Create a New Character", "New", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="col-md-12">
+        @foreach (var charVM in Model)
+        {
+            <div class="characterPanel">
+                <a href="@Url.Action("Manage", "Character", new { id = charVM.Character.Id })">
+                    <div class="panel panel-default">
+                        <div class="characterThumbnail container">
+                            @if (!string.IsNullOrWhiteSpace(charVM.Character.ImageUrl))
+                            {
+                                <img class="img-responsive img-rounded" alt="Character Portrait" src="@charVM.Character.ImageUrl" />
+                            }
+                            else
+                            {
+                                <div class="charGlyph" style="color: @charVM.ForegroundColor; background-color: @charVM.BackgroundColor;">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </div>
+                            }
+                        </div>
+                        <span class="characterName">@charVM.Character.Name</span>
                     </div>
-                    <span class="characterName">@charVM.Character.Name</span>
-                </div>
-            </a>
-        </div>
-    }
+                </a>
+            </div>
+        }
+    </div>
 </div>
-
-
-

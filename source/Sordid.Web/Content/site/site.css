@@ -79,3 +79,7 @@ input[type="checkbox"].input-validation-error {
     padding-bottom: 4px;
     margin-bottom: 10px;
 }
+
+.headerLabel {
+    font-size: 200%;
+}
