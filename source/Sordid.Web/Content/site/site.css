@@ -23,15 +23,23 @@
     line-height: 14px;
 }
 
-#mainNav {
-    margin-left: 75px;
-    font-size: 130%;
+/* Styles that apply only when main nav is not collapsed (non-mobile screens) */
+@media (min-width: 768px) {
+    #mainNav {
+        font-size: 130%;
+        margin-left: 75px;
+    }
+
+    /* Centers nav items vertically in the top bar */
+    #mainNav, #accountNav {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
 }
 
-/* Centers nav items vertically in the top bar */
-#mainNav, #accountNav {
-    padding-top: 6px;
-    padding-bottom: 6px;
+/* Centers the navbar toggle button a little better vertically within the bar */
+.navbar-fixed-top .navbar-toggle {
+    margin-top: 15px;
 }
 
 /* Fixes weird behavior where popping a modal adds scrollbar to body
