@@ -13,6 +13,8 @@ namespace Sordid.Core.Migrations
             ContextKey = "Sordid.Core.SordidDbContext";
         }
 
+        // TODO: Seed didn't seem to run the first time running app after deleting DB?
+
         protected override void Seed(Sordid.Core.SordidDbContext context)
         {
             // TODO: All of this AddOrUpdate is causing DateAdded tracking column to be reset on every run
