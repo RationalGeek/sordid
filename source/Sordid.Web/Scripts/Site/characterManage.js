@@ -35,7 +35,9 @@
     };
 
     $(document).ready(function () {
+        // ************************************************
         // Show / hide behavior for character sections
+        // ************************************************
         var toggleSection = function (secId) {
             // Find the button with that section ID
             var allButtons = $('#character-sections .btn');
@@ -55,7 +57,16 @@
             toggleSection(e.target.hash);
         });
 
+        // Show the correct tab if there is a hash in the URL
+        $(document).ready(function () {
+            if (location.hash.length > 0) {
+                toggleSection(location.hash);
+            }
+        });
+
+        // ************************************************
         // Save behavior
+        // ************************************************
         $('#saveButton').click(function () {
             $('#saveButton').addClass('disabled');
             $('#saveIcon').addClass('hidden');
@@ -89,17 +100,40 @@
             });
         });
 
+        // ************************************************
         // Delete behavior
-        $('#confirmDeleteButton').click(function() {
+        // ************************************************
+        $('#confirmDeleteButton').click(function () {
             $('#deleteForm').submit();
         });
 
-        $(document).ready(function () {
-            if (location.hash.length > 0) {
-                toggleSection(location.hash);
+        // ************************************************
+        // Print behavior
+        // ************************************************
+        function showPrintWindow() {
+            var charId = viewModel.Character.Id();
+            var url = '../Print/' + charId;
+            window.open(url);
+        }
+
+        $('#printButton').click(function () {
+            // If the charater is dirty, make sure they really want to print
+            if (viewModel.dirty.isDirty()) {
+                $('#printModal').modal('show');
+            }
+            else {
+                showPrintWindow();
             }
         });
 
+        $('#confirmPrintButton').click(function () {
+            $('#printModal').modal('hide');
+            showPrintWindow();
+        });
+
+        // ************************************************
+        // Dirty warning
+        // ************************************************
         $(window).bind('beforeunload', function () {
             if (viewModel.dirty.isDirty()) {
                 return 'You have unsaved changed. Are you sure you want to leave?';

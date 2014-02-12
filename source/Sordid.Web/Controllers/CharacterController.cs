@@ -46,6 +46,15 @@ namespace Sordid.Web.Controllers
             return View(new ManageCharacterViewModel { Character = character });
         }
 
+        // GET: /Character/Print
+        public async Task<ActionResult> Print(int id)
+        {
+            var character = await _characterService.LoadCharacter(id);
+            if (character == null)
+                throw new SordidException(string.Format("Character ID {0} does not exist.", id));
+            return View(new PrintCharacterViewModel { Character = character });
+        }
+
         // POST: /Character/Save
         [HttpPost]
         [JsonErrorHandling]

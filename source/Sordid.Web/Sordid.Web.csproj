@@ -238,6 +238,7 @@
     <Compile Include="Models\CharacterListViewModel.cs" />
     <Compile Include="Models\PowersDialogViewModel.cs" />
     <Compile Include="Models\ManageCharacterViewModel.cs" />
+    <Compile Include="Models\PrintCharacterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -428,6 +429,7 @@
     <Content Include="Views\Character\_AddPowerDialog.cshtml" />
     <Content Include="Views\Character\_ManageNotes.cshtml" />
     <Content Include="Views\Home\EmptyTest.cshtml" />
+    <Content Include="Views\Character\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
