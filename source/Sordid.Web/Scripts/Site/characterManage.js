@@ -146,6 +146,14 @@
         });
     });
 
+    // Test alerts
+    //$(document).ready(function () {
+    //    alerts.error('Test error');
+    //    alerts.warning('Test warning');
+    //    alerts.info('Test info');
+    //    alerts.success('Test success');
+    //});
+
     return {
         initKnockout: initKnockout,
         viewModel: function () { return viewModel; }

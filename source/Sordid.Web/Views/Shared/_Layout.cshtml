@@ -10,6 +10,7 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
+    <div id="alertContainer"></div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,9 +39,6 @@
                 <div class="row">
                     @RenderBody()
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div id="alertContainer"></div>
             </div>
         </div>
 
