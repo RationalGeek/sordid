@@ -51,17 +51,22 @@
             var sections = $('.char-section');
             sections.addClass('hidden');
             $(secId).removeClass('hidden');
+
+            // Update the selector text (for extra small layout) to the name of the selected section
+            $('#character-sections-small-label').text($(targetButton).text());
         }
 
-        $('#character-sections .btn').click(function (e) {
+        $('#character-sections .btn, #character-sections-small .dropdown-menu a').click(function (e) {
             toggleSection(e.target.hash);
         });
 
         // Show the correct tab if there is a hash in the URL
         $(document).ready(function () {
+            var hash = "#section-basics"; // Default
             if (location.hash.length > 0) {
-                toggleSection(location.hash);
+                hash = location.hash;
             }
+            toggleSection(hash);
         });
 
         // ************************************************

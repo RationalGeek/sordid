@@ -10,13 +10,28 @@
 }
 
 <div id="characterManageHeader" class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-11 col-lg-10">
         <div class="row">
-            <div id="characterLabelContainer" class="col-sm-6">
+            <div id="characterLabelContainer" class="col-sm-6 col-xs-5">
                 <div id="characterLabelName" class="headerLabel" data-bind="text: Character.Name">...</div>
-                <div id="characterLabelHighConcept" data-bind="text: Character.HighConcept">...</div>
+                <div id="characterLabelHighConcept" class="hidden-xs" data-bind="text: Character.HighConcept">...</div>
             </div>
-            <div id="characterManageButtonContainer" class="col-sm-6">
+
+            <div id="characterManageButtonContainer" class="col-sm-6 col-xs-7">
+                <div id="character-sections-small" class="btn-group visible-xs">
+                    <!-- Collaped chooser for smaller screens -->
+                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span id="character-sections-small-label">Section</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#section-basics">Basics</a></li>
+                        <li><a href="#section-aspects">Aspects</a></li>
+                        <li><a href="#section-skills">Skills</a></li>
+                        <li><a href="#section-powers">Powers / Stunts</a></li>
+                        <li><a href="#section-notes">Notes</a></li>
+                    </ul>
+                </div>
                 <a id="deleteButton" class="btn btn-danger btn-sm" title="Delete Character" data-toggle="modal" data-target="#deleteModal">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
@@ -33,7 +48,7 @@
 </div>
 
 <div class="row">
-    <div id="character-sections" class="col-sm-2 btn-group-vertical">
+    <div id="character-sections" class="col-sm-3 col-lg-2 btn-group-vertical hidden-xs">
         <a type="button" href="#section-basics" class="btn btn-primary active">Basics</a>
         <a type="button" href="#section-aspects" class="btn btn-primary">Aspects</a>
         <a type="button" href="#section-skills" class="btn btn-primary">Skills</a>

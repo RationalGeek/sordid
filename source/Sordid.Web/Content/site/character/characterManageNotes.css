@@ -5,6 +5,7 @@
 }
 
 /* TODO: Can't get this thing to size to 100% of the panel?!?
+   TODO: Also, weird bug where it doesn't obey min-height when you first switch to the section
     
 #notesContainer, #notesPanel, #notesContainer iframe {
     height: 100%;

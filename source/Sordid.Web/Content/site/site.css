@@ -1,6 +1,15 @@
-﻿body {
+﻿/* Avoids "jump" in content when height exceeds viewport height and scrollbar pops in */
+html {
+    overflow-y: scroll;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+}
+
+body, body > .navbar {
+    min-width: 475px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -43,8 +52,10 @@
         padding-left: 5px;
     }
 
+     /* Offsets the -15 margin */
     #mainContentArea {
-        padding-left: 20px; /* Offsets the -15 margin */
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 

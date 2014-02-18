@@ -2,6 +2,10 @@
     padding-bottom: 10px;
 }
 
+#characterLabelName {
+    white-space: nowrap;
+}
+
 #characterLabelHighConcept {
     font-size: 120%;
     color: #888;
@@ -42,4 +46,18 @@
 .char-section {
     min-height: 500px;
     border-color: black;
+}
+
+#character-sections-small,
+#character-sections-small .dropdown-toggle,
+#character-sections-small ul {
+    width: 130px;
+}
+
+/* hidden-xs assumes block display
+   but this needs to be inline-block */
+@media (max-width: 767px) {
+    #character-sections-small {
+        display: inline-block !important;
+    }
 }

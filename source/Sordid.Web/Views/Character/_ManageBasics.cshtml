@@ -1,27 +1,27 @@
 ﻿<form class="form-horizontal" role="form">
     <div class="form-group row">
-        <label for="characterName" class="col-md-3 control-label">Name</label>
-        <div class="col-md-9">
+        <label for="characterName" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
             <input id="characterName" class="form-control" data-bind="value: Character.Name" />
         </div>
     </div>
     <div class="form-group row">
-        <label for="playerName" class="col-md-3 control-label">Player Name</label>
-        <div class="col-md-9">
+        <label for="playerName" class="col-sm-3 control-label">Player Name</label>
+        <div class="col-sm-9">
             <input id="playerName" class="form-control" data-bind="value: Character.PlayerName" />
         </div>
     </div>
     <div class="form-group row">
-        <label for="imageUrl" class="col-md-3 control-label">Image URL</label>
-        <div class="col-md-9">
+        <label for="imageUrl" class="col-sm-3 control-label">Image URL</label>
+        <div class="col-sm-9">
             <input id="imageUrl" type="url" class="form-control" data-bind="value: Character.ImageUrl" />
         </div>
     </div>
     <!-- ko if: Character.ImageUrl() && Character.ImageUrl().length > 0 -->
-    <div class="row">
-        <div class="col-md-4 col-md-offset-8">
-            <img class="img-thumbnail" alt="Character Portrait" data-bind="attr: {src: Character.ImageUrl}" />
-        </div>
+    <div class="row portraitThumbnailContainer">
+        @*<div class="col-xs-4 col-sm-4 col-sm-offset-8 col-md-offset-8">*@
+        <img class="portraitThumbnail img-thumbnail" alt="Character Portrait" data-bind="attr: {src: Character.ImageUrl}" />
+        @*</div>*@
     </div>
     <!-- /ko -->
     @* TODO: Add drop down for power level, which drives max sill rank and refresh *@
