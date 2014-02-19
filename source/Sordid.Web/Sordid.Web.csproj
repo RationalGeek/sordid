@@ -432,6 +432,7 @@
     <Content Include="Views\Character\_ManageNotes.cshtml" />
     <Content Include="Views\Home\EmptyTest.cshtml" />
     <Content Include="Views\Character\Print.cshtml" />
+    <Content Include="Views\Character\_ManageStress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
