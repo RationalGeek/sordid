@@ -12,6 +12,12 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="powerLevel" class="col-sm-3 control-label">Power Level</label>
+        <div class="col-sm-9">
+            <select id="powerLevel" class="form-control" data-bind="options: PowerLevels, value: Character.PowerLevelId, optionsText: 'Name', optionsValue: 'Id', optionsCaption: 'Choose...'"></select>
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="imageUrl" class="col-sm-3 control-label">Image URL</label>
         <div class="col-sm-9">
             <input id="imageUrl" type="url" class="form-control" data-bind="value: Character.ImageUrl" />

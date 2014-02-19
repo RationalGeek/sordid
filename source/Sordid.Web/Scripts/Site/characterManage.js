@@ -109,6 +109,9 @@
         // Delete behavior
         // ************************************************
         $('#confirmDeleteButton').click(function () {
+            // We don't need a dirty warning if we are deleting
+            viewModel.dirty.reset();
+
             $('#deleteForm').submit();
         });
 

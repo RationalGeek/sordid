@@ -14,11 +14,13 @@ namespace Sordid.Web.Controllers
         private ILogger _logger;
         private ICharacterService _characterService;
         private IPowerService _powerService;
+        private IPowerLevelService _powerLevelService;
 
-        public CharacterController(ICharacterService characterService, ILogger logger, IPowerService powerService)
+        public CharacterController(ICharacterService characterService, ILogger logger, IPowerService powerService, IPowerLevelService powerLevelService)
         {
             _characterService = characterService;
             _powerService = powerService;
+            _powerLevelService = powerLevelService;
             _logger = logger;
         }
 
@@ -43,7 +45,8 @@ namespace Sordid.Web.Controllers
             var character = await _characterService.LoadCharacter(id);
             if (character == null)
                 throw new SordidException(string.Format("Character ID {0} does not exist.", id));
-            return View(new ManageCharacterViewModel { Character = character });
+            var powerLevels = (await _powerLevelService.GetAllPowerLevels()).ToList();
+            return View(new ManageCharacterViewModel { Character = character, PowerLevels = powerLevels });
         }
 
         // GET: /Character/Print

@@ -102,6 +102,13 @@ namespace Sordid.Core.Migrations
                 new Power { Type = PowerType.Stock, Name = "Soulgaze", Cost = -1 },
                 new Power { Type = PowerType.Stock, Name = "Wizard's Constitution", Cost = 0 }
                 );
+
+            context.PowerLevels.AddOrUpdate(p => p.Name,
+                new PowerLevel { Name = "Feet in the Water", BaseRefresh = 6, SkillPoints = 20, MaxSkillRank = 4 },
+                new PowerLevel { Name = "Up to Your Waist",  BaseRefresh = 7, SkillPoints = 25, MaxSkillRank = 4 },
+                new PowerLevel { Name = "Chest-Deep",        BaseRefresh = 8, SkillPoints = 30, MaxSkillRank = 5 },
+                new PowerLevel { Name = "Submerged",         BaseRefresh = 8, SkillPoints = 35, MaxSkillRank = 5 }
+                );
         }
     }
 }

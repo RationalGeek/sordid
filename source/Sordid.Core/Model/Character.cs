@@ -13,6 +13,9 @@ namespace Sordid.Core.Model
         public string Starring { get; set; }
         public string ImageUrl { get; set; }
 
+        public PowerLevel PowerLevel { get; set; }
+        public int? PowerLevelId { get; set; }
+
         public List<CharacterSkill> Skills { get; set; }
         public List<CharacterAspect> Aspects { get; set; }
         public List<CharacterPower> Powers { get; set; }

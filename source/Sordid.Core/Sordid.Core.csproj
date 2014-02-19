@@ -72,6 +72,8 @@
     <Compile Include="Interfaces\ICharacterRepository.cs" />
     <Compile Include="Interfaces\ICharacterService.cs" />
     <Compile Include="Interfaces\IIdKeyedEntity.cs" />
+    <Compile Include="Interfaces\IPowerLevelRepository.cs" />
+    <Compile Include="Interfaces\IPowerLevelService.cs" />
     <Compile Include="Interfaces\IPowerRepository.cs" />
     <Compile Include="Interfaces\IPowerService.cs" />
     <Compile Include="Interfaces\ISkillRepository.cs" />
@@ -95,9 +97,11 @@
     <Compile Include="Model\ModelBuilders\AspectModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\CharacterModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\IModelBuilder.cs" />
+    <Compile Include="Model\ModelBuilders\PowerLevelModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\PowerModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\SkillModelBuilder.cs" />
     <Compile Include="Model\Power.cs" />
+    <Compile Include="Model\PowerLevel.cs" />
     <Compile Include="Model\Skill.cs" />
     <Compile Include="Ninject\KernelBuilder.cs" />
     <Compile Include="Ninject\SordidCoreNinjectModule.cs" />
@@ -105,10 +109,12 @@
     <Compile Include="Repositories\AspectRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CharacterRepository.cs" />
+    <Compile Include="Repositories\PowerLevelRepository.cs" />
     <Compile Include="Repositories\PowerRepository.cs" />
     <Compile Include="Repositories\SkillRepository.cs" />
     <Compile Include="Services\AspectService.cs" />
     <Compile Include="Services\CharacterService.cs" />
+    <Compile Include="Services\PowerLevelService.cs" />
     <Compile Include="Services\PowerService.cs" />
     <Compile Include="Services\SkillService.cs" />
     <Compile Include="Services\UserService.cs" />

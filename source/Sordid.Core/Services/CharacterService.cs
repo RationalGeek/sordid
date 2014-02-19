@@ -78,7 +78,8 @@ namespace Sordid.Core.Services
                             .Include(c => c.Skills)
                             .Include(c => c.Skills.Select(s => s.Skill))
                             .Include(c => c.Powers)
-                            .Include(c => c.Powers.Select(p => p.Power));
+                            .Include(c => c.Powers.Select(p => p.Power))
+                            .Include(c => c.PowerLevel);
             var result = (await _charRepo.Query(query)).SingleOrDefault();
             return result;
         }
