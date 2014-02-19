@@ -128,6 +128,7 @@
 
     @* TODO: Switch to bundle *@
     <script src="@Url.Content("~/Scripts/site/characterManage.js")"></script>
+    <script src="@Url.Content("~/Scripts/site/characterBasics.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterSkills.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterAspects.js")"></script>
     <script src="@Url.Content("~/Scripts/site/characterPowers.js")"></script>
@@ -138,10 +139,12 @@
             ['jquery',
              'sordid-characterManage',
              'sordid-characterSkills',
+             // Below dependencies are not used in function - order matters!
+             'sordid-characterBasics',
              'sordid-characterAspects',
              'sordid-characterPowers',
              'sordid-characterNotes'],
-            function($,charMan,charSkills,charAspects) {
+            function($,charMan,charSkills) {
                 $(document).ready(function() {
                     // Initialize Knockout
                     var viewModelRaw = @Html.Raw( Json.Encode(Model) );

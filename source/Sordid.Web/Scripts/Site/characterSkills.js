@@ -60,6 +60,27 @@
         }
     };
 
+    $(document).on('sordid.ko.viewModelInit', function (event, viewModel) {
+        viewModel.Character.SkillPointsSpent = ko.computed(function () {
+            var total = 0;
+            var skills = viewModel.Character.Skills();
+            for (var i = 0; i < skills.length; i++) {
+                var skill = skills[i];
+                total += skill.Rank();
+            }
+
+            var maxSkillPoints = viewModel.Character.MaxSkillPoints();
+            if (maxSkillPoints < total) {
+                $('#skillPointsSpent').addClass('danger');
+            }
+            else {
+                $('#skillPointsSpent').removeClass('danger');
+            }
+
+            return total;
+        });
+    });
+
     return {
         init: function () {
             validateSkills();

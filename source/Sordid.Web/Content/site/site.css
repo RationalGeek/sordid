@@ -122,3 +122,7 @@ input[type="checkbox"].input-validation-error {
 .headerLabel {
     font-size: 200%;
 }
+
+.badge.danger {
+  background-color: #b94a48;
+}

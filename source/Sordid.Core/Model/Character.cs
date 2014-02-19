@@ -12,6 +12,8 @@ namespace Sordid.Core.Model
         public string StoryTitle { get; set; }
         public string Starring { get; set; }
         public string ImageUrl { get; set; }
+        public int MaxSkillPoints { get; set; }
+        public int BaseRefresh { get; set; }
 
         public PowerLevel PowerLevel { get; set; }
         public int? PowerLevelId { get; set; }

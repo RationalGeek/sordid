@@ -389,6 +389,7 @@
     <Content Include="Scripts\lib\wysihtml5\wysihtml5.js" />
     <Content Include="Scripts\site\alerts.js" />
     <Content Include="Scripts\site\characterAspects.js" />
+    <Content Include="Scripts\site\characterBasics.js" />
     <Content Include="Scripts\site\characterManage.js" />
     <Content Include="Scripts\site\characterNotes.js" />
     <Content Include="Scripts\site\characterPowers.js" />
