@@ -18,6 +18,16 @@
         </div>
     </div>
     <div class="form-group row">
+        <div class="col-sm-9 col-sm-offset-3">
+            <div id="skillPointsAndBaseRefresh" class="form-inline">
+                <label for="maxSkillPoints" class="control-label">Max Skills Points</label>
+                <input id="maxSkillPoints" class="form-control" type="number" data-bind="value: Character.MaxSkillPoints" />
+                <label for="baseRefresh" class="control-label">Base Refresh</label>
+                <input id="baseRefresh" class="form-control" type="number" data-bind="value: Character.BaseRefresh" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="imageUrl" class="col-sm-3 control-label">Image URL</label>
         <div class="col-sm-9">
             <input id="imageUrl" type="url" class="form-control" data-bind="value: Character.ImageUrl" />

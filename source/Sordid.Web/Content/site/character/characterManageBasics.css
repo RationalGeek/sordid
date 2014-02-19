@@ -11,3 +11,17 @@
     max-height: 200px;
     margin-right: 15px;
 }
+
+#skillPointsAndBaseRefresh label {
+    font-size: 90%;
+    display: inline-block;
+}
+
+#skillPointsAndBaseRefresh input {
+    font-size: 90%;
+    width: 60px;
+}
+
+#skillPointsAndBaseRefresh label:not(:first-child) {
+    margin-left: 25px;
+}
