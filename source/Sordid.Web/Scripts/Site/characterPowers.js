@@ -129,5 +129,20 @@
             }
             return sum;
         });
+
+        viewModel.Character.RemainingRefresh = ko.computed(function () {
+            var totalCost = viewModel.Character.TotalPowerCost();
+            var base = viewModel.Character.BaseRefresh();
+            var remaining = base + totalCost;
+
+            if (remaining < 1) {
+                $('#remainingRefresh').addClass('danger');
+            }
+            else {
+                $('#remainingRefresh').removeClass('danger');
+            }
+
+            return base + totalCost;
+        });
     });
 });

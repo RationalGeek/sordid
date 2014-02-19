@@ -34,9 +34,23 @@
     </tbody>
     <tfoot>
         <tr>
-            <td style="text-align: right;">Total Refresh</td>
+            <td style="text-align: right;">Spent Refresh</td>
             <td class="cost">
                 <span class="badge" data-bind="text: Character.TotalPowerCost"></span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Base Refresh</td>
+            <td class="cost">
+                <span class="badge" data-bind="text: Character.BaseRefresh"></span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Remaining</td>
+            <td class="cost">
+                <span id="remainingRefresh" class="badge" data-bind="text: Character.RemainingRefresh"></span>
             </td>
             <td></td>
         </tr>
