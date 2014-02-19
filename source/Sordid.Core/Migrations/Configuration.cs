@@ -109,6 +109,13 @@ namespace Sordid.Core.Migrations
                 new PowerLevel { Name = "Chest-Deep",        BaseRefresh = 8, SkillPoints = 30, MaxSkillRank = 5 },
                 new PowerLevel { Name = "Submerged",         BaseRefresh = 8, SkillPoints = 35, MaxSkillRank = 5 }
                 );
+
+            context.Templates.AddOrUpdate(t => t.Name,
+                new Template { Name = "Wizard" },
+                new Template { Name = "True Mortal" },
+                new Template { Name = "Wild Talent" },
+                new Template { Name = "Shapechanger" }
+                );
         }
     }
 }

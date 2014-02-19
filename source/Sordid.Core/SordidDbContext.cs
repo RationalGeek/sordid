@@ -18,6 +18,7 @@ namespace Sordid.Core
         public DbSet<Aspect> Aspects { get; set; }
         public DbSet<Power> Powers { get; set; }
         public DbSet<PowerLevel> PowerLevels { get; set; }
+        public DbSet<Template> Templates { get; set; }
         public DbSet<CharacterPower> CharacterPowers { get; set; }
 
         public SordidDbContext()

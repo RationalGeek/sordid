@@ -7,5 +7,6 @@ namespace Sordid.Web.Models
     {
         public Character Character { get; set; }
         public List<PowerLevel> PowerLevels { get; set; }
+        public List<Template> Templates { get; set; }
     }
 }

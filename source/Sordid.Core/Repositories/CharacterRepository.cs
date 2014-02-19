@@ -20,8 +20,11 @@ namespace Sordid.Core.Repositories
             if (entity.Powers == null)
                 entity.Powers = new List<CharacterPower>();
 
+            // UI sets power level and template based on Id, so null out the entities
+            entity.PowerLevel = null;
+            entity.Template = null;
+
             FixUpPowers(entity);
-            FixUpPowerLevel(entity);
             FixUpLinkingEntities(entity);
             DeletePowers(entity);
 
@@ -54,21 +57,6 @@ namespace Sordid.Core.Repositories
                         p.Power = null;
                 }
             });
-        }
-
-        /// <summary>
-        /// UI sets power level based on Id, so null out the entity
-        /// </summary>
-        private void FixUpPowerLevel(Character entity)
-        {
-            //if (entity.PowerLevel == null)
-            //{
-            //    entity.PowerLevelId = null;
-            //    return;
-            //}
-
-            //entity.PowerLevelId = entity.PowerLevel.Id;
-            entity.PowerLevel = null;
         }
 
         /// <summary>

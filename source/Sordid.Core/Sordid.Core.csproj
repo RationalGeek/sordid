@@ -78,6 +78,8 @@
     <Compile Include="Interfaces\IPowerService.cs" />
     <Compile Include="Interfaces\ISkillRepository.cs" />
     <Compile Include="Interfaces\ISkillService.cs" />
+    <Compile Include="Interfaces\ITemplateRepository.cs" />
+    <Compile Include="Interfaces\ITemplateService.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Migrations\201401281406457_InitialCreate.cs" />
@@ -100,9 +102,11 @@
     <Compile Include="Model\ModelBuilders\PowerLevelModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\PowerModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\SkillModelBuilder.cs" />
+    <Compile Include="Model\ModelBuilders\TemplateModelBuilder.cs" />
     <Compile Include="Model\Power.cs" />
     <Compile Include="Model\PowerLevel.cs" />
     <Compile Include="Model\Skill.cs" />
+    <Compile Include="Model\Template.cs" />
     <Compile Include="Ninject\KernelBuilder.cs" />
     <Compile Include="Ninject\SordidCoreNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,11 +116,13 @@
     <Compile Include="Repositories\PowerLevelRepository.cs" />
     <Compile Include="Repositories\PowerRepository.cs" />
     <Compile Include="Repositories\SkillRepository.cs" />
+    <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Services\AspectService.cs" />
     <Compile Include="Services\CharacterService.cs" />
     <Compile Include="Services\PowerLevelService.cs" />
     <Compile Include="Services\PowerService.cs" />
     <Compile Include="Services\SkillService.cs" />
+    <Compile Include="Services\TemplateService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="SordidDbContext.cs" />
     <Compile Include="UnitOfWork.cs" />

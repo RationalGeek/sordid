@@ -18,6 +18,9 @@ namespace Sordid.Core.Model
         public PowerLevel PowerLevel { get; set; }
         public int? PowerLevelId { get; set; }
 
+        public Template Template { get; set; }
+        public int? TemplateId { get; set; }
+
         public List<CharacterSkill> Skills { get; set; }
         public List<CharacterAspect> Aspects { get; set; }
         public List<CharacterPower> Powers { get; set; }
