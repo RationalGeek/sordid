@@ -8,11 +8,21 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Character Print</title>
-    <link href="@Url.Content("~/Content/site/character/characterPrint.css")" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css/characterPrint")
 </head>
 <body>
-    <div> 
-        This is the character printout for character @Model.Character.Name
+    <div id="header">Character Sheet</div>
+    <div id="names">
+        <div class="panel panel-left"> 
+            <span class="label">Character</span>
+            <span class="field">@Model.Character.Name</span>
+        </div>
+        <div class="panel panel-right">
+            <span class="field">@Model.Character.PlayerName</span>
+            <span class="label">Player</span>
+        </div>
     </div>
 </body>
 </html>

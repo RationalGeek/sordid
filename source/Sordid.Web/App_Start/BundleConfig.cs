@@ -75,6 +75,10 @@ namespace Sordid.Web
                       "~/Content/site/bubbleChooser.css",
                       "~/Content/site/character/characterManageStress.css",
                       "~/Content/site/character/characterManageNotes.css"));
+
+            bundles.Add(new LessBundle("~/Content/css/characterPrint").Include(
+                      "~/Content/lib/normalize/normalize.css",
+                      "~/Content/site/character/characterPrint.less"));
         }
     }
 }
