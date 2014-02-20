@@ -30,6 +30,10 @@ namespace Sordid.Core.Services
             await InitAspects(character);
             character.Powers = new List<CharacterPower>();
 
+            character.PhysicalStress = 2;
+            character.MentalStress = 2;
+            character.SocialStress = 2;
+
             character = _charRepo.Add(character);
             await _charRepo.UnitOfWork.Save();
             return character;

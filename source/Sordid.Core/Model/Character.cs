@@ -25,6 +25,10 @@ namespace Sordid.Core.Model
         public List<CharacterAspect> Aspects { get; set; }
         public List<CharacterPower> Powers { get; set; }
 
+        public int PhysicalStress { get; set; }
+        public int MentalStress { get; set; }
+        public int SocialStress { get; set; }
+
         public ApplicationUser User { get; set; }
         public string ApplicationUserId { get; set; }
     }

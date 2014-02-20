@@ -32,6 +32,7 @@
         $(document).trigger('sordid.ko.viewModelInit', viewModel);
         $(document).trigger('sordid.ko.viewModelChanged', viewModel);
         ko.applyBindings(viewModel);
+        $(document).trigger('sordid.ko.viewModelBound', viewModel);
     };
 
     $(document).ready(function () {

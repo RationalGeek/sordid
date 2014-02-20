@@ -1,0 +1,12 @@
+﻿.bubbleChooser-bubble {
+    font-size: 200%;
+    cursor: pointer;
+}
+
+.bubbleChooser-bubble:after {
+    content: "\25CB"; /* White circle */
+}
+
+.bubbleChooser-bubble.disabled:after {
+    content: "\25CF"; /* Black circle */
+}

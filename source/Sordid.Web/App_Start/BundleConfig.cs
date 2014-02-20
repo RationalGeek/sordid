@@ -72,6 +72,8 @@ namespace Sordid.Web
                       "~/Content/site/character/characterManageAspects.css",
                       "~/Content/site/character/characterManageSkills.css",
                       "~/Content/site/character/characterManagePowers.css",
+                      "~/Content/site/bubbleChooser.css",
+                      "~/Content/site/character/characterManageStress.css",
                       "~/Content/site/character/characterManageNotes.css"));
         }
     }

@@ -1,3 +1,30 @@
-﻿<div class="panel-body">
-    Boom I am a stress section
+﻿@* http://en.wikipedia.org/wiki/Geometric_Shapes *@
+
+<div id="stressSection" class="panel-body">
+    <form class="form-horizontal" role="form">
+        <div class="row">
+            <div class="col-sm-12"><h4>Stress</h4></div>
+        </div>
+        <div class="row">
+            <label class="col-sm-3 control-label">Physical</label>
+            <div class="col-sm-9">
+                <input class="stressBubbleChooser" data-bind="value: Character.PhysicalStress" type="number" />
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-3 control-label">Mental</label>
+            <div class="col-sm-9">
+                <input class="stressBubbleChooser" data-bind="value: Character.MentalStress" type="number" />
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-3 control-label">Social</label>
+            <div class="col-sm-9">
+                <input class="stressBubbleChooser" data-bind="value: Character.SocialStress" type="number" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12"><h4>Consequences</h4></div>
+        </div>
+    </form>
 </div>

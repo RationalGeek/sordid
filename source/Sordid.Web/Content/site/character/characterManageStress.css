@@ -1,0 +1,11 @@
+﻿#stressSection h4 {
+    border-bottom: solid thin black;
+}
+
+#stressSection div:not(:first-child) div h4 {
+    margin-top: 30px;
+}
+
+.bubbleChooser {
+    margin-top: -5px; /* TODO: Fixes issue with vertical alignment of bubble choosers to labels, but seems hacky */
+}

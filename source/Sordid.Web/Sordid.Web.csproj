@@ -247,6 +247,7 @@
     <Content Include="Content\lib\bootstrap\bootstrap.css" />
     <Content Include="Content\lib\bootstrap\bootstrap.min.css" />
     <Content Include="Content\site\ajax-loader.gif" />
+    <Content Include="Content\site\bubbleChooser.css" />
     <Content Include="Content\site\character\characterList.css" />
     <Content Include="Content\site\character\characterManage.css" />
     <Content Include="Content\site\character\characterManageAspects.css" />
@@ -254,6 +255,7 @@
     <Content Include="Content\site\character\characterManageNotes.css" />
     <Content Include="Content\site\character\characterManagePowers.css" />
     <Content Include="Content\site\character\characterManageSkills.css" />
+    <Content Include="Content\site\character\characterManageStress.css" />
     <Content Include="Content\site\character\characterPrint.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\lib\fonts\glyphicons-halflings-regular.svg" />
@@ -388,12 +390,14 @@
     <Content Include="Scripts\lib\wysihtml5\views\view.js" />
     <Content Include="Scripts\lib\wysihtml5\wysihtml5.js" />
     <Content Include="Scripts\site\alerts.js" />
+    <Content Include="Scripts\site\bubbleChooser.js" />
     <Content Include="Scripts\site\characterAspects.js" />
     <Content Include="Scripts\site\characterBasics.js" />
     <Content Include="Scripts\site\characterManage.js" />
     <Content Include="Scripts\site\characterNotes.js" />
     <Content Include="Scripts\site\characterPowers.js" />
     <Content Include="Scripts\site\characterSkills.js" />
+    <Content Include="Scripts\site\characterStress.js" />
     <Content Include="Scripts\site\errorHandling.js" />
     <Content Include="Scripts\site\koDirty.js" />
     <Content Include="Scripts\site\requireStart.js" />
