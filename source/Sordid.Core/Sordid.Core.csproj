@@ -93,7 +93,8 @@
     <Compile Include="Model\Character.cs" />
     <Compile Include="Model\CharacterAspect.cs" />
     <Compile Include="Model\CharacterPower.cs" />
-    <Compile Include="Model\CharaterSkill.cs" />
+    <Compile Include="Model\CharacterSkill.cs" />
+    <Compile Include="Model\Consequence.cs" />
     <Compile Include="Model\ModelBuilders\ApplicationUserModelBuilder.cs" />
     <Compile Include="Model\ModelBuilders\AppUserTableNames.cs" />
     <Compile Include="Model\ModelBuilders\AspectModelBuilder.cs" />

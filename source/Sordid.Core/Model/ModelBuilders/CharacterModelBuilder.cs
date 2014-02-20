@@ -18,6 +18,12 @@ namespace Sordid.Core.Model.ModelBuilders
             modelBuilder.Entity<Character>()
                 .Property(c => c.Notes)
                 .IsMaxLength();
+
+            modelBuilder
+                .Entity<Consequence>()
+                .HasRequired(c => c.Character)
+                .WithMany()
+                .HasForeignKey(c => c.CharacterId);
         }
     }
 }

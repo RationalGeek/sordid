@@ -25,14 +25,18 @@ namespace Sordid.Core.Services
         public async Task<Character> NewCharacter()
         {
             var userId = (await _userService.GetCurrentUser()).Id;
-            var character = new Character { Name = "New Character", ApplicationUserId = userId };
+            var character = new Character
+                {
+                    Name = "New Character",
+                    ApplicationUserId = userId,
+                    PhysicalStress = 2,
+                    MentalStress = 2,
+                    SocialStress = 2,
+                };
             await InitSkills(character);
             await InitAspects(character);
+            InitConsequences(character);
             character.Powers = new List<CharacterPower>();
-
-            character.PhysicalStress = 2;
-            character.MentalStress = 2;
-            character.SocialStress = 2;
 
             character = _charRepo.Add(character);
             await _charRepo.UnitOfWork.Save();
@@ -60,6 +64,17 @@ namespace Sordid.Core.Services
             }).ToList();
         }
 
+        private void InitConsequences(Character character)
+        {
+            character.Consequences = new List<Consequence>
+            {
+                new Consequence { Type = "Mild"    , StressType = "Any", StressAmount = -2, UserCreated = false },
+                new Consequence { Type = "Moderate", StressType = "Any", StressAmount = -4, UserCreated = false },
+                new Consequence { Type = "Severe"  , StressType = "Any", StressAmount = -6, UserCreated = false },
+                new Consequence { Type = "Extreme" , StressType = "Any", StressAmount = -8, UserCreated = false },
+            };
+        }
+
         public async Task<List<Character>> LoadCharactersForCurrentUser()
         {
             var userId = _userService.GetCurrentUserId();
@@ -83,7 +98,8 @@ namespace Sordid.Core.Services
                             .Include(c => c.Skills.Select(s => s.Skill))
                             .Include(c => c.Powers)
                             .Include(c => c.Powers.Select(p => p.Power))
-                            .Include(c => c.PowerLevel);
+                            .Include(c => c.PowerLevel)
+                            .Include(c => c.Consequences);
             var result = (await _charRepo.Query(query)).SingleOrDefault();
             return result;
         }

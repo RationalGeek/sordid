@@ -25,8 +25,10 @@ namespace Sordid.Core.Repositories
             entity.Template = null;
 
             FixUpPowers(entity);
+            FixUpConsequences(entity);
             FixUpLinkingEntities(entity);
             DeletePowers(entity);
+            DeleteConsequences(entity);
 
             return base.Update(entity);
         }
@@ -59,6 +61,11 @@ namespace Sordid.Core.Repositories
             });
         }
 
+        private void FixUpConsequences(Character entity)
+        {
+            entity.Consequences.ForEach(c => c.CharacterId = entity.Id);
+        }
+
         /// <summary>
         /// The UI will remove powers from the incoming list if they
         /// should be deleted.  So we have to find child entities in
@@ -76,7 +83,6 @@ namespace Sordid.Core.Repositories
                 .Where(cp => !entity.Powers.Select(cp2 => cp2.Id).Contains(cp.Id))
                 .ToList();
 
-            // TODO: Deleting custom powers hasn't been tested
             var powerKeysToDelete = characterPowersToDelete.Select(cp => cp.Power)
                 .Where(p => p.Type == PowerType.Custom)
                 .Select(p => p.Id)
@@ -96,6 +102,22 @@ namespace Sordid.Core.Repositories
             });
         }
 
+        private void DeleteConsequences(Character entity)
+        {
+            var consToDelete = DbContext
+                .Consequences
+                .Where(c => c.CharacterId == entity.Id)
+                .ToList() // Query returns all items because NOT IN is a PITA
+                .Where(c => !entity.Consequences.Select(c2 => c2.Id).Contains(c.Id))
+                .ToList();
+
+            consToDelete.ForEach(e =>
+            {
+                var entry = DbContext.Entry(e);
+                entry.State = EntityState.Deleted;
+            });
+        }
+
         /// <summary>
         /// Ensure that child entities are included in the update
         /// </summary>
@@ -104,6 +126,7 @@ namespace Sordid.Core.Repositories
             entity.Skills.Cast<IIdKeyedEntity>()
                 .Concat(entity.Aspects.Cast<IIdKeyedEntity>())
                 .Concat(entity.Powers.Cast<IIdKeyedEntity>())
+                .Concat(entity.Consequences.Cast<IIdKeyedEntity>())
                 .Concat(entity.Powers.Select(p => p.Power)
                     .Where(p => p != null && p.Type == PowerType.Custom)
                     .Cast<IIdKeyedEntity>())

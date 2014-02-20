@@ -29,6 +29,8 @@ namespace Sordid.Core.Model
         public int MentalStress { get; set; }
         public int SocialStress { get; set; }
 
+        public List<Consequence> Consequences { get; set; }
+
         public ApplicationUser User { get; set; }
         public string ApplicationUserId { get; set; }
     }

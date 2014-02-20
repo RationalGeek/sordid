@@ -9,3 +9,20 @@
 .bubbleChooser {
     margin-top: -5px; /* TODO: Fixes issue with vertical alignment of bubble choosers to labels, but seems hacky */
 }
+
+#stressSection table button {
+    margin-top: 10px;
+}
+
+#stressSection .stressAmount {
+    width: 50px;
+}
+
+#stressSection table .circularButton {
+    margin-top: 2px;
+}
+
+/* TODO: Even with this there is a little jump when the first editable row appears */
+#stresssection table td.remove {
+    min-width: 30px;
+}

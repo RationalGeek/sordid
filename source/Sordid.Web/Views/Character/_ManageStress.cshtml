@@ -26,5 +26,46 @@
         <div class="row">
             <div class="col-sm-12"><h4>Consequences</h4></div>
         </div>
+        <div class="row"><div class="col-sm-12">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th class="col-sm-5">Type</th>
+                        <th class="col-sm-5">P/M/S</th>
+                        <th class="col-sm-2">Stress</th>
+                        <th class="col-sm-1">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: Character.Consequences -->
+                    <tr>
+                        <!-- ko if: !UserCreated() -->
+                        <td class="col-sm-4" data-bind="text: Type"></td>
+                        <td class="col-sm-4" data-bind="text: StressType"></td>
+                        <td class="col-sm-2" data-bind="text: StressAmount"></td>
+                        <td class="col-sm-1 remove">&nbsp;</td>
+                        <!-- /ko -->
+
+                        <!-- ko if: UserCreated() -->
+                        <td class="col-sm-4"><input type="text" data-bind="value: Type" /></td>
+                        <td class="col-sm-4"><input type="text" data-bind="value: StressType" /></td>
+                        <td class="col-sm-2"><input class="stressAmount" type="number" data-bind="value: StressAmount" /></td>
+                        <td class="col-sm-1 remove"><a class="btn btn-danger btn-sm circularButton" title="Remove" data-bind="stressDelete: true"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <!-- /ko -->
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <button id="addConsequenceButton" type="button" class="btn btn-xs btn-info">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                Add
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div></div>
     </form>
 </div>

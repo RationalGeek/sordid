@@ -61,3 +61,21 @@
         display: inline-block !important;
     }
 }
+
+/* Circular delete button */
+.circularButton {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0.5;
+}
+.circularButton .glyphicon {
+    vertical-align: baseline;
+    font-size: 85%;
+}
+.circularButton:hover {
+    opacity: 1;
+}

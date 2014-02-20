@@ -42,7 +42,7 @@
     margin-right: 5px;
 }
 
-/* Circular delete button */
+/* Circular delete button
 .powerContainer .powerDeleteButton {
     border-radius: 50%;
     width: 20px;
@@ -58,4 +58,4 @@
 }
 .powerContainer .powerDeleteButton:hover {
     opacity: 1;
-}
+} */
