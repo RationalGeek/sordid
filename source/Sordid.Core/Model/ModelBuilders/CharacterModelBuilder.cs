@@ -20,9 +20,9 @@ namespace Sordid.Core.Model.ModelBuilders
                 .IsMaxLength();
 
             modelBuilder
-                .Entity<Consequence>()
-                .HasRequired(c => c.Character)
-                .WithMany()
+                .Entity<Character>()
+                .HasMany(c => c.Consequences)
+                .WithRequired(c => c.Character)
                 .HasForeignKey(c => c.CharacterId);
         }
     }

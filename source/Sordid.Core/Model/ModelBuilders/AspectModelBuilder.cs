@@ -7,9 +7,9 @@ namespace Sordid.Core.Model.ModelBuilders
         public void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
-                .Entity<CharacterAspect>()
-                .HasRequired(ca => ca.Character)
-                .WithMany()
+                .Entity<Character>()
+                .HasMany(c => c.Aspects)
+                .WithRequired(ca => ca.Character)
                 .HasForeignKey(ca => ca.CharacterId);
 
             modelBuilder

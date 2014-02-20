@@ -26,6 +26,23 @@ namespace Sordid.Core.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.CharacterPowers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        PowerId = c.Int(nullable: false),
+                        CharacterId = c.Int(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateUpdated = c.DateTime(nullable: false),
+                        ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Characters", t => t.CharacterId, cascadeDelete: true)
+                .ForeignKey("dbo.Powers", t => t.PowerId, cascadeDelete: true)
+                .Index(t => t.CharacterId)
+                .Index(t => t.PowerId);
+            
+            CreateTable(
                 "dbo.Characters",
                 c => new
                     {
@@ -36,13 +53,25 @@ namespace Sordid.Core.Migrations
                         Notes = c.String(),
                         StoryTitle = c.String(),
                         Starring = c.String(),
+                        ImageUrl = c.String(),
+                        MaxSkillPoints = c.Int(nullable: false),
+                        BaseRefresh = c.Int(nullable: false),
+                        PowerLevelId = c.Int(),
+                        TemplateId = c.Int(),
+                        PhysicalStress = c.Int(nullable: false),
+                        MentalStress = c.Int(nullable: false),
+                        SocialStress = c.Int(nullable: false),
                         ApplicationUserId = c.String(nullable: false, maxLength: 128),
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.PowerLevels", t => t.PowerLevelId)
+                .ForeignKey("dbo.Templates", t => t.TemplateId)
                 .ForeignKey("dbo.Users", t => t.ApplicationUserId, cascadeDelete: true)
+                .Index(t => t.PowerLevelId)
+                .Index(t => t.TemplateId)
                 .Index(t => t.ApplicationUserId);
             
             CreateTable(
@@ -59,48 +88,37 @@ namespace Sordid.Core.Migrations
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                        Character_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Aspects", t => t.AspectId, cascadeDelete: true)
                 .ForeignKey("dbo.Characters", t => t.CharacterId, cascadeDelete: true)
-                .ForeignKey("dbo.Characters", t => t.Character_Id)
                 .Index(t => t.AspectId)
-                .Index(t => t.CharacterId)
-                .Index(t => t.Character_Id);
+                .Index(t => t.CharacterId);
             
             CreateTable(
-                "dbo.CharacterPowers",
+                "dbo.Consequences",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        PowerId = c.Int(nullable: false),
+                        Type = c.String(),
+                        StressType = c.String(),
+                        StressAmount = c.Int(nullable: false),
+                        UserCreated = c.Boolean(nullable: false),
                         CharacterId = c.Int(nullable: false),
-                        DateCreated = c.DateTime(nullable: false),
-                        DateUpdated = c.DateTime(nullable: false),
-                        ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                        Character_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Characters", t => t.CharacterId, cascadeDelete: true)
-                .ForeignKey("dbo.Powers", t => t.PowerId, cascadeDelete: true)
-                .ForeignKey("dbo.Characters", t => t.Character_Id)
-                .Index(t => t.CharacterId)
-                .Index(t => t.PowerId)
-                .Index(t => t.Character_Id);
+                .Index(t => t.CharacterId);
             
             CreateTable(
-                "dbo.Powers",
+                "dbo.PowerLevels",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Type = c.Int(nullable: false),
-                        Cost = c.Int(nullable: false),
                         Name = c.String(),
-                        Notes = c.String(),
-                        DateCreated = c.DateTime(nullable: false),
-                        DateUpdated = c.DateTime(nullable: false),
-                        ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        BaseRefresh = c.Int(nullable: false),
+                        SkillPoints = c.Int(nullable: false),
+                        MaxSkillRank = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -115,15 +133,12 @@ namespace Sordid.Core.Migrations
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                        Character_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Characters", t => t.CharacterId, cascadeDelete: true)
                 .ForeignKey("dbo.Skills", t => t.SkillId, cascadeDelete: true)
-                .ForeignKey("dbo.Characters", t => t.Character_Id)
-                .Index(t => t.CharacterId)
+                .ForeignKey("dbo.Characters", t => t.CharacterId, cascadeDelete: true)
                 .Index(t => t.SkillId)
-                .Index(t => t.Character_Id);
+                .Index(t => t.CharacterId);
             
             CreateTable(
                 "dbo.Skills",
@@ -136,6 +151,15 @@ namespace Sordid.Core.Migrations
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(nullable: false),
                         ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Templates",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -198,49 +222,67 @@ namespace Sordid.Core.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Powers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Type = c.Int(nullable: false),
+                        Cost = c.Int(nullable: false),
+                        Name = c.String(),
+                        Notes = c.String(),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateUpdated = c.DateTime(nullable: false),
+                        ConcurrencyVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.CharacterPowers", "PowerId", "dbo.Powers");
             DropForeignKey("dbo.Characters", "ApplicationUserId", "dbo.Users");
             DropForeignKey("dbo.UserClaims", "User_Id", "dbo.Users");
             DropForeignKey("dbo.UserRoles", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.UserLogins", "UserId", "dbo.Users");
-            DropForeignKey("dbo.CharacterSkills", "Character_Id", "dbo.Characters");
-            DropForeignKey("dbo.CharacterSkills", "SkillId", "dbo.Skills");
+            DropForeignKey("dbo.Characters", "TemplateId", "dbo.Templates");
             DropForeignKey("dbo.CharacterSkills", "CharacterId", "dbo.Characters");
-            DropForeignKey("dbo.CharacterPowers", "Character_Id", "dbo.Characters");
-            DropForeignKey("dbo.CharacterPowers", "PowerId", "dbo.Powers");
+            DropForeignKey("dbo.CharacterSkills", "SkillId", "dbo.Skills");
             DropForeignKey("dbo.CharacterPowers", "CharacterId", "dbo.Characters");
-            DropForeignKey("dbo.CharacterAspects", "Character_Id", "dbo.Characters");
+            DropForeignKey("dbo.Characters", "PowerLevelId", "dbo.PowerLevels");
+            DropForeignKey("dbo.Consequences", "CharacterId", "dbo.Characters");
             DropForeignKey("dbo.CharacterAspects", "CharacterId", "dbo.Characters");
             DropForeignKey("dbo.CharacterAspects", "AspectId", "dbo.Aspects");
+            DropIndex("dbo.CharacterPowers", new[] { "PowerId" });
             DropIndex("dbo.Characters", new[] { "ApplicationUserId" });
             DropIndex("dbo.UserClaims", new[] { "User_Id" });
             DropIndex("dbo.UserRoles", new[] { "UserId" });
             DropIndex("dbo.UserRoles", new[] { "RoleId" });
             DropIndex("dbo.UserLogins", new[] { "UserId" });
-            DropIndex("dbo.CharacterSkills", new[] { "Character_Id" });
-            DropIndex("dbo.CharacterSkills", new[] { "SkillId" });
+            DropIndex("dbo.Characters", new[] { "TemplateId" });
             DropIndex("dbo.CharacterSkills", new[] { "CharacterId" });
-            DropIndex("dbo.CharacterPowers", new[] { "Character_Id" });
-            DropIndex("dbo.CharacterPowers", new[] { "PowerId" });
+            DropIndex("dbo.CharacterSkills", new[] { "SkillId" });
             DropIndex("dbo.CharacterPowers", new[] { "CharacterId" });
-            DropIndex("dbo.CharacterAspects", new[] { "Character_Id" });
+            DropIndex("dbo.Characters", new[] { "PowerLevelId" });
+            DropIndex("dbo.Consequences", new[] { "CharacterId" });
             DropIndex("dbo.CharacterAspects", new[] { "CharacterId" });
             DropIndex("dbo.CharacterAspects", new[] { "AspectId" });
+            DropTable("dbo.Powers");
             DropTable("dbo.Roles");
             DropTable("dbo.UserRoles");
             DropTable("dbo.UserLogins");
             DropTable("dbo.UserClaims");
             DropTable("dbo.Users");
+            DropTable("dbo.Templates");
             DropTable("dbo.Skills");
             DropTable("dbo.CharacterSkills");
-            DropTable("dbo.Powers");
-            DropTable("dbo.CharacterPowers");
+            DropTable("dbo.PowerLevels");
+            DropTable("dbo.Consequences");
             DropTable("dbo.CharacterAspects");
             DropTable("dbo.Characters");
+            DropTable("dbo.CharacterPowers");
             DropTable("dbo.Aspects");
         }
     }
