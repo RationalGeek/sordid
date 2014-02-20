@@ -5,8 +5,6 @@ namespace Sordid.Web.Models
 {
     public class CharacterListViewModel
     {
-        public static Random _Random = new Random();
-
         public CharacterListViewModel(Character character)
         {
             Character = character;
@@ -19,10 +17,17 @@ namespace Sordid.Web.Models
 
         private void CalculateColors()
         {
-            var hue = _Random.Next(0, 361); // TODO: Calculate based on hash of character id or something
+            var hue = GetHueFromRandomHash();
             var oppositeHue = CalcOppositeHue(hue);
-            ForegroundColor = string.Format("hsl({0},{1}%,{2}%)", hue, 40, 40);
-            BackgroundColor = string.Format("hsl({0},{1}%,{2}%)", oppositeHue, 60, 60);
+            ForegroundColor = string.Format("hsl({0},{1}%,{2}%)", hue, 60, 30);
+            BackgroundColor = string.Format("hsl({0},{1}%,{2}%)", oppositeHue, 60, 70);
+        }
+
+        private int GetHueFromRandomHash()
+        {
+            var randomBytes = Convert.FromBase64String(Character.RandomHash);
+            var randomInt = BitConverter.ToInt32(randomBytes, 0);
+            return randomInt % 361;
         }
 
         private int CalcOppositeHue(int hue)

@@ -1,8 +1,10 @@
 ﻿using Sordid.Core.Interfaces;
 using Sordid.Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace Sordid.Core.Services
@@ -32,6 +34,7 @@ namespace Sordid.Core.Services
                     PhysicalStress = 2,
                     MentalStress = 2,
                     SocialStress = 2,
+                    RandomHash = CreateRandomHash(),
                 };
             await InitSkills(character);
             await InitAspects(character);
@@ -41,6 +44,14 @@ namespace Sordid.Core.Services
             character = _charRepo.Add(character);
             await _charRepo.UnitOfWork.Save();
             return character;
+        }
+
+        private string CreateRandomHash()
+        {
+            var guid = Guid.NewGuid();
+            var bytes = guid.ToByteArray();
+            var hash = MD5.Create().ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
 
         private async Task InitSkills(Character character)
