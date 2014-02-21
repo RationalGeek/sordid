@@ -59,20 +59,32 @@
             </div>
         }
     </div>
+    <div id="stressPanel" class="panel panel-left">
+        <div class="panel-title">Stress</div>
+        <div class="stressSection">
+            <div class="label">
+                <span class="type">Physical</span>
+                <span class="relatedSkill">Endurance</span>
+            </div>
+            <span class="bubbles">@Html.Raw(@Model.BuildBubbles(Model.Character.PhysicalStress))</span>
+        </div>
+        <div class="stressSection">
+            <div class="label">
+                <span class="type">Mental</span>
+                <span class="relatedSkill">Conviction</span>
+            </div>
+            <span class="bubbles">@Html.Raw(Model.BuildBubbles(Model.Character.MentalStress))</span>
+        </div>
+        <div class="stressSection">
+            <div class="label">
+                <span class="type">Social</span>
+                <span class="relatedSkill">Presence</span>
+            </div>
+            <span class="bubbles">@Html.Raw(Model.BuildBubbles(Model.Character.SocialStress))</span>
+        </div>
+    </div>
+    <div id="powersPanel" class="panel panel-right">
+        <div class="panel-title">Stunts &amp; Powers</div>
+    </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>

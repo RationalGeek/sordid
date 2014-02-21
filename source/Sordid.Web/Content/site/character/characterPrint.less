@@ -137,3 +137,51 @@ body {
         }
     }
 }
+
+#stressPanel {
+    .panel-title {
+        margin-bottom: 10px;
+    }
+
+    .bubble {
+        &:not(:first-child) {
+            margin-left: 3px;
+        }
+
+        &:after {
+            content: "\25CB"; // White circle
+        }
+
+        &.disabled:after {
+            content: "\25CF"; // Black circle
+            color: @writingColor;
+        }
+    }
+
+    .label {
+        display: inline-block;
+        min-width: 100px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+
+        .relatedSkill {
+            display: block;
+            font-size: 80%;
+
+            &:before {
+                content: "(";
+            }
+            &:after {
+                content: ")";
+            }
+        }
+    }
+
+    .bubbles {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: -6px;
+        font-size: 210%;
+        font-family: serif;
+    }
+}

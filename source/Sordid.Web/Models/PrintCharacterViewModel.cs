@@ -1,4 +1,5 @@
 ﻿using Sordid.Core.Model;
+using System.Text;
 
 namespace Sordid.Web.Models
 {
@@ -36,6 +37,21 @@ namespace Sordid.Web.Models
             }
 
             return "WTF?";
+        }
+
+        public string BuildBubbles(int n)
+        {
+            var sb = new StringBuilder();
+            for (int i = 1; i <= 8; i++)
+            {
+                sb.Append("<span class=\"bubble");
+                if (i > n)
+                {
+                    sb.Append(" disabled");
+                }
+                sb.Append("\"></span>");
+            }
+            return sb.ToString();
         }
     }
 }
