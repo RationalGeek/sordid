@@ -13,139 +13,150 @@
     @Styles.Render("~/Content/css/characterPrint")
 </head>
 <body>
-    <div id="header">Character Sheet</div>
-    <div id="names">
-        <div class="panel panel-left">
-            <span class="label">Character</span>
-            <span class="field">@Model.Character.Name</span>
+    <div class="page">
+        <div id="header">Character Sheet</div>
+        <div id="names">
+            <div class="panel panel-left">
+                <span class="label">Character</span>
+                <span class="field">@Model.Character.Name</span>
+            </div>
+            <div class="panel panel-right">
+                <span class="field">@Model.Character.PlayerName</span>
+                <span class="label">Player</span>
+            </div>
         </div>
-        <div class="panel panel-right">
-            <span class="field">@Model.Character.PlayerName</span>
-            <span class="label">Player</span>
-        </div>
-    </div>
-    <div id="aspectsPanel" class="panel panel-left">
-        <div class="panel-title">Aspects</div>
-        @{
-            var label = "";
-            foreach (var aspect in Model.Character.Aspects)
-            {
-                var tempLabel = Model.TranslateAspectTitle(aspect.Aspect.HeadingLabel);
-                if (tempLabel != label)
+        <div id="aspectsPanel" class="panel panel-left">
+            <div class="panel-title">Aspects</div>
+            @{
+                var label = "";
+                foreach (var aspect in Model.Character.Aspects)
                 {
-                    label = tempLabel;
-                    <div class="label">@label</div>
-                }
-                <div class="field">@aspect.Name</div>
-            }
-        }
-    </div>
-    <div id="skillsPanel" class="panel panel-right">
-        <div class="panel-title">Skills</div>
-        @for (int i = 5; i >= 1; i--)
-        {
-            var skillsOfRank = Model.Character.Skills.Where(s => s.Rank == i).OrderBy(s => s.Skill.Name);
-            <div class="skillRank">
-                <div class="label rankLabel">
-                    <span class="rankTitle">@Model.TranslateSkillRank(i) (+@i)</span>
-                    <span class="numSlots"># of Slots: <span class="field">@skillsOfRank.Count()</span></span>
-                </div>
-                <div class="skillList">
-                    @foreach (var s in skillsOfRank)
+                    var tempLabel = Model.TranslateAspectTitle(aspect.Aspect.HeadingLabel);
+                    if (tempLabel != label)
                     {
-                        <span class="field skillField">@s.Skill.Name</span>
+                        label = tempLabel;
+                        <div class="label">@label</div>
                     }
+                    <div class="field">@aspect.Name</div>
+                }
+            }
+        </div>
+        <div id="skillsPanel" class="panel panel-right">
+            <div class="panel-title">Skills</div>
+            @for (int i = 5; i >= 1; i--)
+            {
+                var skillsOfRank = Model.Character.Skills.Where(s => s.Rank == i).OrderBy(s => s.Skill.Name);
+                <div class="skillRank">
+                    <div class="label rankLabel">
+                        <span class="rankTitle">@Model.TranslateSkillRank(i) (+@i)</span>
+                        <span class="numSlots"># of Slots: <span class="field">@skillsOfRank.Count()</span></span>
+                    </div>
+                    <div class="skillList">
+                        @foreach (var s in skillsOfRank)
+                        {
+                            <span class="field skillField">@s.Skill.Name</span>
+                        }
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-    <div id="stressPanel" class="panel panel-left">
-        <div class="panel-title">Stress</div>
-        <div class="stressSection">
-            <div class="label">
-                <span class="type">Physical</span>
-                <span class="relatedSkill">Endurance</span>
-            </div>
-            <span class="bubbles">@Html.Raw(@Model.BuildBubbles(Model.Character.PhysicalStress))</span>
+            }
         </div>
-        <div class="stressSection">
-            <div class="label">
-                <span class="type">Mental</span>
-                <span class="relatedSkill">Conviction</span>
+        <div id="stressPanel" class="panel panel-left">
+            <div class="panel-title">Stress</div>
+            <div class="stressSection">
+                <div class="label">
+                    <span class="type">Physical</span>
+                    <span class="relatedSkill">Endurance</span>
+                </div>
+                <span class="bubbles">@Html.Raw(@Model.BuildBubbles(Model.Character.PhysicalStress))</span>
             </div>
-            <span class="bubbles">@Html.Raw(Model.BuildBubbles(Model.Character.MentalStress))</span>
-        </div>
-        <div class="stressSection">
-            <div class="label">
-                <span class="type">Social</span>
-                <span class="relatedSkill">Presence</span>
+            <div class="stressSection">
+                <div class="label">
+                    <span class="type">Mental</span>
+                    <span class="relatedSkill">Conviction</span>
+                </div>
+                <span class="bubbles">@Html.Raw(Model.BuildBubbles(Model.Character.MentalStress))</span>
             </div>
-            <span class="bubbles">@Html.Raw(Model.BuildBubbles(Model.Character.SocialStress))</span>
+            <div class="stressSection">
+                <div class="label">
+                    <span class="type">Social</span>
+                    <span class="relatedSkill">Presence</span>
+                </div>
+                <span class="bubbles">@Html.Raw(Model.BuildBubbles(Model.Character.SocialStress))</span>
+            </div>
         </div>
-    </div>
-    <div id="powersPanel" class="panel panel-right">
-        <div class="panel-title">Stunts &amp; Powers</div>
-        <table>
-            <thead>
-                <tr>
-                    <th class="label cost">Cost</th>
-                    <th class="label ability">Ability</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var power in Model.Character.Powers)
-                {
+        <div id="powersPanel" class="panel panel-right">
+            <div class="panel-title">Stunts &amp; Powers</div>
+            <table>
+                <thead>
                     <tr>
-                        <td class="field cost">@Model.FormatCost(power.Power.Cost)</td>
-                        <td class="field name">@power.Power.Name</td>
+                        <th class="label cost">Cost</th>
+                        <th class="label ability">Ability</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <div class="totalCost">
-            <span class="field">@Model.FormatCost(@Model.Character.Powers.Sum(p => p.Power.Cost))</span>
-            <span class="label">Total Refresh Adjustment</span>
+                </thead>
+                <tbody>
+                    @foreach (var power in Model.Character.Powers)
+                    {
+                        <tr>
+                            <td class="field cost">@Model.FormatCost(power.Power.Cost)</td>
+                            <td class="field name">@power.Power.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="totalCost">
+                <span class="field">@Model.FormatCost(@Model.Character.Powers.Sum(p => p.Power.Cost))</span>
+                <span class="label">Total Refresh Adjustment</span>
+            </div>
+        </div>
+        <div id="consequencesPanel" class="panel panel-left">
+            <div class="panel-title">Consequences</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="label type">Type</th>
+                        <th class="label stressType">P/M/S</th>
+                        <th class="label stressAmount">Stress</th>
+                        <th class="label used">Used?</th>
+                        <th class="label aspect">Aspect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cons in Model.GetConsequencesOrdered())
+                    {
+                        <tr class="@(cons.UserCreated ? "userCreated" : "systemCreated")">
+                            <td class="field type">@cons.Type</td>
+                            <td class="field stressType">@cons.StressType</td>
+                            <td class="field stressAmount">@cons.StressAmount</td>
+                            <td class="field used"><span></span></td>
+                            <td class="field aspect">&nbsp;</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="miscStatsPanel" class="panel panel-left">
+            <div class="powerLevel">
+                <span class="label">Power Level</span>
+                <span class="field">
+                    @if (Model.Character.PowerLevel != null)
+                    {
+                        @Model.Character.PowerLevel.Name
+                    }
+                </span>
+            </div>
+            <div class="skillCap">
+                <span class="label">Skill Cap</span>
+                <span class="field">????</span> @* TODO: Support skill cap field *@ 
+            </div>
         </div>
     </div>
-    <div id="consequencesPanel" class="panel panel-left">
-        <div class="panel-title">Consequences</div>
-        <table>
-            <thead>
-                <tr>
-                    <th class="label type">Type</th>
-                    <th class="label stressType">P/M/S</th>
-                    <th class="label stressAmount">Stress</th>
-                    <th class="label used">Used?</th>
-                    <th class="label aspect">Aspect</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var cons in Model.GetConsequencesOrdered())
-                {
-                    <tr class="@(cons.UserCreated ? "userCreated" : "systemCreated")">
-                        <td class="field type">@cons.Type</td>
-                        <td class="field stressType">@cons.StressType</td>
-                        <td class="field stressAmount">@cons.StressAmount</td>
-                        <td class="field used"><span></span></td>
-                        <td class="field aspect">&nbsp;</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div id="miscStatsPanel" class="panel panel-left">
-        <div class="powerLevel">
-            <span class="label">Power Level</span>
-            <span class="field">
-                @if (Model.Character.PowerLevel != null)
-                {
-                    @Model.Character.PowerLevel.Name
-                }
-            </span>
-        </div>
-        <div class="skillCap">
-            <span class="label">Skill Cap</span>
-            <span class="field">????</span> @* TODO: Support skill cap field *@ 
+    <div class="page-break"></div>
+    <div class="page">
+        <div id="notesPanel" class="panel">
+            <div class="panel-title">Notes</div>
+            <div class="notesBody">
+                @Html.Raw(Model.Character.Notes)
+            </div>
         </div>
     </div>
 </body>

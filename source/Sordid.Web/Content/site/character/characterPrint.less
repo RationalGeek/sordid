@@ -6,6 +6,7 @@
 @whiteCircle:"\25CB";
 @blackCircle:"\25CF";
 @bubbleSize:26pt;
+@panelWidth:48.5%;
 
 /*  How to disable deafult headers / footers when printing
     http://stackoverflow.com/questions/1960939/disabling-browser-print-options-headers-footers-margins-from-page */
@@ -16,7 +17,20 @@
 body {
     background-color:#FFFFFF; 
     margin: 0px;
+    /*padding: 0.5in;*/
+}
+
+.page {
     padding: 0.5in;
+}
+
+// http://davidwalsh.name/css-page-breaks
+@media all {
+	.page-break	{ display: none; }
+}
+
+@media print {
+	.page-break	{ display: block; page-break-before: always; }
 }
 
 #header {
@@ -43,7 +57,7 @@ body {
 .panel {
     border: solid thin black;
     border-radius: 4px;
-    width: 48.5%;
+    width: @panelWidth;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 2px;
@@ -300,5 +314,18 @@ body {
                 font-size: 90%;
             }
         }
+    }
+}
+
+#notesPanel {
+    clear: both;
+    height: 9in;
+    width: 100%;
+
+    .notesBody {
+        padding: .25in;
+        color: @writingColor;
+        font-family: @writingFont;
+        font-size: 125%;
     }
 }

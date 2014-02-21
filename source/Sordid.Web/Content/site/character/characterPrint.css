@@ -8,7 +8,23 @@
 body {
     background-color: #FFFFFF;
     margin: 0px;
+}
+
+.page {
     padding: 0.5in;
+}
+
+@media all {
+    .page-break {
+        display: none;
+    }
+}
+
+@media print {
+    .page-break {
+        display: block;
+        page-break-before: always;
+    }
 }
 
 #header {
@@ -289,4 +305,17 @@ body {
 #miscStatsPanel .skillCap span.field,
 #miscStatsPanel .powerLevel span.field {
     font-size: 90%;
+}
+
+#notesPanel {
+    clear: both;
+    height: 9in;
+    width: 100%;
+}
+
+#notesPanel .notesBody {
+    padding: .25in;
+    color: #000099;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 125%;
 }
