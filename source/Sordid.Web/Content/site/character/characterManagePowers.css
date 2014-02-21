@@ -41,21 +41,3 @@
     opacity: 0.7;
     margin-right: 5px;
 }
-
-/* Circular delete button
-.powerContainer .powerDeleteButton {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    opacity: 0.5;
-}
-.powerContainer .powerDeleteButton .glyphicon {
-    vertical-align: baseline;
-    font-size: 85%;
-}
-.powerContainer .powerDeleteButton:hover {
-    opacity: 1;
-} */

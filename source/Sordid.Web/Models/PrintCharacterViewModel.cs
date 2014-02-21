@@ -53,5 +53,17 @@ namespace Sordid.Web.Models
             }
             return sb.ToString();
         }
+
+        public string FormatCost(int n)
+        {
+            if (n >= 0)
+            {
+                return string.Format("+{0}", n);
+            }
+            else
+            {
+                return n.ToString();
+            }
+        }
     }
 }
