@@ -133,5 +133,20 @@
             </tbody>
         </table>
     </div>
+    <div id="miscStatsPanel" class="panel panel-left">
+        <div class="powerLevel">
+            <span class="label">Power Level</span>
+            <span class="field">
+                @if (Model.Character.PowerLevel != null)
+                {
+                    @Model.Character.PowerLevel.Name
+                }
+            </span>
+        </div>
+        <div class="skillCap">
+            <span class="label">Skill Cap</span>
+            <span class="field">????</span> @* TODO: Support skill cap field *@ 
+        </div>
+    </div>
 </body>
 </html>
