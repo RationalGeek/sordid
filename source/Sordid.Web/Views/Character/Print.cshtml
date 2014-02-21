@@ -15,7 +15,7 @@
 <body>
     <div id="header">Character Sheet</div>
     <div id="names">
-        <div class="panel panel-left"> 
+        <div class="panel panel-left">
             <span class="label">Character</span>
             <span class="field">@Model.Character.Name</span>
         </div>
@@ -24,5 +24,55 @@
             <span class="label">Player</span>
         </div>
     </div>
+    <div id="aspectsPanel" class="panel panel-left">
+        <div class="panel-title">Aspects</div>
+        @{
+            var label = "";
+            foreach (var aspect in Model.Character.Aspects)
+            {
+                var tempLabel = Model.TranslateAspectTitle(aspect.Aspect.HeadingLabel);
+                if (tempLabel != label)
+                {
+                    label = tempLabel;
+                    <div class="label">@label</div>
+                }
+                <div class="field">@aspect.Name</div>
+            }
+        }
+    </div>
+    <div id="skillsPanel" class="panel panel-right">
+        <div class="panel-title">Skills</div>
+        @for (int i = 5; i >= 1; i--)
+        {
+            var skillsOfRank = Model.Character.Skills.Where(s => s.Rank == i).OrderBy(s => s.Skill.Name);
+            <div class="skillRank">
+                <div class="label rankLabel">
+                    <span class="rankTitle">@Model.TranslateSkillRank(i) (+@i)</span>
+                    <span class="numSlots"># of Slots: <span class="field">@skillsOfRank.Count()</span></span>
+                </div>
+                <div class="skillList">
+                    @foreach (var s in skillsOfRank)
+                    {
+                        <span class="field skillField">@s.Skill.Name</span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

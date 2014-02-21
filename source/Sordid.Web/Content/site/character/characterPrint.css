@@ -1,0 +1,131 @@
+﻿/*  How to disable deafult headers / footers when printing
+        http://stackoverflow.com/questions/1960939/disabling-browser-print-options-headers-footers-margins-from-page */
+@page {
+    size: auto;
+    margin: 0mm;
+}
+
+body {
+    background-color: #FFFFFF;
+    margin: 0px;
+    padding: 0.5in;
+}
+
+#header {
+    font-size: 180%;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: .25in;
+    font-family: 'Aclonica', sans-serif;
+}
+
+.label {
+    color: #666666;
+    font-size: 90%;
+    font-family: 'Aclonica', sans-serif;
+}
+
+.field {
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #000099;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+.panel {
+    border: solid thin black;
+    border-radius: 4px;
+    width: 48.5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-bottom: 10px;
+}
+
+.panel.panel-left {
+    float: left;
+}
+
+.panel.panel-right {
+    float: right;
+}
+
+.panel .panel-title {
+    font-size: 110%;
+    font-family: 'Aclonica', sans-serif;
+    text-align: center;
+}
+
+#names .panel {
+    position: relative;
+}
+
+#names .panel .label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+}
+
+#names .panel.panel-left .field {
+    padding-left: 1.25in;
+}
+
+#names .panel-right {
+    text-align: right;
+}
+
+#names .panel-right .label {
+    right: 0;
+}
+
+#names .panel-right .field {
+    padding-right: 1.5in;
+}
+
+#aspectsPanel .field,
+#aspectsPanel .label {
+    text-align: center;
+}
+
+#aspectsPanel .label {
+    margin-top: 10px;
+}
+
+#aspectsPanel .field {
+    font-size: 98%;
+}
+
+#skillsPanel .skillRank {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#skillsPanel .skillRank .rankLabel,
+#skillsPanel .skillRank .skillList {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 40px;
+}
+
+#skillsPanel .skillRank .skillList {
+    margin-left: 20px;
+    max-width: 2in;
+    font-size: 70%;
+}
+
+#skillsPanel .skillRank .numSlots {
+    display: block;
+}
+
+#skillsPanel .skillRank .numSlots .field {
+    margin-left: 3px;
+    font-size: 93%;
+}
+
+#skillsPanel .skillRank .skillField:not(:last-child):after {
+    content: ", ";
+}

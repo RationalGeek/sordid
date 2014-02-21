@@ -1,4 +1,5 @@
 ﻿@writingColor:#009;
+@labelColor:#666;
 @labelFont:'Aclonica', sans-serif;
 @writingFont:'Shadows Into Light Two', cursive;
 
@@ -15,11 +16,24 @@ body {
 }
 
 #header {
-    font-size: 200%;
+    font-size: 180%;
     font-weight: bold;
     text-align: center;
     margin-bottom: .25in;
     font-family: @labelFont;
+}
+
+.label { 
+    color: @labelColor;
+    font-size: 90%;
+    font-family: @labelFont;
+}
+
+.field {
+    font-family: @writingFont;
+    color: @writingColor;
+    font-weight: bold;
+    font-size: 125%;
 }
 
 .panel {
@@ -30,54 +44,96 @@ body {
     padding-bottom: 5px;
     padding-left: 2px;
     padding-right: 2px;
+    margin-bottom: 10px;
+
+    &.panel-left {
+        float: left;
+    }
+
+    &.panel-right {
+        float: right;
+    }
+
+    .panel-title {
+        font-size: 110%;
+        font-family: @labelFont;
+        text-align: center;
+    }
 }
 
-.panel-left {
-    float: left;
+#names {
+    .panel {
+        position: relative;
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 1px;
+        }
+
+        &.panel-left .field {
+            padding-left: 1.25in;
+        }
+    }
+
+    .panel-right {
+        text-align: right;
+
+        .label {
+            right: 0;
+        }
+
+        .field {
+            padding-right: 1.5in;
+        }
+    }
 }
 
-.panel-right {
-    float: right;
+#aspectsPanel {
+    .field, .label {
+        text-align: center;
+    }
+
+    .label { 
+        margin-top: 10px;
+    }
+
+    .field {
+        font-size: 98%;
+    }
 }
 
-#names .panel {
-    position: relative;
-}
+#skillsPanel {
+    .skillRank {
+        margin-bottom: 10px;
+        margin-left: 10px;
 
-#names .panel .label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 1px;
-}
+        .rankLabel, .skillList {
+            display: inline-block;
+            vertical-align: top;
+            min-height: 40px;
+        }
 
-#names .panel-right .label {
-    right: 0;
-}
+        .skillList {
+            margin-left: 20px;
+            max-width: 2in;
+            font-size: 70%;
+        }
 
-#names .panel-right {
-    text-align: right;
-}
+        .numSlots {
+            display: block;
 
-#names .panel-left .field {
-    padding-left: 1.5in;
-}
+            .field {
+                margin-left: 3px;
+                font-size: 93%;
+            }
+        }
 
-#names .panel-right .field {
-    padding-right: 1.5in;
-}
-
-.label { 
-    color: #999;
-    font-size: 90%;
-    font-family: @labelFont;
-}
-
-.field {
-    font-family: @writingFont;
-    color: @writingColor;
-    font-weight: bold;
-    font-size: 125%;
+        .skillField:not(:last-child):after {
+            content: ", ";
+        }
+    }
 }

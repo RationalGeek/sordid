@@ -264,6 +264,12 @@
     <Content Include="Content\site\character\characterManageSkills.css" />
     <Content Include="Content\site\character\characterManageStress.css" />
     <None Include="Content\site\character\characterPrint.less" />
+    <Content Include="Content\site\character\characterPrint.css">
+      <DependentUpon>characterPrint.less</DependentUpon>
+    </Content>
+    <Content Include="Content\site\character\characterPrint.min.css">
+      <DependentUpon>characterPrint.less</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Content\lib\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
