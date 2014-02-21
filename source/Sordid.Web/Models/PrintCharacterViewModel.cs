@@ -1,4 +1,6 @@
 ﻿using Sordid.Core.Model;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Sordid.Web.Models
@@ -64,6 +66,15 @@ namespace Sordid.Web.Models
             {
                 return n.ToString();
             }
+        }
+
+        public IList<Consequence> GetConsequencesOrdered()
+        {
+            return Character.Consequences
+                .OrderBy(c => (c.Type == "Extreme" && !c.UserCreated) ? 1 : 0) // Extreme goes to the very bottom
+                .ThenBy(c => (c.UserCreated) ? 1 : 0)                          // User created goes after system created
+                .ThenByDescending(c => c.StressAmount)                         // Then sort by stress amount
+                .ToList();
         }
     }
 }

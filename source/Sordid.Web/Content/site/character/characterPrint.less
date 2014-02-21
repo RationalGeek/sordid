@@ -2,6 +2,10 @@
 @labelColor:#666;
 @labelFont:'Aclonica', sans-serif;
 @writingFont:'Shadows Into Light Two', cursive;
+@bubbleFont:serif;
+@whiteCircle:"\25CB";
+@blackCircle:"\25CF";
+@bubbleSize:26pt;
 
 /*  How to disable deafult headers / footers when printing
     http://stackoverflow.com/questions/1960939/disabling-browser-print-options-headers-footers-margins-from-page */
@@ -149,11 +153,11 @@ body {
         }
 
         &:after {
-            content: "\25CB"; // White circle
+            content: @whiteCircle;
         }
 
         &.disabled:after {
-            content: "\25CF"; // Black circle
+            content: @blackCircle;
             color: @writingColor;
         }
     }
@@ -181,8 +185,8 @@ body {
         display: inline-block;
         vertical-align: top;
         margin-top: -6px;
-        font-size: 210%;
-        font-family: serif;
+        font-size: @bubbleSize;
+        font-family: @bubbleFont;
     }
 }
 
@@ -224,6 +228,59 @@ body {
             width: 150px;
             vertical-align: middle;
             margin-left: 5px;
+        }
+    }
+}
+
+#consequencesPanel {
+    table {
+        margin-top: 10px;
+        border-collapse:separate;
+        border-spacing: 10px 0px;
+    }
+
+    tr.systemCreated .field {
+        font-size: 80%;
+    }
+
+    tr.userCreated .field {
+        font-size: 90%;
+    }
+
+    tr.systemCreated td, th  {
+        font-weight: normal;
+    }
+
+    thead th {
+        font-size: 90%;
+    }
+
+    .systemCreated .field {
+        font-family: @labelFont;
+        color: black;
+    }
+
+    .stressType, .used, .stressAmount {
+        text-align: center;
+    }
+
+    .type { 
+        text-align: left;
+    }
+
+    .aspect {
+        text-align: right;
+        width: 100%;
+    }
+
+    .used span {
+        font-family: @bubbleFont;
+        font-size: @bubbleSize;
+        font-weight: normal;
+        line-height: 12px;
+        color: black;
+        &:after {
+            content: @whiteCircle;
         }
     }
 }

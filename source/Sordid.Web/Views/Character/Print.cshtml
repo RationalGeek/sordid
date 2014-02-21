@@ -107,5 +107,31 @@
             <span class="label">Total Refresh Adjustment</span>
         </div>
     </div>
+    <div id="consequencesPanel" class="panel panel-left">
+        <div class="panel-title">Consequences</div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="label type">Type</th>
+                    <th class="label stressType">P/M/S</th>
+                    <th class="label stressAmount">Stress</th>
+                    <th class="label used">Used?</th>
+                    <th class="label aspect">Aspect</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cons in Model.GetConsequencesOrdered())
+                {
+                    <tr class="@(cons.UserCreated ? "userCreated" : "systemCreated")">
+                        <td class="field type">@cons.Type</td>
+                        <td class="field stressType">@cons.StressType</td>
+                        <td class="field stressAmount">@cons.StressAmount</td>
+                        <td class="field used"><span></span></td>
+                        <td class="field aspect">&nbsp;</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
