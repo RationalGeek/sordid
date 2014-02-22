@@ -12,7 +12,7 @@ namespace Sordid.Web
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/lib/jquery/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery.ui").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
                         //"~/Scripts/jquery.ui/jquery.ui.*",
                         "~/Scripts/lib/jquery.ui/jquery.ui.core.js",
                         "~/Scripts/lib/jquery.ui/jquery.ui.widget.js",
