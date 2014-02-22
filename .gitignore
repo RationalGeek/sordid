@@ -6,13 +6,13 @@ obj/
 TestResults/
 packages/
 App_Data/
-PublishProfiles/
 
 ###################
 # VS User Files   #
 ###################
 *.suo
 *.csproj.user
+*.pubxml.user
 
 ###################
 # compiled source #

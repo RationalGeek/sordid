@@ -280,7 +280,7 @@
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Properties\PublishProfiles\sordid-alpha - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\AzureWebDeploy.pubxml" />
     <None Include="Scripts\lib\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\lib\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\lib\jquery\jquery-1.10.2.min.js" />
