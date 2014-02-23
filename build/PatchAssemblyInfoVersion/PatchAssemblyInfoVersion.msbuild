@@ -1,14 +1,23 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\source\packages\MSBuildTasks.1.4.0.65\tools\MSBuild.Community.Tasks.Targets" />
+  <UsingTask AssemblyFile="..\..\source\packages\MSBuildTasks.1.4.0.65\tools\MSBuild.Community.Tasks.dll" TaskName="MSBuild.Community.Tasks.AssemblyInfo" />
   <ItemGroup>
-    <AssemblyInfoFiles Include="..\source\Sordid.Core\Properties\AssemblyInfoVersionTest.cs" />
+    <AssemblyInfoFiles Include="..\..\source\Sordid.Core\Properties\AssemblyInfoVersion.cs" />
   </ItemGroup>
   <Target Name="PatchAssemblyInfoVersion">
+    <ItemGroup>
+      <RequiredProperty Include="AssemblyVersionMajor" />
+      <RequiredProperty Include="AssemblyVersionMinor" />
+      <RequiredProperty Include="AssemblyVersionBuild" />
+    </ItemGroup>
+	<Error Text="Property %(RequiredProperty.Identity) required" Condition="'$(%(RequiredProperty.Identity))' == ''" />
+	
+	<Message Text="Patching assembly info file '%(AssemblyInfoFiles.FullPath)' to version '$(AssemblyVersionMajor).$(AssemblyVersionMinor).0.$(AssemblyVersionBuild)'"/>
+  
     <AssemblyInfo
         CodeLanguage="CS"
         OutputFile="%(AssemblyInfoFiles.FullPath)"
-        AssemblyVersion="0.1.0.42"
-        AssemblyFileVersion="0.1.0.42"
-        AssemblyInformationalVersion="0.1 Build 42" />
+        AssemblyVersion="$(AssemblyVersionMajor).$(AssemblyVersionMinor).0.$(AssemblyVersionBuild)"
+        AssemblyFileVersion="$(AssemblyVersionMajor).$(AssemblyVersionMinor).0.$(AssemblyVersionBuild)"
+        AssemblyInformationalVersion="$(AssemblyVersionMajor).$(AssemblyVersionMinor) Build $(AssemblyVersionBuild)" />
   </Target>
 </Project>
