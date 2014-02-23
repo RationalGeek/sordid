@@ -241,6 +241,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JsonErrorHandlingAttribute.cs" />
+    <Compile Include="Models\AboutViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CharacterListViewModel.cs" />
     <Compile Include="Models\PowersDialogViewModel.cs" />
@@ -359,6 +360,7 @@
     <Content Include="Views\Home\EmptyTest.cshtml" />
     <Content Include="Views\Character\Print.cshtml" />
     <Content Include="Views\Character\_ManageStress.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

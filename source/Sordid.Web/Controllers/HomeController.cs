@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Sordid.Web.Models;
+using System.Web.Mvc;
 
 namespace Sordid.Web.Controllers
 {
@@ -7,6 +8,11 @@ namespace Sordid.Web.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult About()
+        {
+            return View(new AboutViewModel());
         }
 
         public ActionResult EmptyTest()
