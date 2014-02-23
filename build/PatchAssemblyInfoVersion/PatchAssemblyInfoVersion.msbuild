@@ -1,0 +1,14 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\source\packages\MSBuildTasks.1.4.0.65\tools\MSBuild.Community.Tasks.Targets" />
+  <ItemGroup>
+    <AssemblyInfoFiles Include="..\source\Sordid.Core\Properties\AssemblyInfoVersionTest.cs" />
+  </ItemGroup>
+  <Target Name="PatchAssemblyInfoVersion">
+    <AssemblyInfo
+        CodeLanguage="CS"
+        OutputFile="%(AssemblyInfoFiles.FullPath)"
+        AssemblyVersion="0.1.0.42"
+        AssemblyFileVersion="0.1.0.42"
+        AssemblyInformationalVersion="0.1 Build 42" />
+  </Target>
+</Project>

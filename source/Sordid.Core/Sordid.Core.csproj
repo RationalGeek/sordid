@@ -111,6 +111,8 @@
     <Compile Include="Ninject\KernelBuilder.cs" />
     <Compile Include="Ninject\SordidCoreNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfoShared.cs" />
+    <Compile Include="Properties\AssemblyInfoVersion.cs" />
     <Compile Include="Repositories\AspectRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CharacterRepository.cs" />

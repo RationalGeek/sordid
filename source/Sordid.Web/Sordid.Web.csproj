@@ -226,6 +226,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Sordid.Core\Properties\AssemblyInfoShared.cs">
+      <Link>Properties\AssemblyInfoShared.cs</Link>
+    </Compile>
+    <Compile Include="..\Sordid.Core\Properties\AssemblyInfoVersion.cs">
+      <Link>Properties\AssemblyInfoVersion.cs</Link>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
