@@ -76,7 +76,7 @@ namespace Sordid.Web
                       "~/Content/site/character/characterManageStress.css",
                       "~/Content/site/character/characterManageNotes.css"));
 
-            bundles.Add(new LessBundle("~/Content/css/characterPrint").Include(
+            bundles.Add(new LessBundle("~/Content/css/characterPrintBundle").Include(
                       "~/Content/lib/normalize/normalize.css",
                       "~/Content/site/character/characterPrint.less"));
         }
