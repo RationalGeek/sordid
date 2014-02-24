@@ -270,6 +270,9 @@
     <Content Include="Content\site\character\characterManagePowers.css" />
     <Content Include="Content\site\character\characterManageSkills.css" />
     <Content Include="Content\site\character\characterManageStress.css" />
+    <Content Include="Content\site\character\characterPrint.css.map">
+      <DependentUpon>characterPrint.css</DependentUpon>
+    </Content>
     <None Include="Content\site\character\characterPrint.less" />
     <Content Include="Content\site\character\characterPrint.css">
       <DependentUpon>characterPrint.less</DependentUpon>
