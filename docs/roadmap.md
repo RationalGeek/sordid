@@ -1,6 +1,6 @@
 Sordid Roadmap
 ======
-### Stable Alpha release
+### Alpha release
 * ~~Set up alpha website, deployment scripts~~
 * ~~Set up continuous integration, deployment in TeamCity~~
 * ~~Create "how you can help" documentation and dev mailing list~~
