@@ -14,6 +14,7 @@ Sordid Roadmap
 * About page with attributions for libraries, fonts, etc., and especially to Evil Hat / Fred Hicks
 * About page should link back to Github project
 * Add link to alpha site from GitHub project page
+* Add license file to Github project, About page
 * Post to community sites about project and solicit help
 
 ### Beta release
