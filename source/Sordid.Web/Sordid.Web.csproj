@@ -260,6 +260,7 @@
     <Content Include="Content\lib\bootstrap3-wysihtml5\bootstrap-wysihtml5.css" />
     <Content Include="Content\lib\bootstrap\bootstrap.css" />
     <Content Include="Content\lib\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\lib\normalize\normalize.css" />
     <Content Include="Content\site\ajax-loader.gif" />
     <Content Include="Content\site\bubbleChooser.css" />
     <Content Include="Content\site\character\characterList.css" />
@@ -273,7 +274,7 @@
     <Content Include="Content\site\character\characterPrint.css.map">
       <DependentUpon>characterPrint.css</DependentUpon>
     </Content>
-    <None Include="Content\site\character\characterPrint.less" />
+    <Content Include="Content\site\character\characterPrint.less" />
     <Content Include="Content\site\character\characterPrint.css">
       <DependentUpon>characterPrint.less</DependentUpon>
     </Content>
