@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201402201615528_InitialCreate.Designer.cs">
       <DependentUpon>201402201615528_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201402261946465_UserEmail.cs" />
+    <Compile Include="Migrations\201402261946465_UserEmail.Designer.cs">
+      <DependentUpon>201402261946465_UserEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Aspect.cs" />
@@ -136,6 +140,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402201615528_InitialCreate.resx">
       <DependentUpon>201402201615528_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402261946465_UserEmail.resx">
+      <DependentUpon>201402261946465_UserEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

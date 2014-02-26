@@ -4,12 +4,14 @@ Sordid Roadmap
 * ~~Set up alpha website, deployment scripts~~
 * ~~Set up continuous integration, deployment in TeamCity~~
 * ~~Create "how you can help" documentation and dev mailing list~~
+* ~~User registration has to include collecting email~~
+* ~~Enable code-first migrations without automatic migrations, disable automatic data loss~~
 * Fix the issue with TeamCity / GitHub / Azure timeouts
-* Enable code-first migrations without automatic migrations, disable automatic data loss
 * Home page to give an overview, with big red warning about this being alpha
 * Help page, with at least an FAQ section
 * About page with attributions for libraries, fonts, etc., and especially to Evil Hat / Fred Hicks
 * About page should link back to Github project
+* Add link to alpha site from GitHub project page
 * Post to community sites about project and solicit help
 
 ### Beta release
@@ -20,6 +22,12 @@ Sordid Roadmap
 * Tested and working in all modern browsers
 * Tested and working (at least the important parts) on mobile browsers
 * Uservoice (or equivalent) for feature requests
+* Allow for changing of username, email
+* Emails should be enforced unique
+* Set up SMTP server so system can send emails to users
+* User's email validated by sending them a confirmation email
+* Welcome email sent to new users
+* Support external logins (Facebook, etc.)
 
 ### Production release 1.0
 * Support for admin users that can impersonate other users

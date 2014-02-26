@@ -7,9 +7,8 @@ namespace Sordid.Core.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            // TODO: Disable AutomaticMigrationDataLossAllowed before production
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = false;
             ContextKey = "Sordid.Core.SordidDbContext";
         }
 
