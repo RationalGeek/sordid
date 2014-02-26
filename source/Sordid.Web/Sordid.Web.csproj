@@ -371,7 +371,6 @@
     <Content Include="Views\Character\Print.cshtml" />
     <Content Include="Views\Character\_ManageStress.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Account\_UpdateEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
