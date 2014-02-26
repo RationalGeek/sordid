@@ -6,7 +6,9 @@ Sordid Roadmap
 * ~~Create "how you can help" documentation and dev mailing list~~
 * ~~User registration has to include collecting email~~
 * ~~Enable code-first migrations without automatic migrations, disable automatic data loss~~
-* Fix the issue with TeamCity / GitHub / Azure timeouts
+* ~~Fix the issue with TeamCity / GitHub / Azure timeouts~~
+* Fix issue where character is dirty when it loads
+* Finish print page
 * Home page to give an overview, with big red warning about this being alpha
 * Help page, with at least an FAQ section
 * About page with attributions for libraries, fonts, etc., and especially to Evil Hat / Fred Hicks
