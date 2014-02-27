@@ -15,7 +15,7 @@ Sordid Roadmap
 * ~~Help page, with at least an FAQ section~~
 * Finish print page
   * Needs to include character portrait
-  * Needs to size bottom two panels to line up at bottom
+  * ~~Needs to size bottom two panels to line up at bottom~~
 * Overview on home page, ~~with big red warning about this being alpha~~
 * Add link to alpha site from GitHub project page
 * Add Google Analytics

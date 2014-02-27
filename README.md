@@ -2,7 +2,7 @@ Sordid
 ======
 Online character builder for [DresdenRPG](www.evilhat.com/home/dresden-files-rpg) and eventually other [Fate](evilhat.wikidot.com/fate-rpg)-based games.
 
-###[Product Roadmap](//github.com/RationalGeek/sordid/blob/master/docs/roadmap.md)
+###[Project Roadmap](//github.com/RationalGeek/sordid/blob/master/docs/roadmap.md)
 
 ###How can I help?
 
