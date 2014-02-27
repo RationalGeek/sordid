@@ -62,6 +62,9 @@ namespace Sordid.Web
                       "~/Scripts/site/alphaWarning.js"
                       ));
 
+            bundles.Add(new ScriptBundle("~/bundles/print").Include(
+                      "~/Scripts/site/characterPrint.js"));
+
             // TODO: Tried to upgrade to Bootstrap 3.1 but it caused style issues with active list group items in powers stock add
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/lib/bootstrap/bootstrap.css",

@@ -158,8 +158,12 @@ body {
   font-size: 26pt;
   font-family: serif;
 }
+#powersPanel {
+  position: relative;
+}
 #powersPanel table {
   margin-top: 5px;
+  margin-bottom: 50px;
 }
 #powersPanel th,
 #powersPanel td {
@@ -173,7 +177,8 @@ body {
   font-size: 98%;
 }
 #powersPanel .totalCost {
-  margin-top: 20px;
+  position: absolute;
+  bottom: 5px;
   margin-left: 5px;
 }
 #powersPanel .totalCost .field {

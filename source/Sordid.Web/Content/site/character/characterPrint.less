@@ -206,9 +206,11 @@ body {
     }
 }
 
+// TODO: If you have a buttload of powers that cause a bleed onto next page, all hell breaks loose
 #powersPanel {
     table {
         margin-top: 5px;
+        margin-bottom: 50px; // Because total cost is position absolute, this leaves room and prevents overlap
     }
 
     th, td {
@@ -224,8 +226,11 @@ body {
         font-size: 98%;
     }
 
+    position: relative;
+
     .totalCost {
-        margin-top: 20px;
+        position: absolute;
+        bottom: 5px;
         margin-left: 5px;
 
         .field {
