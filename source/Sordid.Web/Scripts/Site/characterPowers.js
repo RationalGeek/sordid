@@ -64,9 +64,13 @@
             clearSelection();
         });
 
-        addCustomPowerModal.on('show.bs.modal', function (e) {
+        var clearCustomDialog = function () {
             customPowerNameInput.val('');
             customPowerCostInput.val(0);
+        }
+
+        addCustomPowerModal.on('show.bs.modal', function (e) {
+            clearCustomDialog();
         });
 
         var createPowerViewModel = function (id, name, cost, typeName) {
@@ -96,7 +100,7 @@
             addStockPowerModal.modal('hide');
         });
 
-        $('#addCustomPowerModalAddButton').click(function () {
+        var createCustomPower = function () {
             var itemToAdd = createPowerViewModel(
                 0,
                 customPowerNameInput.val(),
@@ -104,7 +108,16 @@
                 'Custom'
                 );
             charMan.viewModel().Character.Powers.push(itemToAdd);
+            clearCustomDialog();
+        };
+
+        $('#addCustomPowerModalAddButton').click(function () {
+            createCustomPower();
             addCustomPowerModal.modal('hide');
+        });
+
+        $('#addCustomPowerModalAddAnotherButton').click(function () {
+            createCustomPower();
         });
     });
 
