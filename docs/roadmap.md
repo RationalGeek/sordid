@@ -13,10 +13,10 @@ Sordid Roadmap
 * ~~Fix issue where character is dirty when it loads~~
 * ~~Help should appear next to image thumbnail to suggest image upload sites~~
 * ~~Help page, with at least an FAQ section~~
+* ~~Intro on home page, with big red warning about this being alpha~~
 * Finish print page
   * Needs to include character portrait
   * ~~Needs to size bottom two panels to line up at bottom~~
-* Overview on home page, ~~with big red warning about this being alpha~~
 * Add link to alpha site from GitHub project page
 * Add Google Analytics
 * Post to community sites about project and solicit help

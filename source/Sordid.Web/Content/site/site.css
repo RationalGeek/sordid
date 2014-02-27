@@ -36,7 +36,7 @@ body, body > .navbar {
 @media (min-width: 768px) {
     #mainNav {
         font-size: 130%;
-        margin-left: 75px;
+        margin-left: 50px;
     }
 
     /* Centers nav items vertically in the top bar */
@@ -138,4 +138,10 @@ input[type="checkbox"].input-validation-error {
     margin-left: 5px;
     margin-right: 5px;
     display: none; /* Changed by JS */
+}
+
+.jumbotron h1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Frijole', cursive;
 }
