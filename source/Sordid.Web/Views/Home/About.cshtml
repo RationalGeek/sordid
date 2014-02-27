@@ -3,13 +3,52 @@
     ViewBag.Title = "About";
 }
 
+@section Styles
+{
+    @Styles.Render("~/Content/css/about")
+}
+
 <h2>About Sordid</h2>
+<p>Sordid is the brainchild of Justin Kohlhepp, a software developer based in CT, USA.  You can find more from Justin at <a target="_blank" href="http://rationalgeek.com">his homepage</a>.</p>
 
-<div id="version">
-    <strong>Version</strong> @Model.Version<br/>
-	Built ADD_BUILD_DATE
-</div>
+<h3>Thanks</h3>
+<p>Thanks to <a target="_blank" href="http://www.jim-butcher.com/">Jim Butcher</a> for writing the truly excellent Dresden Files novels, and thanks to all of the authors and everyone at <a href="http://www.evilhat.com">Evil Hat Productions</a> for creating the Dresden RPG.</p>
+<p id="openSourceProjects" class="thanksCommaList">
+    This project would not have been possible if not for the many open source projects that it is built upon.  Thanks to
+    <span><a target="_blank" href="http://www.asp.net/mvc">ASP.NET MVC</a></span>
+    <span><a target="_blank" href="http://www.asp.net/entity-framework">Entity Framework</a></span>
+    <span><a target="_blank" href="http://jquery.com/">jQuery</a></span>
+    <span><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></span>
+    <span><a target="_blank" href="http://knockoutjs.com/">Knockout</a></span>
+    <span><a target="_blank" href="http://requirejs.org/">RequireJS</a></span>
+    <span><a target="_blank" href="http://xing.github.io/wysihtml5/">WysiHtml5</a></span>
+    <span><a target="_blank" href="https://github.com/schnawel007/bootstrap3-wysihtml5">Bootstrap3-WysiHtml5</a></span>
+    <span><a target="_blank" href="http://www.dotlesscss.org/">dotless</a></span>
+    <span><a target="_blank" href="http://www.ninject.org/">Ninject</a></span>
+    <span><a target="_blank" href="http://logging.apache.org/log4net/">log4net</a></span>
+    <span><a target="_blank" href="http://getglimpse.com/">Glimpse</a></span>
+    <span><a target="_blank" href="https://code.google.com/p/elmah/">ELMAH</a></span>
+    <span><a target="_blank" href="http://modernizr.com/">Modernizr</a></span>
+    <span><a target="_blank" href="https://github.com/douglascrockford/JSON-js">Json2</a></span>
+    <span><a target="_blank" href="http://www.nunit.org/">NUnit</a></span>.
+</p>
+<p id="fonts" class="thanksCommaList">
+    Also, thanks to the authors of these open source fonts used in the project:
+    <span><a target="_blank" href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Frijole">Frijole</span></a>
+    <span><a target="_blank" href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Aclonica">Aclonica</span></a>
+    <span><a target="_blank" href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Shadows+Into+Light+Two">Shadows Into Light Two</span></a>.
+</p>
 
-<div id="copyright">
-	Copyright &copy; Justin Kohlhepp 2014.  All rights reserved.
-</div>
+<h3>How can I help?</h3>
+<p>The best way is to visit our <a target="_blank" href="https://github.com/RationalGeek/sordid">GitHub Project</a> or join our <a target="_blank" href="https://groups.google.com/d/forum/sordid-dev">Dev Mailing List</a> and drop us a line.</p>
+
+<h3>Licensing</h3>
+<p>The code behind Sordid is licensed with the <a target="_blank" href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+<h3>Other Info</h3>
+<p id="version">
+    <strong>Version</strong> @Model.Version
+</p>
+<p id="copyright">
+    <strong>Copyright</strong> &copy; 2014 Justin Kohlhepp.  All rights reserved.
+</p>

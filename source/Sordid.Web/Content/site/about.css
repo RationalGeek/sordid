@@ -1,0 +1,7 @@
+﻿.thanksCommaList span:not(:last-child):after {
+    content: ", ";
+}
+
+.thanksCommaList span:last-child:before {
+    content: "and ";
+}

@@ -66,6 +66,9 @@ namespace Sordid.Web
             bundles.Add(new StyleBundle("~/Content/css/bootstrap3-wysihtml5").Include(
                       "~/Content/lib/bootstrap3-wysihtml5/bootstrap-wysihtml5.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css/about").Include(
+                      "~/Content/site/about.css"));
+
             bundles.Add(new StyleBundle("~/Content/css/character").Include(
                       "~/Content/site/character/characterManage.css",
                       "~/Content/site/character/characterManageBasics.css",

@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-
+﻿
 namespace Sordid.Web.Models
 {
     public class AboutViewModel

@@ -15,6 +15,11 @@ namespace Sordid.Web.Controllers
             return View(new AboutViewModel());
         }
 
+        public ActionResult Help()
+        {
+            return View();
+        }
+
         public ActionResult EmptyTest()
         {
             return View();

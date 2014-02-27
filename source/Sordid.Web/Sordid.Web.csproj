@@ -261,6 +261,7 @@
     <Content Include="Content\lib\bootstrap\bootstrap.css" />
     <Content Include="Content\lib\bootstrap\bootstrap.min.css" />
     <Content Include="Content\lib\normalize\normalize.css" />
+    <Content Include="Content\site\about.css" />
     <Content Include="Content\site\ajax-loader.gif" />
     <Content Include="Content\site\bubbleChooser.css" />
     <Content Include="Content\site\character\characterList.css" />
@@ -371,6 +372,7 @@
     <Content Include="Views\Character\Print.cshtml" />
     <Content Include="Views\Character\_ManageStress.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

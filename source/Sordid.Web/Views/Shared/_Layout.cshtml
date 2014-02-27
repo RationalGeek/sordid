@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title - Sordid - Fate Character Builder</title>
+    <title>@ViewBag.Title - Sordid - DresdenRPG Character Builder</title>
     <link href='http://fonts.googleapis.com/css?family=Frijole' rel='stylesheet' type='text/css' />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -22,14 +22,14 @@
                 </button>
                 <a href="@Url.Action("Index", "Home")" id="logoLink" class="navbar-brand" title="Sordid - Fate Character Builder">
                     <div class="mainLogoText">Sordid</div>
-                    <div class="subLogoText">Fate Character Builder</div>
+                    <div class="subLogoText">DresdenRPG Character Builder</div>
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul id="mainNav" class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("My Characters", "Index", "Character")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Help", "Help", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
