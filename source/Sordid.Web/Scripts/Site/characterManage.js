@@ -27,12 +27,14 @@
     var initKnockout = function (viewModelRaw) {
         viewModel = ko.mapping.fromJS(viewModelRaw);
         viewModel.ranks = buildRanks();
-        viewModel.dirty = ko.dirtyFlag(viewModel);
         viewModel.Character.HighConcept = ko.computed(computeHighConcept);
         $(document).trigger('sordid.ko.viewModelInit', viewModel);
         $(document).trigger('sordid.ko.viewModelChanged', viewModel);
         ko.applyBindings(viewModel);
         $(document).trigger('sordid.ko.viewModelBound', viewModel);
+
+        // Set up dirty as the last thing, so that we start off as "clean"
+        viewModel.dirty = ko.dirtyFlag(viewModel);
     };
 
     $(document).ready(function () {
