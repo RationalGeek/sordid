@@ -294,6 +294,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\AzureWebDeploy.pubxml" />
     <None Include="Scripts\lib\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\lib\jquery.cookie\jquery.cookie.js" />
     <Content Include="Scripts\lib\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\lib\jquery\jquery-1.10.2.min.js" />
     <None Include="Scripts\lib\jquery\jquery.validate-vsdoc.js" />
@@ -324,6 +325,7 @@
     <Content Include="Scripts\lib\wysihtml5\wysihtml5-0.3.0.js" />
     <Content Include="Scripts\lib\wysihtml5\wysihtml5-0.3.0.min.js" />
     <Content Include="Scripts\site\alerts.js" />
+    <Content Include="Scripts\site\alphaWarning.js" />
     <Content Include="Scripts\site\bubbleChooser.js" />
     <Content Include="Scripts\site\characterAspects.js" />
     <Content Include="Scripts\site\characterBasics.js" />

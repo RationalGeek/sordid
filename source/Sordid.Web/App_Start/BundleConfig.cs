@@ -10,7 +10,9 @@ namespace Sordid.Web
             // TODO: Convert to using CDNs for jquery, etc.  Theoretically this happens automagically?
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/lib/jquery/jquery-{version}.js"));
+                        "~/Scripts/lib/jquery/jquery-{version}.js",
+                        "~/Scripts/lib/jquery.cookie/jquery.cookie.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
                         //"~/Scripts/jquery.ui/jquery.ui.*",
@@ -56,7 +58,8 @@ namespace Sordid.Web
                       "~/Scripts/site/alerts.js",
                       "~/Scripts/site/helptip.js",
                       "~/Scripts/site/errorHandling.js",
-                      "~/Scripts/site/koDirty.js"
+                      "~/Scripts/site/koDirty.js",
+                      "~/Scripts/site/alphaWarning.js"
                       ));
 
             // TODO: Tried to upgrade to Bootstrap 3.1 but it caused style issues with active list group items in powers stock add
