@@ -1,4 +1,5 @@
-﻿define('sordid-characterManage', ['jquery', 'knockout', 'sordid-alerts', 'sordid-errors', 'sordid-koDirty'], function ($, ko, alerts, errors) {
+﻿define('sordid-characterManage', ['jquery', 'knockout', 'sordid-alerts', 'sordid-errors', 'sordid-koDirty', 'sordid-helptip'], function ($, ko, alerts, errors) {
+    // TODO: This ladder rank translation is duplicated in other places
     var buildRanks = function () {
         return [
             { name: 'Superb (+5)', value: 5 },

@@ -333,6 +333,7 @@
     <Content Include="Scripts\site\characterSkills.js" />
     <Content Include="Scripts\site\characterStress.js" />
     <Content Include="Scripts\site\errorHandling.js" />
+    <Content Include="Scripts\site\helptip.js" />
     <Content Include="Scripts\site\koDirty.js" />
     <Content Include="Scripts\site\requireStart.js" />
     <Content Include="Scripts\site\util.js" />

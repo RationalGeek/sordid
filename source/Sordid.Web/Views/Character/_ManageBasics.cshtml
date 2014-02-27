@@ -34,7 +34,12 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="imageUrl" class="col-sm-3 control-label">Image URL</label>
+        <label for="imageUrl" class="col-sm-3 control-label">
+            Portrait URL
+            <span class="glyphicon glyphicon-question-sign help-popover-target"
+                  data-container="body" data-toggle="popover" data-placement="top"
+                  data-content="If you want to upload your own image, use an image service such as &lt;a target='_blank' href='http://imgur.com'&gt;Imgur&lt;/a&gt;, and paste the URL here."></span>
+        </label>
         <div class="col-sm-9">
             <input id="imageUrl" type="url" class="form-control" data-bind="value: Character.ImageUrl" />
         </div>

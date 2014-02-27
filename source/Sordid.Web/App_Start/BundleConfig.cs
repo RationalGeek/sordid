@@ -54,6 +54,7 @@ namespace Sordid.Web
                       "~/Scripts/site/requireStart.js",
                       "~/Scripts/site/util.js",
                       "~/Scripts/site/alerts.js",
+                      "~/Scripts/site/helptip.js",
                       "~/Scripts/site/errorHandling.js",
                       "~/Scripts/site/koDirty.js"
                       ));

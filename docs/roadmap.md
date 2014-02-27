@@ -10,8 +10,10 @@ Sordid Roadmap
 * ~~About page with attributions for libraries, fonts, etc., and especially to Jim Butcher and Evil Hat~~
 * ~~About page should link back to Github project~~
 * ~~Add license file to Github project, About page~~
-* Fix issue where character is dirty when it loads
+* ~~Fix issue where character is dirty when it loads~~
+* ~~Help should appear next to image thumbnail to suggest image upload sites~~
 * Finish print page
+** Needs to include character portrait
 * Home page to give an overview, with big red warning about this being alpha
 * Help page, with at least an FAQ section
 * Add link to alpha site from GitHub project page

@@ -126,3 +126,9 @@ input[type="checkbox"].input-validation-error {
 .badge.danger {
   background-color: #d9534f;
 }
+
+.help-popover-target {
+    /*margin-right: -17px;*/
+    opacity: 0.8;
+    color: #428bca;
+}
