@@ -12,11 +12,13 @@ Sordid Roadmap
 * ~~Add license file to Github project, About page~~
 * ~~Fix issue where character is dirty when it loads~~
 * ~~Help should appear next to image thumbnail to suggest image upload sites~~
+* ~~Help page, with at least an FAQ section~~
 * Finish print page
   * Needs to include character portrait
-* Home page to give an overview, with big red warning about this being alpha
-* Help page, with at least an FAQ section
+  * Needs to size bottom two panels to line up at bottom
+* Overview on home page, ~~with big red warning about this being alpha~~
 * Add link to alpha site from GitHub project page
+* Add Google Analytics
 * Post to community sites about project and solicit help
 
 ### Beta release
@@ -24,7 +26,7 @@ Sordid Roadmap
 * Set up beta infrastructure, including SMTP server so system can send emails to users
 * Stable, production-ready database
 * Feature complete for DresdenRPG character creation, management, and printing
-* Error tracking, logging, analytics all in place
+* Error tracking, logging, analytics all in place and functioning
 * Tested and working in all modern browsers
   * Mechanism to hide header/footer in Chrome doesn't seem to work in Firefox
 * Tested and working (at least the important parts) on mobile browsers
