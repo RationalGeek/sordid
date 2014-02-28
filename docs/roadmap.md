@@ -15,8 +15,10 @@ Sordid Roadmap
 * ~~Help page, with at least an FAQ section~~
 * ~~Intro on home page, with big red warning about this being alpha~~
 * Finish print page
-  * Needs to include character portrait
+  * Finish the Misc Stats panel
+  * Needs to include character portrait - but where?
   * ~~Needs to size bottom two panels to line up at bottom~~
+* Type in all the reference data: stock powers, templates, 
 * Add link to alpha site from GitHub project page
 * Add Google Analytics
 * Post to community sites about project and solicit help
@@ -36,13 +38,20 @@ Sordid Roadmap
 * User's email validated by sending them a confirmation email
 * Welcome email sent to new users
 * Support external logins (Facebook, etc.)
+* Proper functioning of back button on character manage page
 
 ### Production release 1.0
+* Capturing of special equipment such as magic items, potions, armor
+* Capture description of powers and show them in dialog
 * Support for admin users that can impersonate other users
 * Set up production infrastructure
 * Create some unit tests
 
 ### Beyond 1.0
+* App understands templates and can autoselect powers and what-not
+* Print out aspect details sheet
+* Share characters with other users
+* Assemble characters into a campaign and let GM print out summary sheets
 * Make the app smarter so that it can double-check the character is legit and give warnings
 * Spellbook feature that helps build spells
 * Quicker NPC creation for GMs
